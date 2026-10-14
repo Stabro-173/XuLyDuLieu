@@ -4,6 +4,7 @@ on the real model, for the ten mandated update scenarios.
 Usage: python scripts/validate_cache.py --config configs/smoke.yaml --budget 2048 --out results/cache_validation.json
 """
 import argparse
+import os
 import time
 
 import _bootstrap  # noqa: F401
@@ -14,7 +15,7 @@ from src.cache.cache_validation import validate_case, validation_cases
 from src.cache.engine import free_cuda
 from src.data.knowledge import KnowledgeSnapshot
 from src.data.partitioner import partition
-from src.utils import write_json
+from src.utils import read_json, write_json
 
 METHODS = ["B3_document_cache", "B4_layered", "B5_prefix_invalidation", "B3a_document_cache_approx"]
 
@@ -33,6 +34,7 @@ def main():
     ap.add_argument("--out", default="results/cache_validation.json")
     ap.add_argument("--device", default="auto")
     ap.add_argument("--allow-cpu", action="store_true")
+    ap.add_argument("--max-minutes", type=float, default=None)
     a = ap.parse_args()
     cfg = load_config(a.config)
     eng = make_engine(cfg["model"], a.device, a.allow_cpu)
@@ -41,17 +43,30 @@ def main():
     ordered, _ = partition(sel, load_partition_config())
     snap = KnowledgeSnapshot(0, ordered)
     res = {"budget": a.budget, "seed": a.seed, "engine": eng.info.__dict__, "cases": {}}
+    if os.path.exists(a.out):  # resume: keep cases already validated with the same model/budget
+        old = read_json(a.out)
+        if old.get("budget") == a.budget and old.get("engine", {}).get("model_name") == eng.info.model_name:
+            res["cases"] = old["cases"]
+    t_start = time.perf_counter()
     for name, ev in validation_cases(snap, held[0], a.seed, corpus):
+        if name in res["cases"]:
+            continue
+        if a.max_minutes and time.perf_counter() - t_start > a.max_minutes * 60:
+            print(f"time budget reached after {len(res['cases'])}/10 cases; rerun to resume", flush=True)
+            break
         t0 = time.perf_counter()
         r = validate_case(eng, snap, ev, METHODS)
         r["seconds"] = time.perf_counter() - t0
         res["cases"][name] = r
+        write_json(a.out, res)  # checkpoint after every case
         free_cuda()
         line = "  ".join(f"{m.split('_')[0]}:{_fmt(x)}" for m, x in r["methods"].items())
         print(f"{name:28s} ref_tokens={r['ref_tokens']}  {line}", flush=True)
     summ = {}
     for m in METHODS:
         st = [c["methods"][m]["status"] for c in res["cases"].values()]
+        if len(res["cases"]) < 10:
+            print(f"partial: {len(res['cases'])}/10 cases", flush=True)
         summ[m] = {"pass": st.count("PASS"), "total": len(st)}
     res["summary"] = summ
     res["environment"] = environment(eng)

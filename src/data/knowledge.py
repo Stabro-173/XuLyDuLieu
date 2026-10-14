@@ -21,7 +21,7 @@ from src.utils import sha256_text
 INSTRUCTION = (
     "Bạn là trợ lý hỏi đáp của công ty kiến trúc Nguyen Minh Khang Architects. "
     "Chỉ trả lời dựa trên CƠ SỞ TRI THỨC bên dưới, không suy đoán. "
-    "Trả lời ngắn gọn bằng tiếng Việt, nêu đúng giá trị được hỏi. "
+    "Trả lời trực tiếp bằng một câu ngắn tiếng Việt, nêu ngay giá trị được hỏi, không lặp lại câu hỏi. "
     "Nếu một mục được ghi nhận trong THÔNG BÁO CẬP NHẬT thì giá trị mới nhất thay thế giá trị cũ. "
     "Nếu cơ sở tri thức không có thông tin để trả lời, hãy trả lời: \"Không có thông tin.\""
 )

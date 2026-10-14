@@ -28,9 +28,13 @@ def warmup(engine: CAGEngine, n: int = 3) -> None:
     free_cuda()
 
 
+class TimeBudgetReached(Exception):
+    """Raised between method runs when --max-minutes is exhausted; completed work is already saved."""
+
+
 class Runner:
     def __init__(self, engine: CAGEngine, out_dir: str | Path, baselines: list[str], reps: int,
-                 query_latency_subset: int = 3, run_tag: str = ""):
+                 query_latency_subset: int = 3, run_tag: str = "", deadline: float | None = None):
         self.engine = engine
         self.out = Path(out_dir)
         self.out.mkdir(parents=True, exist_ok=True)
@@ -38,6 +42,7 @@ class Runner:
         self.reps = reps
         self.q_subset = query_latency_subset
         self.run_tag = run_tag
+        self.deadline = deadline  # time.perf_counter() value after which no new run is started
         done = read_jsonl(self.out / "runs.jsonl")
         self.done = {(r["condition_id"], r["baseline"], r["rep"]) for r in done
                      if r["status"] in ("ok", "vram_spill")}
@@ -72,7 +77,10 @@ class Runner:
             for b in order:
                 if (cond.condition_id, b, rep) in self.done:
                     continue
+                if self.deadline is not None and time.perf_counter() > self.deadline:
+                    raise TimeBudgetReached()
                 self._run_one(cond, b, rep, ctx)
+                self.done.add((cond.condition_id, b, rep))
 
     def _run_one(self, cond: Condition, b: str, rep: int, ctx: dict) -> None:
         t0 = time.perf_counter()
