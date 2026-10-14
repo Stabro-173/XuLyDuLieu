@@ -4,3 +4,6 @@ warning: in the working copy of 'results/chain_rest.log', LF will be replaced by
 warning: in the working copy of 'results/chain_rest.sh', LF will be replaced by CRLF the next time Git touches it
 CHAIN_DONE_S11 rc=0 INFO cag.run: time budget of 35 min reached: 191/228 method runs done (84%). Rerun the same command to resume.
 CHAIN_START_S12
+warning: in the working copy of 'results/chain_rest.log', LF will be replaced by CRLF the next time Git touches it
+CHAIN_DONE_S12 rc=0 INFO cag.run: finished in 26.2 min: 235/228 method runs done
+CHAIN_END

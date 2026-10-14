@@ -29,7 +29,11 @@ The central hypothesis is therefore **supported for correctness and partially su
 Layered CAG preserves full-prefill behaviour and is cheaper than recomputation, but it is dominated by
 finer-grained exact prefix reuse on this workload.
 
-<!-- FILL_15B_ABSTRACT -->
+On the primary model, Qwen2.5-1.5B-Instruct in fp16 (19 conditions at ≤ 2K tokens), the picture is the
+same: B4 matched B1 on every accuracy group (86.7 % on updated facts in the main comparison) and halved update
+latency (8.2 s vs 16.7 s on this GPU), B5 (4.4 s) and B3 (5.0 s) were faster still, and B2 (1.6 s) was the
+cheapest update. Because fp16 rounding differs between a full and a suffix prefill, exact methods produced
+token-identical generations to B1 on 98.5 % (931/945) of answers; every divergence was a first-token near tie.
 
 ## 2. Research motivation
 
@@ -158,7 +162,7 @@ Consequently two model configurations were run:
 | Profile | Model (pinned revision) | dtype | Grid | Status |
 |---|---|---|---|---|
 | `pilot_q05_fp32` | Qwen2.5-0.5B-Instruct (`7ae5576`) — **substitute** | fp32 | full PILOT: 50 conditions, budgets 1K–8K, 7 methods × 3 reps | 1050/1050 runs, 0 failures |
-| `reduced_q15_fp16` | Qwen2.5-1.5B-Instruct (`989aa79`) — **primary** | fp16 | 19 conditions at ≤ 2K tokens, 6 methods × 2 reps | <!-- FILL_15B_STATUS --> |
+| `reduced_q15_fp16` | Qwen2.5-1.5B-Instruct (`989aa79`) — **primary** | fp16 | 19 conditions at ≤ 2K tokens, 6 methods × 2 reps | 228/228 valid runs (+7 B3a runs flagged `vram_spill`), 0 errors |
 | FULL profile (5 seeds, 4K/8K with 1.5B) | — | — | — | **NOT RUN** (does not fit this GPU) |
 
 The two models share a byte-identical tokenizer, so conditions, token boundaries and questions are identical.
@@ -234,7 +238,8 @@ property of append correction. Update latencies are unaffected.
 For a cycle of one update followed by *q* questions, cost = update + q × query (measured means; we use the
 same query latency for all methods because of §8.2). B4's saving over B1 per cycle is 655 ms; it falls below
 10 % of the cycle cost once *q* > 6 questions per update on the 0.5B model.
-<!-- FILL_15B_COST --> Slower prefill (the 1.5B model on this GPU) makes cache reuse matter for much longer.
+On the 1.5B fp16 model the saving is 8.5 s per update against a 2.3 s answer, so B4 stays more than
+10 % cheaper per cycle than B1 up to *q* ≈ 29 questions per update. Slower prefill (the 1.5B model on this GPU) makes cache reuse matter for much longer.
 
 ## 9. Accuracy results
 
@@ -261,7 +266,29 @@ values (e.g. "dự án #101 có diện tích 1600 m²"); this is a model limitat
 not an evaluator artefact. (iv) B3a's accuracy collapse shows that per-document caches without cross-document
 attention are unusable here without further correction.
 
-<!-- FILL_15B_ACCURACY -->
+### 9.2 Primary model — Qwen2.5-1.5B fp16, 11 update-type conditions (seed 0, ≈2K tokens)
+
+| Method | update latency (s) | speed-up | A updated | A stale | B unchanged | C probes | D cross-doc | E unanswerable | agrees with B1 |
+|---|---|---|---|---|---|---|---|---|---|
+| B0 Stale | 0 | — | 0.0 | 80.0 | 85.4 | 16.7 | 100 | 0.0 | 72.2 |
+| B1 Full Recompute | 16.7 | 1.0× | 86.7 | 3.3 | 83.4 | 97.2 | 100 | 0.0 | 100 |
+| B2 Append Correction | 1.6 | 10.5× | 81.7 | 3.3 | 76.4 | 91.7 | 100 | 9.1 | 57.6 |
+| B3 Doc Cache (exact) | 5.0 | 3.3× | 86.7 | 3.3 | 83.5 | 97.2 | 100 | 0.0 | 99.0 |
+| **B4 Layered CAG** | **8.2** | **2.0×** | **86.7** | **3.3** | **83.5** | **97.2** | 100 | 0.0 | **98.0** |
+| B5 Prefix Invalidation | 4.4 | 3.8× | 86.7 | 3.3 | 83.5 | 97.2 | 100 | 0.0 | 98.0 |
+
+Pooled over all 19 conditions (question level): updated facts (n = 22) B1 = B3 = B4 = B5 = 90.9 %, B2 86.4 %,
+B0 0 % (86.4 % stale); unchanged facts (n = 144) 80.6 % for B1/B3/B4/B5 vs 75.7 % for B2; obsolete/current
+value probes (n = 38) 94.7 % for every updating method vs 7.9 % for B0; cross-document comparisons (n = 54)
+96.3 % for all methods (the compared areas rarely straddled the update); unanswerable (n = 57) 0 % for all
+methods except B2 (12.3 %: it abstained on 4 non-existent-project and 3 absent-attribute questions — the
+explicit update-notice section appears to make the model more cautious).
+
+Compared with the 0.5B model, the larger model is more accurate overall and is **less confused by append
+corrections** (3.3 % stale on updated facts vs 15.6 %), but appending still costs accuracy on *unchanged*
+facts (−7 points) and on generation agreement with B1 (58 %). Peak memory during updates was ≈ 3.04 GB
+allocated / 3.26 GB reserved for every method (weights 2.94 GB, KV cache 56 MB at 2K tokens), 30–40 MB below
+the physical budget.
 
 ## 10. Ablation studies (0.5B fp32 unless stated)
 
@@ -318,7 +345,25 @@ after ten) and its stale-answer rate on updated facts reaches 50 % at k = 10. Re
 (v0→v3): all exact methods and B2 answered the latest value; B2's context grew by 284 tokens. Counts are small
 (1–10 updated-fact questions per row) and should be read as trends.
 
-<!-- FILL_15B_ABLATION -->
+### 10.5 Primary model (1.5B fp16) ablations, seed 0, update latency (s)
+
+| Edit position | B1 | B2 | B3 | **B4** | B5 |
+|---|---|---|---|---|---|
+| begin (0.07) | 16.70 | 1.33 | 6.44 | **7.45** | 6.21 |
+| middle (0.60) | 16.74 | 1.33 | 3.30 | **7.49** | 2.19 |
+| end (0.86) | 16.67 | 1.32 | 1.13 | **7.43** | 0.57 |
+
+| Stable ratio (actual) | B1 | B4 | B4 speed-up | B5 | B3 |
+|---|---|---|---|---|---|
+| 8.9 % | 16.67 | 15.76 | 1.06× | 2.20 | 3.29 |
+| 31.6 % | 16.68 | 11.70 | 1.43× | 2.19 | 3.29 |
+| 56.2 % | 16.74 | 8.52 | 1.96× | 2.19 | 3.30 |
+| 78.1 % | 16.74 | 4.25 | 3.94× | 1.64 | 2.17 |
+| 89.1 % | 16.74 | 2.17 | 7.71× | 0.57 | 1.13 |
+
+Context: at 1,020 tokens B1 8.19 s, B4 3.10 s, B5 0.54 s, B3 1.08 s, B2 1.26 s; 4K/8K not runnable (VRAM).
+The orderings reproduce the 0.5B results exactly; only the absolute scale changes (×15 slower fp16 prefill).
+Sequential/repeated chains were not run on 1.5B (**NOT RUN**, time budget).
 
 ## 11. Limitations
 
@@ -341,7 +386,29 @@ after ten) and its stale-answer rate on updated facts reaches 50 % at k = 10. Re
 
 ## 12. Conclusion
 
-<!-- FILL_CONCLUSION -->
+1. **Correctness (RQ1, RQ5).** Keeping a token-verified causal prefix and recomputing the rest reproduces full
+   recompute: B3, B4 and B5 passed all ten edit scenarios on both models and gave the same answers as B1
+   (100 % of generations in fp32; 98.5 % in fp16, where the rest are numerical near ties). Layered CAG's
+   design rule — reuse only an unchanged, positionally identical prefix — is sound, including its fallback
+   when a "stable" document changes. Concatenating independently computed document caches (B3a) is not.
+2. **Efficiency (RQ2, RQ6).** Layered CAG cut update latency 2.0–2.4× against full recompute at ≈2K tokens
+   with the default partition (≈ 60 % stable tokens) and 1.8–3.2× from 1K to 8K tokens, with no memory
+   overhead. Its cost is bounded by the size of the dynamic suffix, independent of where the edit is.
+3. **The hypothesis does not make Layered CAG the best strategy.** Token-level prefix invalidation (B5),
+   which needs nothing but the previous token sequence, was faster than B4 in every condition except edits
+   at the very start of the suffix (where they tie) and stable-document edits (where all exact methods
+   degrade to near-full recompute). Exact document-boundary reuse (B3) sits in between. B4's advantage is
+   operational — a fixed, predictable recompute window and a single cached prefix — not speed.
+4. **Stable ratio (RQ3) and position (RQ4)** are the levers: B4's speed-up rose from 1.1–1.2× at 9 % stable
+   tokens to 7.1–7.7× at 89 %, and its latency did not change with edit position, while B5's fell by an
+   order of magnitude from the start to the end of the suffix.
+5. **Append correction** is the cheapest update and keeps most updated facts right on the larger model, but it
+   grows the context with every correction, lowers accuracy on unchanged facts, and on the small model leaves
+   21.6 % of updated-fact answers stale; after ten corrections half of them were stale.
+6. **Practical guidance.** Use exact prefix reuse; prefer token-level LCP (B5) when the old token sequence is
+   available, and structure the knowledge as Layered CAG when edits are concentrated in a small, volatile
+   tail. Amortised over questions, update savings matter less as queries per update grow (below 10 % of the
+   cycle cost beyond ≈ 6 questions per update on 0.5B and ≈ 29 on the slower 1.5B setting).
 
 ## 13. Reproduction
 
