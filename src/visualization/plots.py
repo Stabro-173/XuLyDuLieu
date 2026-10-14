@@ -25,7 +25,7 @@ plt.rcParams.update({
     "font.size": 9, "axes.edgecolor": MUTED, "axes.labelcolor": INK, "xtick.color": MUTED,
     "ytick.color": MUTED, "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.6,
     "axes.spines.top": False, "axes.spines.right": False, "legend.frameon": False,
-    "figure.dpi": 150, "savefig.bbox": "tight", "lines.linewidth": 2,
+    "figure.dpi": 150, "savefig.bbox": "tight", "lines.linewidth": 2, "axes.axisbelow": True,
 })
 
 
