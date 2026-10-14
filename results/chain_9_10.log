@@ -4,3 +4,6 @@ CHAIN_START_S9
 warning: in the working copy of 'results/chain_9_10.log', LF will be replaced by CRLF the next time Git touches it
 CHAIN_DONE_S9 INFO cag.run: time budget of 35 min reached: 94/228 method runs done (41%). Rerun the same command to resume.
 CHAIN_START_S10
+warning: in the working copy of 'results/chain_9_10.log', LF will be replaced by CRLF the next time Git touches it
+CHAIN_DONE_S10 INFO cag.run: time budget of 35 min reached: 143/228 method runs done (63%). Rerun the same command to resume.
+CHAIN_END
