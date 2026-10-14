@@ -1,0 +1,563 @@
+{
+  "condition_id": "b1024_s0_numeric_area_middle_rdef_k1",
+  "budget": 1024,
+  "seed": 0,
+  "scenario": "numeric_area",
+  "position": "middle",
+  "stable_ratio_target": null,
+  "meta": {
+    "n_selected_docs": 7,
+    "held_out": [
+      "project_86"
+    ],
+    "experiments": [
+      "context_length"
+    ]
+  },
+  "snapshots": [
+    {
+      "version": 0,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Bình Chánh, TP.HCM",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Bình Chánh, TP.HCM",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 199,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "update_id": "u_001",
+      "update_type": "numeric_area",
+      "changes": [
+        {
+          "doc_id": "project_66",
+          "field": "area_m2",
+          "old_value": 120,
+          "new_value": 199
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 0,
+      "version_after": 1
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "q_0001",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Diện tích của dự án #66 (Nhà ở gia đình 6x20m) là bao nhiêu mét vuông?",
+      "expected_answer": "199 m²",
+      "expected_value": 199.0,
+      "answer_type": "numeric",
+      "evidence_field": "area_m2",
+      "knowledge_version": 1,
+      "old_values": [
+        120.0
+      ]
+    },
+    {
+      "question_id": "q_0002",
+      "group": "B",
+      "question_type": "same_doc_unchanged",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Dự án #66 (Nhà ở gia đình 6x20m) thuộc danh mục dự án nào?",
+      "expected_answer": "Biệt thự & nhà phố",
+      "expected_value": "Biệt thự & nhà phố",
+      "answer_type": "text",
+      "evidence_field": "category",
+      "knowledge_version": 1,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0003",
+      "group": "B",
+      "question_type": "same_doc_unchanged",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Chủ đầu tư của dự án #66 (Nhà ở gia đình 6x20m) là ai?",
+      "expected_answer": "Anh Khang",
+      "expected_value": "Anh Khang",
+      "answer_type": "text",
+      "evidence_field": "investor",
+      "knowledge_version": 1,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0004",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "project_47",
+      "source_doc_ids": [
+        "project_47"
+      ],
+      "question": "Chủ đầu tư của dự án #47 (Biệt thự tân cổ điển 1600m2) là ai?",
+      "expected_answer": "Võ Văn Nam",
+      "expected_value": "Võ Văn Nam",
+      "answer_type": "text",
+      "evidence_field": "investor",
+      "knowledge_version": 1,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0005",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "company_profile",
+      "source_doc_ids": [
+        "company_profile"
+      ],
+      "question": "Giờ làm việc của công ty là khi nào?",
+      "expected_answer": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+      "expected_value": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+      "answer_type": "time_range",
+      "evidence_field": "working_hours",
+      "knowledge_version": 1,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0006",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "company_stats",
+      "source_doc_ids": [
+        "company_stats"
+      ],
+      "question": "Công ty đã thực hiện tổng cộng bao nhiêu dự án?",
+      "expected_answer": "50",
+      "expected_value": 50.0,
+      "answer_type": "numeric",
+      "evidence_field": "total_projects",
+      "knowledge_version": 1,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0007",
+      "group": "C",
+      "question_type": "old_value_probe",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Hiện tại, diện tích của dự án #66 (Nhà ở gia đình 6x20m) có phải là 120 m² không? Trả lời Có hoặc Không.",
+      "expected_answer": "Không",
+      "expected_value": "no",
+      "answer_type": "yesno",
+      "evidence_field": "area_m2",
+      "knowledge_version": 1,
+      "stale_if": "yes",
+      "probed_value": 120
+    },
+    {
+      "question_id": "q_0008",
+      "group": "C",
+      "question_type": "new_value_probe",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Hiện tại, diện tích của dự án #66 (Nhà ở gia đình 6x20m) có phải là 199 m² không? Trả lời Có hoặc Không.",
+      "expected_answer": "Có",
+      "expected_value": "yes",
+      "answer_type": "yesno",
+      "evidence_field": "area_m2",
+      "knowledge_version": 1,
+      "stale_if": "no",
+      "probed_value": 199
+    },
+    {
+      "question_id": "q_0009",
+      "group": "E",
+      "question_type": "nonexistent_entity",
+      "source_doc_id": null,
+      "source_doc_ids": [],
+      "question": "Diện tích của dự án #101 là bao nhiêu mét vuông?",
+      "expected_answer": "Không có thông tin",
+      "expected_value": null,
+      "answer_type": "abstain",
+      "evidence_field": "area_m2",
+      "knowledge_version": 1
+    },
+    {
+      "question_id": "q_0010",
+      "group": "E",
+      "question_type": "absent_field",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Dự án #66 (Nhà ở gia đình 6x20m) có bao nhiêu phòng ngủ?",
+      "expected_answer": "Không có thông tin",
+      "expected_value": null,
+      "answer_type": "abstain",
+      "evidence_field": "phòng ngủ",
+      "knowledge_version": 1
+    },
+    {
+      "question_id": "q_0011",
+      "group": "E",
+      "question_type": "absent_field",
+      "source_doc_id": "project_47",
+      "source_doc_ids": [
+        "project_47"
+      ],
+      "question": "Số điện thoại của chủ đầu tư dự án #47 (Biệt thự tân cổ điển 1600m2) là gì?",
+      "expected_answer": "Không có thông tin",
+      "expected_value": null,
+      "answer_type": "abstain",
+      "evidence_field": "điện thoại chủ đầu tư",
+      "knowledge_version": 1
+    }
+  ]
+}

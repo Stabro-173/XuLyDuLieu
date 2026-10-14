@@ -1,0 +1,12 @@
+# LOCAL HARDWARE CONFIG (GTX 1650 4 GB, fp16 matmul 0.34 TFLOPS vs fp32 1.84 TFLOPS measured).
+# SMOKE on the substitute model.
+profile: smoke_q05_fp32
+model: {name: Qwen/Qwen2.5-0.5B-Instruct, revision: 7ae557604adf67be50417f59c2c2f167def9a775, dtype: float32, attn_implementation: sdpa, max_new_tokens: 32, prefill_chunk: 1024}
+baselines: [B0_stale, B1_full_recompute, B2_append_correction, B3_document_cache,
+            B3a_document_cache_approx, B4_layered, B5_prefix_invalidation]
+reps: 2
+query_latency_subset: 2
+qa_sizes: {unchanged: 4, same_doc_unchanged: 1, old_value_probe: 2, cross_document: 2, unanswerable: 2}
+experiments:
+  - {name: smoke, budgets: [1024], seeds: [0],
+     scenarios: [numeric_area, text_location, date_completion, multi_field, stable_edit], positions: [middle]}

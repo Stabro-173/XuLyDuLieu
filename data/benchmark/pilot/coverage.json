@@ -1,0 +1,43 @@
+{
+  "profile": "pilot",
+  "n_conditions": 49,
+  "not_constructible": [],
+  "n_questions": 837,
+  "questions_by_group": {
+    "A": 73,
+    "B": 372,
+    "C": 104,
+    "D": 141,
+    "E": 147
+  },
+  "questions_by_type": {
+    "updated_fact": 67,
+    "same_doc_unchanged": 83,
+    "unchanged_fact": 289,
+    "old_value_probe": 52,
+    "new_value_probe": 52,
+    "cross_document_area": 141,
+    "null_field": 34,
+    "nonexistent_entity": 49,
+    "absent_field": 61,
+    "appended_doc_fact": 6,
+    "deleted_document": 3
+  },
+  "n_update_events": 66,
+  "update_types": {
+    "numeric_area": 14,
+    "numeric_investment": 3,
+    "company_count": 3,
+    "text_location": 3,
+    "text_investor": 3,
+    "date_completion": 3,
+    "multi_field": 3,
+    "multi_doc": 3,
+    "append_document": 3,
+    "delete_document": 3,
+    "stable_edit": 3,
+    "sequential": 19,
+    "repeated": 3
+  },
+  "distinct_source_docs_in_questions": 28
+}

@@ -1,0 +1,4342 @@
+{
+  "condition_id": "b2048_s0_sequential_random_rdef_k10",
+  "budget": 2048,
+  "seed": 0,
+  "scenario": "sequential",
+  "position": "random",
+  "stable_ratio_target": null,
+  "meta": {
+    "n_selected_docs": 15,
+    "held_out": [
+      "project_86"
+    ],
+    "experiments": [
+      "sequential"
+    ]
+  },
+  "snapshots": [
+    {
+      "version": 0,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Bình Chánh, TP.HCM",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 300,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2024-09-20",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 5000,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Cần Giờ, TP.HCM",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Hải Vân, Đà Nẵng",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Bình Chánh, TP.HCM",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 300,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 5000,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Cần Giờ, TP.HCM",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Hải Vân, Đà Nẵng",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Bình Chánh, TP.HCM",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 5000,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Cần Giờ, TP.HCM",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Hải Vân, Đà Nẵng",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 3,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 5000,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Cần Giờ, TP.HCM",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Hải Vân, Đà Nẵng",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 4,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 3,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 5000,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Hải Vân, Đà Nẵng",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 5,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 3,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 4202,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 5,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Hải Vân, Đà Nẵng",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 6,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 3,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "500 triệu",
+            "investment_vnd": 500000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 4202,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 5,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Thanh Hóa",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 6,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 7,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1600,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 3,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "300 triệu",
+            "investment_vnd": 300000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 7,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 4202,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 5,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Thanh Hóa",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 6,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 8,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1177,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 8,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "300 triệu",
+            "investment_vnd": 300000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 7,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Chị Hương",
+            "location": "Đắc Lắc",
+            "area_m2": 4202,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 5,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Thanh Hóa",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 6,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 9,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1177,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 8,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3 tỷ",
+            "investment_vnd": 3000000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 1,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "300 triệu",
+            "investment_vnd": 300000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 7,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Anh Đức Thịnh",
+            "location": "Đắc Lắc",
+            "area_m2": 4202,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 9,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Thanh Hóa",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 6,
+          "doc_kind": "project"
+        }
+      ]
+    },
+    {
+      "version": 10,
+      "docs": [
+        {
+          "doc_id": "company_profile",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Hồ sơ công ty Nguyen Minh Khang Architects",
+          "content": "Giới thiệu: Tại NGUYEN MINH KHANG Architects, chúng tôi tin rằng mỗi công trình tốt đẹp không chỉ đơn thuần là một sản phẩm xây dựng bền vững theo thời gian, mà còn là kết tinh của tư duy thiết kế sâu sắc, sự thấu hiểu bối cảnh và những giá trị nhân văn cốt lõi. Thông qua thiết kế, NGUYEN MINH KHANG Architects mong muốn kiến tạo những công trình không chỉ đáp ứng nhu cầu sử dụng hôm nay, mà còn có khả năng thích ứng trong tương lai, góp phần nâng cao chất lượng sống và mang lại giá trị lâu dài cho cộng đồng.",
+          "metadata": {
+            "company_name": "Nguyen Minh Khang Architects",
+            "slogan": "Thiết kế – Thi công – Trách nhiệm",
+            "main_address": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+            "secondary_address": null,
+            "working_hours": "Thứ 2 - Thứ 7: 8:00 - 17:30",
+            "hotlines": [
+              "0918.195.615",
+              "0784.157.889"
+            ],
+            "emails": [
+              "ctynguyenminhkhang@gmail.com",
+              "khangarc1102@gmail.com"
+            ],
+            "website": "https://nguyen-minh-khang-website.vercel.app/"
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "company_profile"
+        },
+        {
+          "doc_id": "taxonomy_architecture_types",
+          "source_table": "architectureTypes",
+          "source_id": null,
+          "title": "Các loại hình kiến trúc",
+          "content": "Gồm: Biệt thự cổ điển; Nhà phố hiện đại; Resort nghỉ dưỡng; Chung cư mini Tân Cổ Điển; Nhà phố tân cổ điển; Nhà vườn Japandi; Chung cư mini Hiện đại; Nhà trọ; Nhà xưởng-KCN; Khách sạn; Quán cà phê; Showroom; Nhà thờ; Spa trị liệu; Nhà tiền chế bungalow.",
+          "metadata": {
+            "items": [
+              "Biệt thự cổ điển",
+              "Nhà phố hiện đại",
+              "Resort nghỉ dưỡng",
+              "Chung cư mini Tân Cổ Điển",
+              "Nhà phố tân cổ điển",
+              "Nhà vườn Japandi",
+              "Chung cư mini Hiện đại",
+              "Nhà trọ",
+              "Nhà xưởng-KCN",
+              "Khách sạn",
+              "Quán cà phê",
+              "Showroom",
+              "Nhà thờ",
+              "Spa trị liệu",
+              "Nhà tiền chế bungalow"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_interior_styles",
+          "source_table": "interiorStyles",
+          "source_id": null,
+          "title": "Các phong cách nội thất",
+          "content": "Gồm: Korea Style; Modern Style; Tropical Style; Neo-Classic Style; Retro; Metallic; Luxury Style; Indochine style; Japandi style; Minimalism style.",
+          "metadata": {
+            "items": [
+              "Korea Style",
+              "Modern Style",
+              "Tropical Style",
+              "Neo-Classic Style",
+              "Retro",
+              "Metallic",
+              "Luxury Style",
+              "Indochine style",
+              "Japandi style",
+              "Minimalism style"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_news_categories",
+          "source_table": "newsCategories",
+          "source_id": null,
+          "title": "Chuyên mục tin tức",
+          "content": "Gồm: Tin công ty; Dự án đang thực hiện; Xu hướng thiết kế; Dự án hoàn thành.",
+          "metadata": {
+            "items": [
+              "Tin công ty",
+              "Dự án đang thực hiện",
+              "Xu hướng thiết kế",
+              "Dự án hoàn thành"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "taxonomy_project_categories",
+          "source_table": "projectCategories",
+          "source_id": null,
+          "title": "Danh mục dự án",
+          "content": "Gồm: Trung tâm đào tạo; Căn hộ - Penthouse; Văn phòng làm việc; Nhà hàng - Café; Công trình thương mại; Dự án quy hoạch; Khách sạn & Resort; Showroom - Studio; Biệt thự & nhà phố; Nhà xưởng - Kho vận; Trung tâm thể thao & giải trí; Spa trị liệu.",
+          "metadata": {
+            "items": [
+              "Trung tâm đào tạo",
+              "Căn hộ - Penthouse",
+              "Văn phòng làm việc",
+              "Nhà hàng - Café",
+              "Công trình thương mại",
+              "Dự án quy hoạch",
+              "Khách sạn & Resort",
+              "Showroom - Studio",
+              "Biệt thự & nhà phố",
+              "Nhà xưởng - Kho vận",
+              "Trung tâm thể thao & giải trí",
+              "Spa trị liệu"
+            ]
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "taxonomy"
+        },
+        {
+          "doc_id": "news_18",
+          "source_table": "news",
+          "source_id": 18,
+          "title": "“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị",
+          "content": "Tóm tắt: Giữa nhịp sống sôi động khu vực Chợ Bà Chiểu (quận Bình Thạnh, TP.HCM), căn nhà tại số 10 Trịnh Hoài Đức đã được “tái sinh” thông qua một dự án cải tạo nhà ở dân dụng, mang đến diện mạo mới nhưng vẫn giữ được tinh thần của khu phố thương mại lâu đời. Công trình có diện tích 61,2m², được cải tạo dựa trên nguyên tắc tôn trọng hiện trạng mặt bằng, hạn chế can thiệp thô bạo vào kết cấu cũ, đồng thời tối ưu hóa công năng và nâng cao chất lượng không gian sống. Đây là hướng tiếp cận ngày càng phổ biến trong bối cảnh đô thị TP.HCM đang đối mặt với bài toán bảo tồn – phát triển song song.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "news_19",
+          "source_table": "news",
+          "source_id": 19,
+          "title": "Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc",
+          "content": "Tóm tắt: Giữa vẻ đẹp khoáng đạt của biển trời Phú Quốc, một công trình nhà ở dân dụng được thiết kế như một “chốn an yên” đúng nghĩa – nơi con người tìm lại sự cân bằng và thư thái trong nhịp sống hiện đại. Dự án không chỉ là không gian nghỉ dưỡng, mà còn là sự hòa quyện tinh tế giữa kiến trúc, thiên nhiên và cảm xúc. Công trình được định hình theo triết lý kiến trúc mở, với hệ cửa kính lớn giúp tận dụng tối đa ánh sáng tự nhiên và mở rộng tầm nhìn ra cảnh quan xung quanh. Nhờ đó, ranh giới giữa không gian bên trong và thiên nhiên bên ngoài được xóa nhòa, mang đến cảm giác sống cùng biển trời, gió và nắng.",
+          "metadata": {
+            "news_category": "Dự án hoàn thành",
+            "published_date": "2026-01-13",
+            "related_project": null
+          },
+          "knowledge_type": "stable",
+          "version": 0,
+          "doc_kind": "news"
+        },
+        {
+          "doc_id": "company_stats",
+          "source_table": "companyInfo",
+          "source_id": 3,
+          "title": "Số liệu hoạt động của Nguyen Minh Khang Architects",
+          "content": "",
+          "metadata": {
+            "total_employees": 10,
+            "total_engineers": 5,
+            "total_architects": 5,
+            "total_projects": 50
+          },
+          "knowledge_type": "dynamic",
+          "version": 0,
+          "doc_kind": "company_stats"
+        },
+        {
+          "doc_id": "project_47",
+          "source_table": "projects",
+          "source_id": 47,
+          "title": "Biệt thự tân cổ điển 1600m2",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự tân cổ điển 1600m2. Địa điểm: Bình Chánh. Mức đầu tư 10 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": null,
+            "investor": "Võ Văn Nam",
+            "location": "Hội An",
+            "area_m2": 1177,
+            "investment": "10 tỷ",
+            "investment_vnd": 10000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 8,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_55",
+          "source_table": "projects",
+          "source_id": 55,
+          "title": "Nhà phố cổ điển 10x30m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà phố cổ điển 10x30m. Địa điểm: Tân Phú. Mức đầu tư: 2 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố tân cổ điển",
+            "interior_style": null,
+            "investor": "Anh Thanh",
+            "location": "Tân Phú, TP.HCM",
+            "area_m2": 367,
+            "investment": "2 tỷ",
+            "investment_vnd": 2000000000,
+            "completed_date": "2023-11-23",
+            "completed_date_source": "2023-11-23T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 2,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_56",
+          "source_table": "projects",
+          "source_id": 56,
+          "title": "Biệt thự Tân cổ điển 15x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Biệt thự Tân cổ điển 15x20m. Địa điểm: Quảng Ninh. Mức đầu tư: 3 tỷ",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Biệt thự cổ điển",
+            "interior_style": "Luxury Style",
+            "investor": "Anh Hiếu",
+            "location": "Quảng Ninh",
+            "area_m2": 300,
+            "investment": "3,7 tỷ",
+            "investment_vnd": 3700000000,
+            "completed_date": "2026-01-11",
+            "completed_date_source": "2024-09-20T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 10,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_66",
+          "source_table": "projects",
+          "source_id": 66,
+          "title": "Nhà ở gia đình 6x20m",
+          "content": "",
+          "metadata": {
+            "source_title": "Nhà ở gia đình 6x20m. Mức đầu tư 500 triệu",
+            "category": "Biệt thự & nhà phố",
+            "architecture_type": "Nhà phố hiện đại",
+            "interior_style": "Japandi style",
+            "investor": "Anh Khang",
+            "location": "Bình Dương",
+            "area_m2": 120,
+            "investment": "300 triệu",
+            "investment_vnd": 300000000,
+            "completed_date": "2024-05-28",
+            "completed_date_source": "2024-05-28T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 7,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_70",
+          "source_table": "projects",
+          "source_id": 70,
+          "title": "Khu nghỉ dưỡng farming ATP",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng farming ATP. Địa điểm: Đắk Lắk. Mức đầu tư: 5 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Anh Đức Thịnh",
+            "location": "Đắc Lắc",
+            "area_m2": 4202,
+            "investment": "5 tỷ",
+            "investment_vnd": 5000000000,
+            "completed_date": "2024-09-17",
+            "completed_date_source": "2024-09-17T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 9,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_72",
+          "source_table": "projects",
+          "source_id": 72,
+          "title": "Khu nghỉ dưỡng Giga Garden",
+          "content": "",
+          "metadata": {
+            "source_title": "Khu nghỉ dưỡng Giga Garden. Địa điểm: Cần Giờ. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": null,
+            "investor": "Tập đoàn Gigamall",
+            "location": "Đà Lạt",
+            "area_m2": null,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-09-25",
+            "completed_date_source": "2025-09-25T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 4,
+          "doc_kind": "project"
+        },
+        {
+          "doc_id": "project_76",
+          "source_table": "projects",
+          "source_id": 76,
+          "title": "Resort nghỉ dưỡng Hải Vân",
+          "content": "",
+          "metadata": {
+            "source_title": "Resort nghỉ dưỡng Hải Vân. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ",
+            "category": "Khách sạn & Resort",
+            "architecture_type": "Resort nghỉ dưỡng",
+            "interior_style": "Modern Style",
+            "investor": "Anh Hiếu",
+            "location": "Thanh Hóa",
+            "area_m2": 2250,
+            "investment": "20 tỷ",
+            "investment_vnd": 20000000000,
+            "completed_date": "2025-12-15",
+            "completed_date_source": "2025-12-15T00:00:00.000Z",
+            "description": null
+          },
+          "knowledge_type": "dynamic",
+          "version": 6,
+          "doc_kind": "project"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "update_id": "u_001",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_56",
+          "field": "completed_date",
+          "old_value": "2024-09-20",
+          "new_value": "2026-01-11"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 0,
+      "version_after": 1
+    },
+    {
+      "update_id": "u_002",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_55",
+          "field": "area_m2",
+          "old_value": 300,
+          "new_value": 367
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 1,
+      "version_after": 2
+    },
+    {
+      "update_id": "u_003",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_47",
+          "field": "location",
+          "old_value": "Bình Chánh, TP.HCM",
+          "new_value": "Hội An"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 2,
+      "version_after": 3
+    },
+    {
+      "update_id": "u_004",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_72",
+          "field": "location",
+          "old_value": "Cần Giờ, TP.HCM",
+          "new_value": "Đà Lạt"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 3,
+      "version_after": 4
+    },
+    {
+      "update_id": "u_005",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_70",
+          "field": "area_m2",
+          "old_value": 5000,
+          "new_value": 4202
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 4,
+      "version_after": 5
+    },
+    {
+      "update_id": "u_006",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_76",
+          "field": "location",
+          "old_value": "Hải Vân, Đà Nẵng",
+          "new_value": "Thanh Hóa"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 5,
+      "version_after": 6
+    },
+    {
+      "update_id": "u_007",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_66",
+          "field": "investment",
+          "old_value": "500 triệu",
+          "new_value": "300 triệu"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 6,
+      "version_after": 7
+    },
+    {
+      "update_id": "u_008",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_47",
+          "field": "area_m2",
+          "old_value": 1600,
+          "new_value": 1177
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 7,
+      "version_after": 8
+    },
+    {
+      "update_id": "u_009",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_70",
+          "field": "investor",
+          "old_value": "Chị Hương",
+          "new_value": "Anh Đức Thịnh"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 8,
+      "version_after": 9
+    },
+    {
+      "update_id": "u_010",
+      "update_type": "sequential",
+      "changes": [
+        {
+          "doc_id": "project_56",
+          "field": "investment",
+          "old_value": "3 tỷ",
+          "new_value": "3,7 tỷ"
+        }
+      ],
+      "added_docs": [],
+      "deleted_doc_ids": [],
+      "is_synthetic": true,
+      "version_before": 9,
+      "version_after": 10
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "q_0001",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_56",
+      "source_doc_ids": [
+        "project_56"
+      ],
+      "question": "Dự án #56 (Biệt thự Tân cổ điển 15x20m) hoàn thành vào ngày nào?",
+      "expected_answer": "11/01/2026",
+      "expected_value": "2026-01-11",
+      "answer_type": "date",
+      "evidence_field": "completed_date",
+      "knowledge_version": 10,
+      "old_values": [
+        "2024-09-20"
+      ]
+    },
+    {
+      "question_id": "q_0002",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_55",
+      "source_doc_ids": [
+        "project_55"
+      ],
+      "question": "Diện tích của dự án #55 (Nhà phố cổ điển 10x30m) là bao nhiêu mét vuông?",
+      "expected_answer": "367 m²",
+      "expected_value": 367.0,
+      "answer_type": "numeric",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10,
+      "old_values": [
+        300.0
+      ]
+    },
+    {
+      "question_id": "q_0003",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_47",
+      "source_doc_ids": [
+        "project_47"
+      ],
+      "question": "Dự án #47 (Biệt thự tân cổ điển 1600m2) được thực hiện ở địa điểm nào?",
+      "expected_answer": "Hội An",
+      "expected_value": "Hội An",
+      "answer_type": "text",
+      "evidence_field": "location",
+      "knowledge_version": 10,
+      "old_values": [
+        "Bình Chánh, TP.HCM"
+      ]
+    },
+    {
+      "question_id": "q_0004",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_72",
+      "source_doc_ids": [
+        "project_72"
+      ],
+      "question": "Dự án #72 (Khu nghỉ dưỡng Giga Garden) được thực hiện ở địa điểm nào?",
+      "expected_answer": "Đà Lạt",
+      "expected_value": "Đà Lạt",
+      "answer_type": "text",
+      "evidence_field": "location",
+      "knowledge_version": 10,
+      "old_values": [
+        "Cần Giờ, TP.HCM"
+      ]
+    },
+    {
+      "question_id": "q_0005",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_70",
+      "source_doc_ids": [
+        "project_70"
+      ],
+      "question": "Diện tích của dự án #70 (Khu nghỉ dưỡng farming ATP) là bao nhiêu mét vuông?",
+      "expected_answer": "4202 m²",
+      "expected_value": 4202.0,
+      "answer_type": "numeric",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10,
+      "old_values": [
+        5000.0
+      ]
+    },
+    {
+      "question_id": "q_0006",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_76",
+      "source_doc_ids": [
+        "project_76"
+      ],
+      "question": "Dự án #76 (Resort nghỉ dưỡng Hải Vân) được thực hiện ở địa điểm nào?",
+      "expected_answer": "Thanh Hóa",
+      "expected_value": "Thanh Hóa",
+      "answer_type": "text",
+      "evidence_field": "location",
+      "knowledge_version": 10,
+      "old_values": [
+        "Hải Vân, Đà Nẵng"
+      ]
+    },
+    {
+      "question_id": "q_0007",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_66",
+      "source_doc_ids": [
+        "project_66"
+      ],
+      "question": "Mức đầu tư của dự án #66 (Nhà ở gia đình 6x20m) là bao nhiêu?",
+      "expected_answer": "300 triệu đồng",
+      "expected_value": 300000000,
+      "answer_type": "money",
+      "evidence_field": "investment",
+      "knowledge_version": 10,
+      "old_values": [
+        500000000
+      ]
+    },
+    {
+      "question_id": "q_0008",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_47",
+      "source_doc_ids": [
+        "project_47"
+      ],
+      "question": "Diện tích của dự án #47 (Biệt thự tân cổ điển 1600m2) là bao nhiêu mét vuông?",
+      "expected_answer": "1177 m²",
+      "expected_value": 1177.0,
+      "answer_type": "numeric",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10,
+      "old_values": [
+        1600.0
+      ]
+    },
+    {
+      "question_id": "q_0009",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_70",
+      "source_doc_ids": [
+        "project_70"
+      ],
+      "question": "Chủ đầu tư của dự án #70 (Khu nghỉ dưỡng farming ATP) là ai?",
+      "expected_answer": "Anh Đức Thịnh",
+      "expected_value": "Anh Đức Thịnh",
+      "answer_type": "text",
+      "evidence_field": "investor",
+      "knowledge_version": 10,
+      "old_values": [
+        "Chị Hương"
+      ]
+    },
+    {
+      "question_id": "q_0010",
+      "group": "A",
+      "question_type": "updated_fact",
+      "source_doc_id": "project_56",
+      "source_doc_ids": [
+        "project_56"
+      ],
+      "question": "Mức đầu tư của dự án #56 (Biệt thự Tân cổ điển 15x20m) là bao nhiêu?",
+      "expected_answer": "3,7 tỷ đồng",
+      "expected_value": 3700000000,
+      "answer_type": "money",
+      "evidence_field": "investment",
+      "knowledge_version": 10,
+      "old_values": [
+        3000000000
+      ]
+    },
+    {
+      "question_id": "q_0011",
+      "group": "B",
+      "question_type": "same_doc_unchanged",
+      "source_doc_id": "project_72",
+      "source_doc_ids": [
+        "project_72"
+      ],
+      "question": "Mức đầu tư của dự án #72 (Khu nghỉ dưỡng Giga Garden) là bao nhiêu?",
+      "expected_answer": "20 tỷ đồng",
+      "expected_value": 20000000000,
+      "answer_type": "money",
+      "evidence_field": "investment",
+      "knowledge_version": 10,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0012",
+      "group": "B",
+      "question_type": "same_doc_unchanged",
+      "source_doc_id": "project_55",
+      "source_doc_ids": [
+        "project_55"
+      ],
+      "question": "Dự án #55 (Nhà phố cổ điển 10x30m) thuộc loại hình kiến trúc nào?",
+      "expected_answer": "Nhà phố tân cổ điển",
+      "expected_value": "Nhà phố tân cổ điển",
+      "answer_type": "text",
+      "evidence_field": "architecture_type",
+      "knowledge_version": 10,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0013",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "news_18",
+      "source_doc_ids": [
+        "news_18"
+      ],
+      "question": "Bài viết #18 (\"“Tái sinh” nhà ở tại Chợ Bà Chiểu: Khi kiến trúc hiện đại đối thoại cùng ký ức đô thị\") thuộc chuyên mục tin tức nào?",
+      "expected_answer": "Dự án hoàn thành",
+      "expected_value": "Dự án hoàn thành",
+      "answer_type": "text",
+      "evidence_field": "news_category",
+      "knowledge_version": 10,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0014",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "company_profile",
+      "source_doc_ids": [
+        "company_profile"
+      ],
+      "question": "Địa chỉ chính của công ty ở đâu?",
+      "expected_answer": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+      "expected_value": "67/56/5/13 Nguyễn Thị Tú, Phường Bình Tân, Thành Phố Hồ Chí Minh",
+      "answer_type": "text",
+      "evidence_field": "main_address",
+      "knowledge_version": 10,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0015",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "news_19",
+      "source_doc_ids": [
+        "news_19"
+      ],
+      "question": "Bài viết #19 (\"Chốn an yên cho tâm hồn giữa thiên nhiên Phú Quốc\") thuộc chuyên mục tin tức nào?",
+      "expected_answer": "Dự án hoàn thành",
+      "expected_value": "Dự án hoàn thành",
+      "answer_type": "text",
+      "evidence_field": "news_category",
+      "knowledge_version": 10,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0016",
+      "group": "B",
+      "question_type": "unchanged_fact",
+      "source_doc_id": "company_stats",
+      "source_doc_ids": [
+        "company_stats"
+      ],
+      "question": "Công ty đã thực hiện tổng cộng bao nhiêu dự án?",
+      "expected_answer": "50",
+      "expected_value": 50.0,
+      "answer_type": "numeric",
+      "evidence_field": "total_projects",
+      "knowledge_version": 10,
+      "old_values": []
+    },
+    {
+      "question_id": "q_0017",
+      "group": "C",
+      "question_type": "old_value_probe",
+      "source_doc_id": "project_56",
+      "source_doc_ids": [
+        "project_56"
+      ],
+      "question": "Hiện tại, ngày hoàn thành của dự án #56 (Biệt thự Tân cổ điển 15x20m) có phải là 20/09/2024 không? Trả lời Có hoặc Không.",
+      "expected_answer": "Không",
+      "expected_value": "no",
+      "answer_type": "yesno",
+      "evidence_field": "completed_date",
+      "knowledge_version": 10,
+      "stale_if": "yes",
+      "probed_value": "2024-09-20"
+    },
+    {
+      "question_id": "q_0018",
+      "group": "C",
+      "question_type": "new_value_probe",
+      "source_doc_id": "project_56",
+      "source_doc_ids": [
+        "project_56"
+      ],
+      "question": "Hiện tại, ngày hoàn thành của dự án #56 (Biệt thự Tân cổ điển 15x20m) có phải là 11/01/2026 không? Trả lời Có hoặc Không.",
+      "expected_answer": "Có",
+      "expected_value": "yes",
+      "answer_type": "yesno",
+      "evidence_field": "completed_date",
+      "knowledge_version": 10,
+      "stale_if": "no",
+      "probed_value": "2026-01-11"
+    },
+    {
+      "question_id": "q_0019",
+      "group": "C",
+      "question_type": "old_value_probe",
+      "source_doc_id": "project_55",
+      "source_doc_ids": [
+        "project_55"
+      ],
+      "question": "Hiện tại, diện tích của dự án #55 (Nhà phố cổ điển 10x30m) có phải là 300 m² không? Trả lời Có hoặc Không.",
+      "expected_answer": "Không",
+      "expected_value": "no",
+      "answer_type": "yesno",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10,
+      "stale_if": "yes",
+      "probed_value": 300
+    },
+    {
+      "question_id": "q_0020",
+      "group": "C",
+      "question_type": "new_value_probe",
+      "source_doc_id": "project_55",
+      "source_doc_ids": [
+        "project_55"
+      ],
+      "question": "Hiện tại, diện tích của dự án #55 (Nhà phố cổ điển 10x30m) có phải là 367 m² không? Trả lời Có hoặc Không.",
+      "expected_answer": "Có",
+      "expected_value": "yes",
+      "answer_type": "yesno",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10,
+      "stale_if": "no",
+      "probed_value": 367
+    },
+    {
+      "question_id": "q_0037",
+      "group": "E",
+      "question_type": "null_field",
+      "source_doc_id": "project_72",
+      "source_doc_ids": [
+        "project_72"
+      ],
+      "question": "Diện tích của dự án #72 (Khu nghỉ dưỡng Giga Garden) là bao nhiêu mét vuông?",
+      "expected_answer": "Không có thông tin",
+      "expected_value": null,
+      "answer_type": "abstain",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10
+    },
+    {
+      "question_id": "q_0038",
+      "group": "E",
+      "question_type": "nonexistent_entity",
+      "source_doc_id": null,
+      "source_doc_ids": [],
+      "question": "Diện tích của dự án #101 là bao nhiêu mét vuông?",
+      "expected_answer": "Không có thông tin",
+      "expected_value": null,
+      "answer_type": "abstain",
+      "evidence_field": "area_m2",
+      "knowledge_version": 10
+    },
+    {
+      "question_id": "q_0039",
+      "group": "E",
+      "question_type": "absent_field",
+      "source_doc_id": "project_76",
+      "source_doc_ids": [
+        "project_76"
+      ],
+      "question": "Nhà thầu điện nước của dự án #76 (Resort nghỉ dưỡng Hải Vân) là đơn vị nào?",
+      "expected_answer": "Không có thông tin",
+      "expected_value": null,
+      "answer_type": "abstain",
+      "evidence_field": "nhà thầu điện nước",
+      "knowledge_version": 10
+    }
+  ]
+}

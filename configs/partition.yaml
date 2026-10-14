@@ -1,0 +1,15 @@
+# Stable / dynamic partition rules by document kind, with per-document overrides.
+rules:
+  company_profile: stable
+  taxonomy: stable
+  news: stable
+  company_stats: dynamic
+  project: dynamic
+rationale:
+  company_profile: company background / contact data changes rarely
+  taxonomy: category, architecture-type and style lists are structural vocabulary
+  news: published explanatory articles are not edited after publication
+  company_stats: headcount and project totals change as the business grows
+  project: area, investment, location and dates are business data that get revised
+overrides: {}        # e.g. {news_46: dynamic}
+kind_order: [company_profile, taxonomy, news, company_stats, project]

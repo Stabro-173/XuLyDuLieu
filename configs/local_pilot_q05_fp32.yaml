@@ -1,0 +1,20 @@
+# LOCAL HARDWARE CONFIG (GTX 1650 4 GB, fp16 matmul 0.34 TFLOPS vs fp32 1.84 TFLOPS measured).
+# Substitute model Qwen2.5-0.5B-Instruct in fp32 (1.5B fp16 is ~15x slower here and spills >2K tokens).
+profile: pilot_q05_fp32
+model: {name: Qwen/Qwen2.5-0.5B-Instruct, revision: 7ae557604adf67be50417f59c2c2f167def9a775, dtype: float32, attn_implementation: sdpa, max_new_tokens: 32, prefill_chunk: 1024}
+baselines: [B0_stale, B1_full_recompute, B2_append_correction, B3_document_cache,
+            B3a_document_cache_approx, B4_layered, B5_prefix_invalidation]
+reps: 3
+query_latency_subset: 3
+qa_sizes: {unchanged: 6, same_doc_unchanged: 2, old_value_probe: 4, cross_document: 3, unanswerable: 3}
+experiments:
+  - {name: update_types, budgets: [2048], seeds: [0, 1, 2], positions: [middle],
+     scenarios: [numeric_area, numeric_investment, company_count, text_location, text_investor,
+                 date_completion, multi_field, multi_doc, append_doc, delete_doc, stable_edit]}
+  - {name: position, budgets: [2048], seeds: [0, 1], scenarios: [numeric_area], positions: [begin, middle, end]}
+  - {name: stable_ratio, budgets: [2048], seeds: [0], scenarios: [numeric_area], positions: [middle],
+     stable_ratios: [0.0, 0.25, 0.5, 0.75, 0.9]}
+  - {name: context_length, budgets: [1024, 2048, 4096, 8192], seeds: [0], scenarios: [numeric_area], positions: [middle]}
+  - {name: sequential, budgets: [2048], seeds: [0], scenarios: [sequential], positions: [random],
+     n_sequential: [1, 3, 5, 10]}
+  - {name: repeated, budgets: [2048], seeds: [0], scenarios: [repeated], positions: [middle], n_sequential: [3]}

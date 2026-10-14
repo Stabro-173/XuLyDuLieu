@@ -1,0 +1,728 @@
+{
+  "tokenizer": "Qwen/Qwen2.5-1.5B-Instruct",
+  "stable_tokens": 4295,
+  "dynamic_tokens": 6310,
+  "stable_ratio": 0.404997642621405,
+  "documents": [
+    {
+      "order": 0,
+      "doc_id": "company_profile",
+      "doc_kind": "company_profile",
+      "knowledge_type": "stable",
+      "tokens": 312,
+      "chars": 948,
+      "content_hash": "a3ffd4eb0e0ae15463b650ef256fc562abb33cf5b4cc2b0ec6e333b841bdbd0c",
+      "rationale": "company background / contact data changes rarely"
+    },
+    {
+      "order": 1,
+      "doc_id": "taxonomy_architecture_types",
+      "doc_kind": "taxonomy",
+      "knowledge_type": "stable",
+      "tokens": 95,
+      "chars": 307,
+      "content_hash": "147f8571009a045aa6b4dc40c51249b225d22e3d3ff29657bfc59b28a60750a7",
+      "rationale": "category, architecture-type and style lists are structural vocabulary"
+    },
+    {
+      "order": 2,
+      "doc_id": "taxonomy_interior_styles",
+      "doc_kind": "taxonomy",
+      "knowledge_type": "stable",
+      "tokens": 54,
+      "chars": 198,
+      "content_hash": "62230392537d826d64194f8a0d87d802eb7d62c39799baf1e36457817eda1b93",
+      "rationale": "category, architecture-type and style lists are structural vocabulary"
+    },
+    {
+      "order": 3,
+      "doc_id": "taxonomy_news_categories",
+      "doc_kind": "taxonomy",
+      "knowledge_type": "stable",
+      "tokens": 36,
+      "chars": 122,
+      "content_hash": "a23086e9ba947672885b7ad6416fd0561114a92e8c0c6e3f8f71106346ee3e62",
+      "rationale": "category, architecture-type and style lists are structural vocabulary"
+    },
+    {
+      "order": 4,
+      "doc_id": "taxonomy_project_categories",
+      "doc_kind": "taxonomy",
+      "knowledge_type": "stable",
+      "tokens": 88,
+      "chars": 290,
+      "content_hash": "a376369cd151bdf1efdbe913f05a1aa735d6abd44ef3cc6e34a8880717496414",
+      "rationale": "category, architecture-type and style lists are structural vocabulary"
+    },
+    {
+      "order": 5,
+      "doc_id": "news_18",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 242,
+      "chars": 761,
+      "content_hash": "046b415cf74b8738e4519b0796a37594bc30ee13c2050198f191f33c9a0a1944",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 6,
+      "doc_id": "news_19",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 220,
+      "chars": 742,
+      "content_hash": "103abc62415ae18d88290cbd32c8d2a0630cb4810bab639fdcdc22aba25950b1",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 7,
+      "doc_id": "news_20",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 194,
+      "chars": 613,
+      "content_hash": "6d323410f924760d7deba80bebbd6b3535298bddb7a612a767365d46281a3b22",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 8,
+      "doc_id": "news_21",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 235,
+      "chars": 837,
+      "content_hash": "b5d3cce86162f27217fff12f047ae21fc7f57b86c764b73e74aecb18d58d28a1",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 9,
+      "doc_id": "news_22",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 266,
+      "chars": 866,
+      "content_hash": "74eab39ad14cf9f76ef03b237f3f5db40a89872914b4a22843489b47822a6170",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 10,
+      "doc_id": "news_24",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 269,
+      "chars": 954,
+      "content_hash": "6b13b479d37e88d23b99b32975674c98bf050f10ac1bda837f900e20a6049dee",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 11,
+      "doc_id": "news_25",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 247,
+      "chars": 850,
+      "content_hash": "93f8c0e5b8592be2bbaea08912f84daf7dcc7f19037cfc1e34a5099eda38ab28",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 12,
+      "doc_id": "news_26",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 232,
+      "chars": 725,
+      "content_hash": "5c8c5e798ab2dd39985dbf25313466d557e34ac088ab7afa74ab336c44853e8f",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 13,
+      "doc_id": "news_27",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 293,
+      "chars": 990,
+      "content_hash": "75785c2e120f581474b8cb638eb14574c254c60b0cf72ca1b34d853305bd9647",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 14,
+      "doc_id": "news_29",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 215,
+      "chars": 712,
+      "content_hash": "692f25bf6c3a271090db8450773afffdafddda5a8bc94c0fa89755bf6c5c1b5b",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 15,
+      "doc_id": "news_30",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 191,
+      "chars": 678,
+      "content_hash": "fc829a66a218234ab678da26bd52dc0890bf49276bbf52023c34d6c59ec0459e",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 16,
+      "doc_id": "news_31",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 239,
+      "chars": 854,
+      "content_hash": "227023432d3e5fb79b91f3d0025b2bb7b59912e724685f8f98f3e95eb0670bce",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 17,
+      "doc_id": "news_32",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 235,
+      "chars": 819,
+      "content_hash": "22cd7b659170ba4be73652393d58e6ae3373767b124309f1d6e2ea28fac34c12",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 18,
+      "doc_id": "news_33",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 128,
+      "chars": 361,
+      "content_hash": "9f61686795ed342913d06fdc2c33767ac70e1a90c1f1e18df736766dea809727",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 19,
+      "doc_id": "news_37",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 118,
+      "chars": 334,
+      "content_hash": "7a274a28387ba6510de91b725dc7d51c70a352cacd2fed78474b559ceabfe637",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 20,
+      "doc_id": "news_41",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 129,
+      "chars": 368,
+      "content_hash": "529df4099a83f7d5d63358481ee357cd063aad6fc97ce15a8d7b177620ad6455",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 21,
+      "doc_id": "news_46",
+      "doc_kind": "news",
+      "knowledge_type": "stable",
+      "tokens": 257,
+      "chars": 850,
+      "content_hash": "fcecd183def1e9955679e799558e5f08c911d8954639eebd36c6369a287723aa",
+      "rationale": "published explanatory articles are not edited after publication"
+    },
+    {
+      "order": 22,
+      "doc_id": "company_stats",
+      "doc_kind": "company_stats",
+      "knowledge_type": "dynamic",
+      "tokens": 55,
+      "chars": 158,
+      "content_hash": "6caef6e2ae176c5db6d7f7c76cca9b8db1e5ceb8b2ff955ca6b9d413b8fb3418",
+      "rationale": "headcount and project totals change as the business grows"
+    },
+    {
+      "order": 23,
+      "doc_id": "project_32",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 183,
+      "chars": 462,
+      "content_hash": "cc54b2eafb7a24fcabb80e3530f7f0ed29e1b2d56b4f14e517c78322f8dcafdc",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 24,
+      "doc_id": "project_33",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 188,
+      "chars": 459,
+      "content_hash": "03946ab29cd3f837d406eb97587f555c8954597c5dc543d0dbdc31e935e498d6",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 25,
+      "doc_id": "project_34",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 181,
+      "chars": 460,
+      "content_hash": "0b93913cc607cd0b4bb52fc0a37a8d1999f7fc57cf4b913ffef0ef57e701bf9b",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 26,
+      "doc_id": "project_35",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 185,
+      "chars": 461,
+      "content_hash": "8e6a7a31e9e0510660dca30c7828bcc3c11e612ddcc096b27280b2931271881a",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 27,
+      "doc_id": "project_36",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 197,
+      "chars": 470,
+      "content_hash": "892b3d5ef5cf323c0a575886dca79c5f7851f19eca78066eff98e2434933770b",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 28,
+      "doc_id": "project_37",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 197,
+      "chars": 490,
+      "content_hash": "d3c9f7562f8a32f775503e8eac4ff8232ae77761a36a442f9529c053e7b9b626",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 29,
+      "doc_id": "project_38",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 193,
+      "chars": 472,
+      "content_hash": "131d939d7b6bc732f59a5cedcd3e2d0040be6b848ba7b8f47c003efc5cfac298",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 30,
+      "doc_id": "project_39",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 182,
+      "chars": 451,
+      "content_hash": "c634fd6ed791b8384693227382bbeeb13ae6474d574a4265876d8891d774d1aa",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 31,
+      "doc_id": "project_41",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 185,
+      "chars": 454,
+      "content_hash": "dcb1521a5ae7bed87d9532578052bc2eafa6d331a69493b385fe92fed16eee3c",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 32,
+      "doc_id": "project_42",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 183,
+      "chars": 459,
+      "content_hash": "98c33c8bc978d2234036fdea1aab49838e370578ed1cbe1594bb966a47d33049",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 33,
+      "doc_id": "project_43",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 194,
+      "chars": 480,
+      "content_hash": "e48506e0e5b5acc4168ed746c41e13270fe5d884c4860569f4469587b813d347",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 34,
+      "doc_id": "project_45",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 199,
+      "chars": 491,
+      "content_hash": "30b9c13ebc24347dba89bb09a3cdcf69ae9fa70643193dbdf9f5474902686108",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 35,
+      "doc_id": "project_46",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 197,
+      "chars": 470,
+      "content_hash": "e29a6cc9caff1af4fca4e8e74bc5f2d5746df3301fb4d06249082f0fdea18771",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 36,
+      "doc_id": "project_47",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 115,
+      "chars": 249,
+      "content_hash": "fd957497cfd993bfcaf4973852499441162f4a2186b2c71e309d068b5c745c41",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 37,
+      "doc_id": "project_48",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 108,
+      "chars": 245,
+      "content_hash": "f956128de3b1d3427396783c4ed051ea06eb3433bf02cd29bc2ed14b169cece5",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 38,
+      "doc_id": "project_49",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 105,
+      "chars": 238,
+      "content_hash": "19de9cd46d2daffc496300c2bec3ede5845388b3df2db6a16c8f526ab57fd8e0",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 39,
+      "doc_id": "project_51",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 93,
+      "chars": 227,
+      "content_hash": "2e98a84327cf2fd68cf4320b4035323213759737f171b40f02dc522d9cc20b42",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 40,
+      "doc_id": "project_52",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 104,
+      "chars": 231,
+      "content_hash": "9c9227a783f9c3fde1f693eabb694918b5fb1d83ab8f831a5796527c6152ca64",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 41,
+      "doc_id": "project_53",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 113,
+      "chars": 262,
+      "content_hash": "064e539a0e9284a821a661c69700ce8ed7dc2d52ccdb8701b3a80d8480d7efe6",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 42,
+      "doc_id": "project_54",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 77,
+      "chars": 179,
+      "content_hash": "4d8af6c2f4cc1980838b8088bdb4b7a5a2a3f69d9ce1ff4569950da883396684",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 43,
+      "doc_id": "project_55",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 110,
+      "chars": 241,
+      "content_hash": "d434f4c9529dc8ee8c5c9e1ee49b1856115b4007e8bf7a7c17e3221600f30aec",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 44,
+      "doc_id": "project_56",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 118,
+      "chars": 273,
+      "content_hash": "df8f27452d45225853bc1b5e7303b3e9a1c2fa0e974d74ef0fd0d73d80d88e9f",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 45,
+      "doc_id": "project_57",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 101,
+      "chars": 231,
+      "content_hash": "e319379008ed2dfd0b69ffd4f4b1487a1d7a695d0376c311b1b032a102f74bd8",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 46,
+      "doc_id": "project_59",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 111,
+      "chars": 270,
+      "content_hash": "7c17468cc26fbfc69a68ff2741d088afda870f815c480bb1ba5b50e545d3fc2f",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 47,
+      "doc_id": "project_60",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 116,
+      "chars": 263,
+      "content_hash": "464218dce4d9cb8858824979b729bf95e9f040fa6085df743b054f9c863842f2",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 48,
+      "doc_id": "project_61",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 96,
+      "chars": 257,
+      "content_hash": "fcf0066931ddce0cc9c3fabde96775498d6691e1c032d93b75d75b8bb5a4fe21",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 49,
+      "doc_id": "project_62",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 115,
+      "chars": 256,
+      "content_hash": "5360ba8e713b5f448a8589d7a67df6fe744eb1abd760bf50f228a4cd14505ed5",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 50,
+      "doc_id": "project_63",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 120,
+      "chars": 281,
+      "content_hash": "ea10ef19111e2b8e06df8f7f8c1c3af15b64c8946c59281e359e066cc5dd6c73",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 51,
+      "doc_id": "project_64",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 113,
+      "chars": 270,
+      "content_hash": "cb7d9cb9486b0f81180f9ced71c38bad3f9c9a6765c4d8bff11d231ed97ee1ca",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 52,
+      "doc_id": "project_65",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 117,
+      "chars": 273,
+      "content_hash": "d979618fa06381bec996c6f6329d9ae747b830ec0227e1ec4fc6487ad0c7f0ed",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 53,
+      "doc_id": "project_66",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 117,
+      "chars": 273,
+      "content_hash": "0609d863dfe7b255fed9b4654f02e4d639ccd6bec92c50776adb41a6f3853ba8",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 54,
+      "doc_id": "project_67",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 111,
+      "chars": 247,
+      "content_hash": "80a41434152b58e0880e31c3e765d46be4002453fc6c7ea263f5cd256817d77e",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 55,
+      "doc_id": "project_68",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 114,
+      "chars": 269,
+      "content_hash": "6fe424b8b6e4cfe327edcc5018ddca03c4b6a58d3f0198bee88803fddb13109e",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 56,
+      "doc_id": "project_69",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 119,
+      "chars": 278,
+      "content_hash": "5e60a0b0985f6f8939f2dcb0b1f933f3786627f850d07035177b8a1ca9d1a93a",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 57,
+      "doc_id": "project_70",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 97,
+      "chars": 236,
+      "content_hash": "01c3170d07bdef8293cda77da3eb0ae28b4e28fe53c220903f5b494e3bcca13d",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 58,
+      "doc_id": "project_71",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 111,
+      "chars": 288,
+      "content_hash": "f5e43ec72f7c58ec6dbad5f80e4e2412ce19e2077a541797938a29e43a3cef11",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 59,
+      "doc_id": "project_72",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 92,
+      "chars": 232,
+      "content_hash": "5652b0d4ee6a9e9bd6eea3dde54cf74f56ba30c1b418fc0a0d2ecef672514541",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 60,
+      "doc_id": "project_73",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 108,
+      "chars": 267,
+      "content_hash": "1e0d855eeed9c7a04c59ff5260525aec31b6464e35969aa38f2befee87508d18",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 61,
+      "doc_id": "project_74",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 118,
+      "chars": 273,
+      "content_hash": "ba01ec0915be97905b893a2c13027bcbc58dccdf062b95c45bb55b1be174823f",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 62,
+      "doc_id": "project_75",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 115,
+      "chars": 285,
+      "content_hash": "35ace0d048cfc6748264075f029bc103f7d15ead58f669f3762b2bc7a0e408e6",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 63,
+      "doc_id": "project_76",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 110,
+      "chars": 280,
+      "content_hash": "7215eafa5ff0e65a780cf9cb6c4b16cc9d64fb69dbf766a20982e0528db79e01",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 64,
+      "doc_id": "project_77",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 108,
+      "chars": 270,
+      "content_hash": "0779a5d9a96de1c7b1a5f3eebcb03f429d66cfd2146b0e7f36696307d97aebd1",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 65,
+      "doc_id": "project_78",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 97,
+      "chars": 242,
+      "content_hash": "b32cfa18e0c09c21824b8217c46f3d7b5b102b8ac201e8473cb63ed8d8782cb3",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 66,
+      "doc_id": "project_79",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 90,
+      "chars": 216,
+      "content_hash": "a22318b7d293008241402ee7c9d8c3ba66ba256e562eb3d922ea4525fbb4a50b",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 67,
+      "doc_id": "project_80",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 90,
+      "chars": 224,
+      "content_hash": "0a5e033d0b26878973f315aba1ce16533b2e0c43b5386290f305905fe82a7751",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 68,
+      "doc_id": "project_83",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 88,
+      "chars": 206,
+      "content_hash": "2879d64633e1fecfacc683f1e9e9f4cf34b0da5a64949d982a960df553bf15d4",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 69,
+      "doc_id": "project_84",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 90,
+      "chars": 207,
+      "content_hash": "09353a9194bdd4141010e28774ff5a875cf202f85bb3a7ed74c3090a759f6e23",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 70,
+      "doc_id": "project_85",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 90,
+      "chars": 216,
+      "content_hash": "91de428f14bee107ff8c4adee972df904863e1f0b7224f2b476cfaf2890404e9",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    },
+    {
+      "order": 71,
+      "doc_id": "project_86",
+      "doc_kind": "project",
+      "knowledge_type": "dynamic",
+      "tokens": 94,
+      "chars": 223,
+      "content_hash": "85477993aa8c85bba16f30e2d5cf89574ee09610b878896b731a739ce10eec8c",
+      "rationale": "area, investment, location and dates are business data that get revised"
+    }
+  ]
+}

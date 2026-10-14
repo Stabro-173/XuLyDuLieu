@@ -1,0 +1,10 @@
+profile: smoke
+model: {name: Qwen/Qwen2.5-1.5B-Instruct, revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306, dtype: auto, attn_implementation: sdpa, max_new_tokens: 32}
+baselines: [B0_stale, B1_full_recompute, B2_append_correction, B3_document_cache,
+            B3a_document_cache_approx, B4_layered, B5_prefix_invalidation]
+reps: 2
+query_latency_subset: 2
+qa_sizes: {unchanged: 4, same_doc_unchanged: 1, old_value_probe: 2, cross_document: 2, unanswerable: 2}
+experiments:
+  - {name: smoke, budgets: [1024], seeds: [0],
+     scenarios: [numeric_area, text_location, date_completion, multi_field, stable_edit], positions: [middle]}

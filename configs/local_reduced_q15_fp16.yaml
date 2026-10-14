@@ -1,0 +1,17 @@
+# LOCAL HARDWARE CONFIG (GTX 1650 4 GB, fp16 matmul 0.34 TFLOPS vs fp32 1.84 TFLOPS measured).
+# PRIMARY model Qwen2.5-1.5B-Instruct fp16, reduced grid that fits in VRAM (<=2K tokens; 4K spills).
+profile: reduced_q15_fp16
+model: {name: Qwen/Qwen2.5-1.5B-Instruct, revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306, dtype: float16, attn_implementation: sdpa, max_new_tokens: 32, prefill_chunk: 512}
+baselines: [B0_stale, B1_full_recompute, B2_append_correction, B3_document_cache,
+            B3a_document_cache_approx, B4_layered, B5_prefix_invalidation]
+reps: 2
+query_latency_subset: 2
+qa_sizes: {unchanged: 6, same_doc_unchanged: 2, old_value_probe: 4, cross_document: 3, unanswerable: 3}
+experiments:
+  - {name: update_types, budgets: [2048], seeds: [0], positions: [middle],
+     scenarios: [numeric_area, numeric_investment, company_count, text_location, text_investor,
+                 date_completion, multi_field, multi_doc, append_doc, delete_doc, stable_edit]}
+  - {name: position, budgets: [2048], seeds: [0], scenarios: [numeric_area], positions: [begin, middle, end]}
+  - {name: stable_ratio, budgets: [2048], seeds: [0], scenarios: [numeric_area], positions: [middle],
+     stable_ratios: [0.0, 0.25, 0.5, 0.75, 0.9]}
+  - {name: context_length, budgets: [1024, 2048], seeds: [0], scenarios: [numeric_area], positions: [middle]}

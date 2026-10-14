@@ -1,0 +1,92 @@
+{
+  "source_file": "database_export_2026-01-23T02-02-46.json",
+  "source_sha256": "b38e8cf04a2e392733037e89fafffaeab0f6ecfc49253965105278a4a007c598",
+  "export_date": "2026-01-23T02:02:41.516Z",
+  "database": "postgres",
+  "record_counts": {
+    "settings": 0,
+    "companyInfo": 1,
+    "heroSlides": 10,
+    "interiorStyles": 10,
+    "architectureTypes": 15,
+    "projectCategories": 12,
+    "projects": 49,
+    "newsCategories": 4,
+    "news": 17,
+    "users": 0
+  },
+  "preprocessing": {
+    "transformations": [
+      "companyInfo split into company_profile (descriptive) and company_stats (counts)",
+      "companyInfo: socialLinks, thumbnail*, seo*, structuredData, timestamps excluded",
+      "taxonomy tables rendered once each (name list); slug/icon/imageUrl/seo/timestamps excluded",
+      "nested category/interiorStyle/architectureType objects inside projects replaced by their names",
+      "project title split: short name kept as title; 'Địa điểm/Mức đầu tư' fragments removed (full title preserved in metadata.source_title)",
+      "project investment parsed from title into metadata.investment / investment_vnd",
+      "dates normalised to ISO YYYY-MM-DD in metadata and rendered as DD/MM/YYYY; source value kept",
+      "project fields excluded: slug, thumbnail*, seo*, structuredData (duplicates fields), viewCount, isFeatured, order, status (publication state), timestamps",
+      "project HTML content excluded (long marketing text); project description converted from HTML",
+      "news: excerpt only (HTML stripped); author, thumbnail*, seo*, structuredData, readingTime, viewCount excluded"
+    ],
+    "counters": {
+      "projectCategories_items": 12,
+      "architectureTypes_items": 15,
+      "interiorStyles_items": 10,
+      "newsCategories_items": 4,
+      "projects_with_investment_parsed": 42,
+      "projects_missing_description": 36,
+      "projects_missing_interior_style": 11,
+      "projects_missing_area_m2": 4,
+      "projects_missing_investor": 1,
+      "project_location_whitespace_trimmed": 1,
+      "projects_missing_architecture_type": 7,
+      "documents_total": 72,
+      "docs_company_profile": 1,
+      "docs_company_stats": 1,
+      "docs_taxonomy": 4,
+      "docs_project": 49,
+      "docs_news": 17
+    },
+    "excluded_tables": {
+      "heroSlides": "10 records; marketing/UI or empty, not business knowledge",
+      "settings": "0 records; marketing/UI or empty, not business knowledge",
+      "users": "0 records; marketing/UI or empty, not business knowledge"
+    },
+    "warnings": []
+  },
+  "documents_by_kind": {
+    "company_profile": 1,
+    "company_stats": 1,
+    "taxonomy": 4,
+    "project": 49,
+    "news": 17
+  },
+  "eligible_fact_fields": {
+    "working_hours": 1,
+    "main_address": 1,
+    "total_projects": 1,
+    "total_employees": 1,
+    "total_engineers": 1,
+    "total_architects": 1,
+    "investor": 48,
+    "completed_date": 49,
+    "category": 49,
+    "architecture_type": 42,
+    "interior_style": 38,
+    "investment": 31,
+    "area_m2": 32,
+    "location": 36,
+    "published_date": 17,
+    "news_category": 17,
+    "related_project": 1
+  },
+  "eligible_facts_total": 366,
+  "total_tokens_all_documents": 10605,
+  "tokens_by_kind": {
+    "project": 6255,
+    "taxonomy": 273,
+    "company_stats": 55,
+    "company_profile": 312,
+    "news": 3710
+  }
+}
