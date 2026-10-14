@@ -2,8 +2,11 @@
 # PRIMARY model Qwen2.5-1.5B-Instruct fp16, reduced grid that fits in VRAM (<=2K tokens; 4K spills).
 profile: reduced_q15_fp16
 model: {name: Qwen/Qwen2.5-1.5B-Instruct, revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306, dtype: float16, attn_implementation: sdpa, max_new_tokens: 32, prefill_chunk: 512}
+# B3a removed after session 8: with 1.5B fp16 its per-document KV store pushes peak reserved memory
+# ~60-90 MB past the 3297 MB physical budget (every B3a run was flagged vram_spill). Its deviation from
+# full recompute on 1.5B is measured in results/reduced_q15_fp16/cache_validation.json.
 baselines: [B0_stale, B1_full_recompute, B2_append_correction, B3_document_cache,
-            B3a_document_cache_approx, B4_layered, B5_prefix_invalidation]
+            B4_layered, B5_prefix_invalidation]
 reps: 2
 query_latency_subset: 2
 qa_sizes: {unchanged: 6, same_doc_unchanged: 2, old_value_probe: 4, cross_document: 3, unanswerable: 3}
