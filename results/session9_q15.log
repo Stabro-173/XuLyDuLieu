@@ -1,0 +1,59 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  11%|█         | 38/338 [00:00<00:00, 362.33it/s]Loading weights:  22%|██▏       | 75/338 [00:00<00:01, 170.09it/s]Loading weights:  29%|██▉       | 98/338 [00:00<00:01, 134.47it/s]Loading weights:  34%|███▍      | 115/338 [00:00<00:01, 130.52it/s]Loading weights:  38%|███▊      | 130/338 [00:00<00:01, 130.25it/s]Loading weights:  43%|████▎     | 145/338 [00:01<00:01, 108.97it/s]Loading weights:  46%|████▋     | 157/338 [00:01<00:01, 105.42it/s]Loading weights:  50%|█████     | 169/338 [00:01<00:01, 101.36it/s]Loading weights:  53%|█████▎    | 180/338 [00:01<00:01, 98.75it/s] Loading weights:  57%|█████▋    | 191/338 [00:01<00:01, 94.33it/s]Loading weights:  61%|██████    | 205/338 [00:01<00:01, 96.41it/s]Loading weights:  64%|██████▎   | 215/338 [00:01<00:01, 93.60it/s]Loading weights:  67%|██████▋   | 227/338 [00:02<00:01, 91.66it/s]Loading weights:  71%|███████   | 240/338 [00:02<00:01, 91.91it/s]Loading weights:  75%|███████▍  | 252/338 [00:02<00:00, 91.63it/s]Loading weights:  78%|███████▊  | 263/338 [00:02<00:00, 90.57it/s]Loading weights:  81%|████████▏ | 275/338 [00:02<00:00, 90.29it/s]Loading weights:  85%|████████▍ | 287/338 [00:02<00:00, 92.65it/s]Loading weights:  89%|████████▉ | 301/338 [00:02<00:00, 95.05it/s]Loading weights:  92%|█████████▏| 311/338 [00:02<00:00, 90.47it/s]Loading weights:  96%|█████████▌| 323/338 [00:03<00:00, 91.46it/s]Loading weights: 100%|██████████| 338/338 [00:03<00:00, 109.58it/s]
+2026-10-14 15:48:06,079 INFO cag.run: engine: EngineInfo(model_name='Qwen/Qwen2.5-1.5B-Instruct', revision='989aa7980e4cf806f80c7fef2b1adb7bc71aa306', device='cuda', device_name='NVIDIA GeForce GTX 1650', dtype='float16', attn_implementation='sdpa', torch_version='2.9.1+cu128', transformers_version='5.19.0', cuda_version='12.8', load_seconds=4.888528600000427, weights_bytes=3087428608, prefill_chunk=512, vram_budget_mb=3296.75, notes=[])
+2026-10-14 15:48:07,162 INFO cag.run: 19 conditions, 0 not constructible
+2026-10-14 15:48:15,153 INFO cag.run: [1/19] b2048_s0_numeric_area_middle_rdef_k1 (1 events, 17 questions)
+2026-10-14 15:48:15,153 INFO cag.run: [2/19] b2048_s0_numeric_investment_middle_rdef_k1 (1 events, 17 questions)
+2026-10-14 15:48:15,169 INFO cag.run: [3/19] b2048_s0_company_count_middle_rdef_k1 (1 events, 17 questions)
+2026-10-14 15:48:15,169 INFO cag.run: [4/19] b2048_s0_text_location_middle_rdef_k1 (1 events, 17 questions)
+2026-10-14 15:49:26,891 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B1_full_recompute rep0 -> ok (71.7s)
+2026-10-14 15:49:50,784 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B0_stale rep1 -> ok (23.9s)
+2026-10-14 15:50:31,219 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B1_full_recompute rep1 -> ok (40.4s)
+2026-10-14 15:50:58,285 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B5_prefix_invalidation rep1 -> ok (27.1s)
+2026-10-14 15:51:29,495 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B4_layered rep1 -> ok (31.2s)
+2026-10-14 15:51:56,296 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B2_append_correction rep1 -> ok (26.8s)
+2026-10-14 15:52:24,302 INFO cag.runner: b2048_s0_text_location_middle_rdef_k1 B3_document_cache rep1 -> ok (28.0s)
+2026-10-14 15:52:24,302 INFO cag.run: [5/19] b2048_s0_text_investor_middle_rdef_k1 (1 events, 17 questions)
+2026-10-14 15:53:42,194 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B1_full_recompute rep0 -> ok (77.9s)
+2026-10-14 15:54:40,991 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B2_append_correction rep0 -> ok (58.8s)
+2026-10-14 15:55:45,483 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B3_document_cache rep0 -> ok (64.5s)
+2026-10-14 15:56:42,841 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B0_stale rep0 -> ok (57.4s)
+2026-10-14 15:57:51,495 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B4_layered rep0 -> ok (68.6s)
+2026-10-14 15:58:55,899 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B5_prefix_invalidation rep0 -> ok (64.4s)
+2026-10-14 15:59:19,671 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B0_stale rep1 -> ok (23.8s)
+2026-10-14 15:59:45,081 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B2_append_correction rep1 -> ok (25.4s)
+2026-10-14 16:00:12,270 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B3_document_cache rep1 -> ok (27.2s)
+2026-10-14 16:00:39,337 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B5_prefix_invalidation rep1 -> ok (27.1s)
+2026-10-14 16:01:19,928 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B1_full_recompute rep1 -> ok (40.6s)
+2026-10-14 16:01:51,247 INFO cag.runner: b2048_s0_text_investor_middle_rdef_k1 B4_layered rep1 -> ok (31.3s)
+2026-10-14 16:01:51,247 INFO cag.run: [6/19] b2048_s0_date_completion_middle_rdef_k1 (1 events, 17 questions)
+2026-10-14 16:02:46,476 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B0_stale rep0 -> ok (55.2s)
+2026-10-14 16:03:47,500 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B5_prefix_invalidation rep0 -> ok (61.0s)
+2026-10-14 16:04:43,587 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B2_append_correction rep0 -> ok (56.1s)
+2026-10-14 16:05:45,578 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B3_document_cache rep0 -> ok (62.0s)
+2026-10-14 16:06:51,774 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B4_layered rep0 -> ok (66.2s)
+2026-10-14 16:08:06,194 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B1_full_recompute rep0 -> ok (74.4s)
+2026-10-14 16:08:37,834 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B4_layered rep1 -> ok (31.6s)
+2026-10-14 16:09:06,229 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B3_document_cache rep1 -> ok (28.4s)
+2026-10-14 16:09:33,660 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B5_prefix_invalidation rep1 -> ok (27.4s)
+2026-10-14 16:09:59,324 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B2_append_correction rep1 -> ok (25.7s)
+2026-10-14 16:10:23,474 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B0_stale rep1 -> ok (24.1s)
+2026-10-14 16:11:04,332 INFO cag.runner: b2048_s0_date_completion_middle_rdef_k1 B1_full_recompute rep1 -> ok (40.9s)
+2026-10-14 16:11:04,332 INFO cag.run: [7/19] b2048_s0_multi_field_middle_rdef_k1 (1 events, 20 questions)
+2026-10-14 16:12:09,724 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B3_document_cache rep0 -> ok (65.4s)
+2026-10-14 16:13:06,567 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B0_stale rep0 -> ok (56.8s)
+2026-10-14 16:14:10,876 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B5_prefix_invalidation rep0 -> ok (64.3s)
+2026-10-14 16:15:13,867 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B2_append_correction rep0 -> ok (63.0s)
+2026-10-14 16:16:32,666 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B1_full_recompute rep0 -> ok (78.8s)
+2026-10-14 16:17:42,179 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B4_layered rep0 -> ok (69.5s)
+2026-10-14 16:18:06,312 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B3_document_cache rep1 -> ok (24.1s)
+2026-10-14 16:18:28,284 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B0_stale rep1 -> ok (22.0s)
+2026-10-14 16:18:51,269 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B2_append_correction rep1 -> ok (23.0s)
+2026-10-14 16:19:14,299 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B5_prefix_invalidation rep1 -> ok (23.0s)
+2026-10-14 16:19:51,838 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B1_full_recompute rep1 -> ok (37.5s)
+2026-10-14 16:20:20,118 INFO cag.runner: b2048_s0_multi_field_middle_rdef_k1 B4_layered rep1 -> ok (28.3s)
+2026-10-14 16:20:20,118 INFO cag.run: [8/19] b2048_s0_multi_doc_middle_rdef_k1 (1 events, 21 questions)
+2026-10-14 16:21:20,094 INFO cag.runner: b2048_s0_multi_doc_middle_rdef_k1 B3_document_cache rep0 -> ok (60.0s)
+2026-10-14 16:22:32,030 INFO cag.runner: b2048_s0_multi_doc_middle_rdef_k1 B1_full_recompute rep0 -> ok (71.9s)
+2026-10-14 16:23:26,085 INFO cag.runner: b2048_s0_multi_doc_middle_rdef_k1 B0_stale rep0 -> ok (54.1s)
+2026-10-14 16:23:26,085 INFO cag.run: time budget of 35 min reached: 94/228 method runs done (41%). Rerun the same command to resume.
+SESSION_END
