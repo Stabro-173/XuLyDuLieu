@@ -1,13 +1,13 @@
-# Auto-generated tables — profile `pilot_q05_fp32`
+# Bảng sinh tự động — profile `pilot_q05_fp32`
 
-Engine: `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.7359990000004473, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
+Engine (mô hình, phần cứng, phiên bản): `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.7359990000004473, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
 
-Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (rep 0): 5978
+Số điều kiện: 50; số cặp điều kiện × phương pháp hoàn tất: 350; số lượt lỗi/bị loại: 0; số câu đã trả lời (lần lặp 0): 5978
 
 
-## Main comparison (33 conditions, mean over conditions)
+## So sánh chính (33 điều kiện, trung bình theo điều kiện)
 
-| Method | upd lat (ms) | upd prefill (ms) | init prefill (ms) | TTFT (ms) | answer (ms) | reuse % | ctx final | peak alloc MB |
+| Phương pháp | trễ cập nhật (ms) | prefill cập nhật (ms) | prefill ban đầu (ms) | TTFT (ms) | trả lời (ms) | tái sử dụng % | ngữ cảnh cuối | đỉnh allocated MB |
 |---|---|---|---|---|---|---|---|---|
 | B0 Stale | 0.0 | 0.0 | 1125.0 | 103.9 | 861.9 | — | 2037.3 | 2074.3 |
 | B1 Full Recompute | 1125.1 | 1119.0 | 1124.9 | 96.3 | 855.5 | 0.0 | 2041.2 | 2074.3 |
@@ -18,9 +18,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | B5 Prefix Invalidation | 293.4 | 287.1 | 1124.1 | 95.6 | 844.8 | 75.9 | 2041.2 | 1976.1 |
 
 
-### Accuracy (%)
+### Độ chính xác (%)
 
-| Method | A updated | A stale | A mixed | B unchanged | C probes | D cross-doc | E unanswerable | overall | agree w/ B1 tokens |
+| Phương pháp | A đúng giá trị mới | A giá trị cũ | A trộn | B không đổi | C có/không | D so sánh chéo | E không trả lời được | tổng | trùng token B1 |
 |---|---|---|---|---|---|---|---|---|---|
 | B0 Stale | 1.7 | 73.3 | 0.0 | 64.7 | 24.1 | 67.7 | 0.0 | 44.5 | 84.6 |
 | B1 Full Recompute | 82.2 | 1.7 | 0.0 | 63.9 | 65.7 | 69.7 | 0.0 | 54.8 | 100.0 |
@@ -31,9 +31,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | B5 Prefix Invalidation | 82.2 | 1.7 | 0.0 | 63.9 | 65.7 | 69.7 | 0.0 | 54.8 | 100.0 |
 
 
-## Pooled question-level accuracy over all conditions (%)
+## Độ chính xác gộp theo từng câu hỏi trên mọi điều kiện (%)
 
-| Method | A (n=74) | B (n=380) | C (n=106) | D (n=144) | E (n=150) |
+| Phương pháp | A (n=74) | B (n=380) | C (n=106) | D (n=144) | E (n=150) |
 |---|---|---|---|---|---|
 | B0 Stale | 1.4 | 62.4 | 28.3 | 68.8 | 0.0 |
 | B1 Full Recompute | 81.1 | 61.8 | 65.1 | 70.1 | 0.0 |
@@ -44,9 +44,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | B5 Prefix Invalidation | 81.1 | 61.8 | 65.1 | 70.1 | 0.0 |
 
 
-### Group A outcome breakdown (%)
+### Phân loại kết quả nhóm A (%)
 
-| Method | correct | mixed | stale | wrong |
+| Phương pháp | đúng | trộn | giá trị cũ | sai |
 |---|---|---|---|---|
 | B0 Stale | 1.4 | 0.0 | 78.4 | 20.3 |
 | B1 Full Recompute | 81.1 | 2.7 | 1.4 | 14.9 |
@@ -57,9 +57,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | B5 Prefix Invalidation | 81.1 | 2.7 | 1.4 | 14.9 |
 
 
-## Ablation: position (6 conditions)
+## Ablation: vị trí chỉnh sửa (6 điều kiện)
 
-| update_position | baseline | edit_pos_norm_dynamic | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| vị trí sửa | phương pháp | vị trí sửa chuẩn hoá | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | begin | B0 Stale | 0.118 | 0.000 | — | 2036.000 | 0.000 | 1.000 | 0.500 | 0.000 | 0.000 | 855.509 |
 | begin | B1 Full Recompute | 0.118 | 2036.000 | 0.000 | 2036.000 | 0.500 | 0.000 | 0.500 | 1119.749 | 6.870 | 884.998 |
@@ -84,9 +84,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | middle | B5 Prefix Invalidation | 0.589 | 248.500 | 0.878 | 2036.000 | 1.000 | 0.000 | 0.750 | 132.802 | 2.440 | 961.871 |
 
 
-## Ablation: stable_ratio (5 conditions)
+## Ablation: tỷ lệ tiền tố ổn định (5 điều kiện)
 
-| stable_ratio_target | baseline | stable_ratio_actual | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| tỷ lệ ổn định mục tiêu | phương pháp | tỷ lệ ổn định thực tế | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 0.000 | B0 Stale | 0.089 | 0.000 | — | 2035.000 | 0.000 | 1.000 | 0.750 | 0.000 | 0.000 | 884.653 |
 | 0.000 | B1 Full Recompute | 0.089 | 2035.000 | 0.000 | 2035.000 | 1.000 | 0.000 | 0.750 | 1160.847 | 39.856 | 740.149 |
@@ -125,9 +125,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | 0.900 | B5 Prefix Invalidation | 0.891 | 35.000 | 0.983 | 2035.000 | 1.000 | 0.000 | 0.750 | 62.893 | 3.839 | 882.161 |
 
 
-## Ablation: context_length (4 conditions)
+## Ablation: độ dài ngữ cảnh (4 điều kiện)
 
-| budget | baseline | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| ngân sách token | phương pháp | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1024 | B0 Stale | 0.000 | — | 1020.000 | 0.000 | 1.000 | 0.600 | 0.000 | 0.000 | 948.590 |
 | 1024 | B1 Full Recompute | 1020.000 | 0.000 | 1020.000 | 1.000 | 0.000 | 0.600 | 559.641 | 0.842 | 961.133 |
@@ -159,9 +159,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | 8192 | B5 Prefix Invalidation | 1455.000 | 0.821 | 8117.000 | 1.000 | 0.000 | 0.250 | 1288.634 | 7.373 | 1591.565 |
 
 
-## Ablation: sequential (4 conditions)
+## Ablation: chuỗi cập nhật liên tiếp (4 điều kiện)
 
-| n_sequential | baseline | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| số cập nhật | phương pháp | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | B0 Stale | 0.000 | — | 2035.000 | 0.000 | 1.000 | 0.500 | 0.000 | 0.000 | 789.155 |
 | 1 | B1 Full Recompute | 2037.000 | 0.000 | 2037.000 | 1.000 | 0.000 | 0.500 | 1114.762 | 0.222 | 729.938 |
@@ -193,9 +193,9 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | 10 | B5 Prefix Invalidation | 3044.000 | 0.850 | 2035.000 | 0.800 | 0.000 | 0.333 | 1985.192 | 10.623 | 799.016 |
 
 
-## Ablation: repeated (1 conditions)
+## Ablation: cập nhật lặp lại một trường (1 điều kiện)
 
-| n_sequential | baseline | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| số cập nhật | phương pháp | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 3 | B0 Stale | 0.000 | — | 2035.000 | 0.000 | 1.000 | 0.750 | 0.000 | 0.000 | 781.464 |
 | 3 | B1 Full Recompute | 6105.000 | 0.000 | 2035.000 | 1.000 | 0.000 | 0.750 | 3350.532 | 0.904 | 779.974 |
@@ -206,7 +206,7 @@ Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (
 | 3 | B5 Prefix Invalidation | 731.000 | 0.880 | 2035.000 | 1.000 | 0.000 | 0.750 | 386.593 | 1.498 | 778.696 |
 
 
-## Figures
+## Biểu đồ
 - latency_vs_accuracy: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\pilot_q05_fp32\figures\01_latency_vs_accuracy.png`
 - update_latency: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\pilot_q05_fp32\figures\02_update_latency.png`
 - reuse: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\pilot_q05_fp32\figures\03_cache_reuse.png`

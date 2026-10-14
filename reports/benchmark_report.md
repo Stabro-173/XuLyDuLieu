@@ -1,432 +1,429 @@
-# Dynamic Knowledge Updating in Cache-Augmented Generation: Full Recompute, Append Correction, Document-Level Caching and Layered CAG
+# Cập nhật tri thức động trong Cache-Augmented Generation: so sánh Full Recompute, Append Correction, Document-Level Caching và Layered CAG
 
-*All numbers in this report come from executions of the code in this repository on the hardware stated in §6.
-Nothing is simulated. Sections that could not be run are marked **NOT RUN**.*
+*Mọi con số trong báo cáo này đều đến từ việc chạy thật mã nguồn trong repository trên phần cứng nêu ở §6.
+Không có số liệu nào được mô phỏng. Những phần không chạy được được đánh dấu **CHƯA CHẠY**.*
 
-## 1. Abstract
+*Quy ước số: dấu phẩy là dấu thập phân (2,4×); số hàng nghìn viết liền (1125 ms).*
 
-Cache-Augmented Generation (CAG) prefills a knowledge base once and reuses its KV cache for every question,
-which breaks when the knowledge changes. We built a reproducible benchmark on a real Vietnamese
-architecture-company database export (49 projects, 17 news items, company profile, 4 taxonomies; 72
-canonical documents, 10.6K tokens) and compared six update strategies plus one approximate variant:
-stale cache (B0), full recompute (B1), append-only correction (B2), exact document-boundary reuse (B3),
-approximate independent per-document caches with RoPE re-rotation (B3a), **Layered CAG** — a reusable stable
-prefix followed by a recomputed dynamic suffix (B4) — and token-level longest-common-prefix reuse (B5).
+## 1. Tóm tắt
 
-Exact-cache validation on ten mandated edit scenarios shows that B3, B4 and B5 reproduce the full-prefill
-cache of B1 within floating-point tolerance on both models tested (10/10 scenarios each; max relative KV
-deviation 3.7e-7 in fp32 and 1.2e-3 in fp16), while B3a deviates strongly (0/10; first-token logits off by
-up to 13.9). On the main comparison (33 conditions, 11 update types × 3 seeds, Qwen2.5-0.5B-Instruct fp32,
-≈2K-token context) Layered CAG matched full recompute exactly in accuracy (81.1 % vs 81.1 % on updated
-facts, identical generated tokens on 100 % of questions) while cutting update latency 2.4× (470 ms vs
-1125 ms). It was, however, **slower than token-level prefix invalidation (293 ms) and exact document-level
-reuse (327 ms)** in almost every condition, because it always recomputes the whole dynamic suffix; its
-latency is flat in the edit position whereas B3/B5 approach zero cost for edits near the end. Its
-benefit is governed by the stable-prefix ratio (1.2× speed-up at 9 % stable tokens, 7.1× at 89 %).
-Append correction was the cheapest update (150 ms) but the model kept returning obsolete values
-(21.6 % stale + 8.1 % mixed answers on updated facts) and accuracy degraded as corrections accumulated.
-The central hypothesis is therefore **supported for correctness and partially supported for efficiency**:
-Layered CAG preserves full-prefill behaviour and is cheaper than recomputation, but it is dominated by
-finer-grained exact prefix reuse on this workload.
+Cache-Augmented Generation (CAG) prefill cơ sở tri thức một lần rồi tái sử dụng KV cache của nó cho mọi câu hỏi.
+Cách làm này không còn đúng khi tri thức thay đổi. Chúng tôi xây dựng một benchmark có thể tái lập trên dữ liệu
+xuất từ cơ sở dữ liệu thật của một công ty kiến trúc Việt Nam (49 dự án, 17 bài viết, hồ sơ công ty, 4 bảng danh mục;
+72 tài liệu chuẩn hoá, 10,6 nghìn token) và so sánh sáu chiến lược cập nhật cùng một biến thể xấp xỉ:
+cache cũ không cập nhật (B0), tính lại toàn bộ (B1), nối thêm thông báo sửa đổi (B2), tái sử dụng chính xác theo
+ranh giới tài liệu (B3), cache độc lập từng tài liệu với xoay lại RoPE — xấp xỉ (B3a), **Layered CAG** — tiền tố
+ổn định được tái sử dụng cộng hậu tố động được tính lại (B4) — và tái sử dụng tiền tố chung dài nhất ở mức token (B5).
 
-On the primary model, Qwen2.5-1.5B-Instruct in fp16 (19 conditions at ≤ 2K tokens), the picture is the
-same: B4 matched B1 on every accuracy group (86.7 % on updated facts in the main comparison) and halved update
-latency (8.2 s vs 16.7 s on this GPU), B5 (4.4 s) and B3 (5.0 s) were faster still, and B2 (1.6 s) was the
-cheapest update. Because fp16 rounding differs between a full and a suffix prefill, exact methods produced
-token-identical generations to B1 on 98.5 % (931/945) of answers; every divergence was a first-token near tie.
+Kiểm chứng tính đúng của cache trên mười kịch bản chỉnh sửa bắt buộc cho thấy B3, B4 và B5 tái tạo đúng cache
+full-prefill của B1 trong phạm vi sai số dấu phẩy động trên cả hai mô hình thử nghiệm (mỗi phương pháp 10/10 kịch bản;
+sai lệch KV tương đối lớn nhất 3,7e-7 ở fp32 và 1,2e-3 ở fp16), trong khi B3a lệch rất mạnh (0/10; logit của token
+đầu tiên lệch tới 13,9). Trong so sánh chính (33 điều kiện, 11 loại cập nhật × 3 seed, Qwen2.5-0.5B-Instruct fp32,
+ngữ cảnh ≈2K token), Layered CAG cho độ chính xác đúng bằng Full Recompute (81,1 % so với 81,1 % trên dữ kiện đã cập
+nhật, token sinh ra giống hệt trên 100 % câu hỏi) và giảm độ trễ cập nhật 2,4 lần (470 ms so với 1125 ms). Tuy nhiên,
+nó **chậm hơn Prefix Invalidation mức token (293 ms) và tái sử dụng chính xác theo tài liệu (327 ms)** ở gần như mọi
+điều kiện, vì nó luôn tính lại toàn bộ hậu tố động: độ trễ của nó không đổi theo vị trí chỉnh sửa, trong khi B3/B5 gần
+như không tốn gì khi chỗ sửa nằm gần cuối. Lợi ích của nó do tỷ lệ tiền tố ổn định quyết định (nhanh hơn 1,2 lần khi
+token ổn định chiếm 9 %, 7,1 lần khi chiếm 89 %). Append Correction có chi phí cập nhật rẻ nhất (150 ms) nhưng mô hình
+vẫn trả về giá trị cũ (21,6 % câu trả lời cũ + 8,1 % câu trả lời trộn cũ/mới trên dữ kiện đã cập nhật) và độ chính
+xác giảm dần khi các thông báo sửa đổi tích luỹ. Vì vậy, giả thuyết trung tâm **được xác nhận về tính đúng và được xác
+nhận một phần về hiệu năng**: Layered CAG giữ nguyên hành vi của full prefill và rẻ hơn tính lại toàn bộ, nhưng trên
+khối lượng công việc này nó bị các phương pháp tái sử dụng tiền tố chính xác ở mức chi tiết hơn vượt qua.
 
-## 2. Research motivation
+Trên mô hình chính, Qwen2.5-1.5B-Instruct ở fp16 (19 điều kiện với ngữ cảnh ≤ 2K token), bức tranh vẫn như vậy: B4 bằng
+B1 ở mọi nhóm câu hỏi (86,7 % trên dữ kiện đã cập nhật trong so sánh chính) và giảm một nửa độ trễ cập nhật (8,2 s so
+với 16,7 s trên GPU này); B5 (4,4 s) và B3 (5,0 s) còn nhanh hơn; B2 (1,6 s) có cập nhật rẻ nhất. Do làm tròn fp16 khác
+nhau giữa prefill toàn bộ và prefill phần hậu tố, các phương pháp chính xác sinh ra token giống hệt B1 trên 98,5 %
+(931/945) câu trả lời; mọi chỗ lệch đều là trường hợp token đầu tiên gần hoà.
 
-In CAG the knowledge cache is valid only for the exact token sequence it was computed from: causal
-attention makes every KV entry a function of all earlier tokens. Editing a value in the middle of the
-knowledge therefore invalidates every cached position from the edit onwards, and enterprise knowledge
-(project areas, budgets, completion dates, company counts) does change. The trade-off is between
-freshness, answer quality, update latency and cache reuse. Layered CAG is an evaluated application of a
-known idea (prefix caching) as a *structuring* strategy: put rarely changing knowledge first so its cache
-can be kept, and put volatile knowledge last. We do not claim it is a novel algorithm.
+## 2. Động cơ nghiên cứu
 
-Research questions: RQ1 accuracy after updates vs full recompute; RQ2 update latency saved; RQ3 effect of
-the stable-prefix ratio; RQ4 effect of the edit position; RQ5 preservation of unchanged facts; RQ6
-latency/memory/reuse/quality trade-offs.
+Trong CAG, cache tri thức chỉ hợp lệ với đúng chuỗi token đã dùng để tính nó: attention nhân quả khiến mỗi phần tử KV
+là một hàm của mọi token đứng trước. Sửa một giá trị ở giữa phần tri thức vì thế làm mất hiệu lực mọi vị trí trong
+cache kể từ chỗ sửa trở đi, mà tri thức doanh nghiệp (diện tích dự án, mức đầu tư, ngày hoàn thành, số liệu công ty)
+thì có thay đổi. Đánh đổi nằm giữa độ tươi của tri thức, chất lượng câu trả lời, độ trễ cập nhật và mức tái sử dụng
+cache. Layered CAG là việc đánh giá một ý tưởng đã biết (prefix caching) khi dùng làm chiến lược *tổ chức* tri thức:
+đặt phần ít thay đổi lên trước để giữ được cache của nó, đặt phần hay thay đổi ở cuối. Chúng tôi không cho rằng đây là
+một thuật toán mới.
 
-## 3. Dataset
+Câu hỏi nghiên cứu: RQ1 độ chính xác sau cập nhật so với Full Recompute; RQ2 độ trễ cập nhật tiết kiệm được; RQ3 ảnh
+hưởng của tỷ lệ tiền tố ổn định; RQ4 ảnh hưởng của vị trí chỉnh sửa; RQ5 khả năng giữ đúng các dữ kiện không đổi; RQ6
+đánh đổi giữa độ trễ, bộ nhớ, mức tái sử dụng và chất lượng.
 
-Source: `database_export_2026-01-23T02-02-46.json` (PostgreSQL export, SHA-256
-`b38e8cf0…a4007c598`, never modified; checked on every load).
+## 3. Dữ liệu
 
-| Table | Records | Used as |
+Nguồn: `database_export_2026-01-23T02-02-46.json` (dữ liệu xuất từ PostgreSQL, SHA-256 `b38e8cf0…a4007c598`, không bao
+giờ bị sửa; được kiểm tra hash mỗi lần nạp).
+
+| Bảng | Số bản ghi | Cách sử dụng |
 |---|---|---|
-| companyInfo | 1 | split into `company_profile` (descriptive) and `company_stats` (counts) |
-| projects | 49 | one document each |
-| news | 17 | one document each (excerpt; full HTML body excluded) |
-| projectCategories / architectureTypes / interiorStyles / newsCategories | 12 / 15 / 10 / 4 | one taxonomy document per table |
-| heroSlides / settings / users | 10 / 0 / 0 | excluded (UI content or empty) |
+| companyInfo | 1 | tách thành `company_profile` (mô tả) và `company_stats` (số liệu) |
+| projects | 49 | mỗi dự án một tài liệu |
+| news | 17 | mỗi bài một tài liệu (phần tóm tắt; bỏ thân bài HTML đầy đủ) |
+| projectCategories / architectureTypes / interiorStyles / newsCategories | 12 / 15 / 10 / 4 | mỗi bảng một tài liệu danh mục |
+| heroSlides / settings / users | 10 / 0 / 0 | loại bỏ (nội dung giao diện hoặc rỗng) |
 
-Preprocessing (`src/data/preprocessor.py`, log in `data/processed/dataset_profile.json`): HTML → plain
-text with BeautifulSoup (entities decoded, tags/attributes/images removed, Vietnamese NFC preserved); project
-titles such as *"Resort Hải Vân 2. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ"* split into a short name and a
-parsed investment field (42/49 projects); nested category objects replaced by names; dates normalised to
-ISO and rendered DD/MM/YYYY; image URLs, SEO fields, `structuredData` duplicates, view counts and
-timestamps excluded; null fields omitted from the text, never filled. Every document is rendered
-deterministically from its structured fields, so a synthetic update changes exactly one rendered line.
+Tiền xử lý (`src/data/preprocessor.py`, nhật ký trong `data/processed/dataset_profile.json`): chuyển HTML sang văn bản
+thuần bằng BeautifulSoup (giải mã entity, bỏ thẻ/thuộc tính/ảnh, giữ chuẩn Unicode NFC tiếng Việt); tách tiêu đề dự án
+như *"Resort Hải Vân 2. Địa điểm: Đà Nẵng. Mức đầu tư: 20 tỷ"* thành tên ngắn và trường mức đầu tư (42/49 dự án); thay
+các đối tượng danh mục lồng nhau bằng tên; chuẩn hoá ngày về ISO và hiển thị DD/MM/YYYY; loại bỏ URL ảnh, trường SEO,
+phần trùng lặp `structuredData`, lượt xem và dấu thời gian; trường null bị bỏ khỏi văn bản, không bao giờ tự điền. Mỗi
+tài liệu được sinh văn bản một cách tất định từ các trường có cấu trúc, nên một cập nhật giả lập chỉ thay đổi đúng một dòng.
 
-Data-quality findings: 4 projects have no area, 1 no investor, 11 no interior style, 36 no description;
-some descriptions contradict their own structured fields (e.g. project #46: description says 135 m² in
-Tân Phú, fields say 171.6 m² in Nhơn Hải). Facts contradicted inside their own document are excluded from
-question generation and synthetic updates. 366 unambiguous facts remain. Token counts with the Qwen2.5
-tokenizer: projects 6,255, news 3,710, company profile 312, taxonomies 273, company stats 55 (total 10,605).
+Phát hiện về chất lượng dữ liệu: 4 dự án không có diện tích, 1 không có chủ đầu tư, 11 không có phong cách nội thất,
+36 không có mô tả; một số mô tả mâu thuẫn với chính các trường của nó (ví dụ dự án #46: mô tả ghi 135 m² ở Tân Phú,
+trường dữ liệu ghi 171,6 m² ở Nhơn Hải). Các dữ kiện bị mâu thuẫn ngay trong tài liệu của nó được loại khỏi việc sinh câu
+hỏi và cập nhật giả lập; còn lại 366 dữ kiện không mơ hồ. Số token theo tokenizer Qwen2.5: dự án 6255, bài viết 3710,
+hồ sơ công ty 312, danh mục 273, số liệu công ty 55 (tổng 10605).
 
-**Partition.** Default rules (`configs/partition.yaml`): company profile, taxonomies and news are *stable*;
-company stats and projects are *dynamic*; per-document overrides are supported. The stable-ratio ablation
-instead moves non-target documents into the stable prefix until a target token share is reached, keeping
-the document set identical. Manifest with order, token counts, hashes and rationale:
-`data/processed/partition_manifest.json`.
+**Phân vùng.** Quy tắc mặc định (`configs/partition.yaml`): hồ sơ công ty, danh mục và bài viết là *ổn định*; số liệu
+công ty và dự án là *động*; hỗ trợ ghi đè cho từng tài liệu. Riêng ablation tỷ lệ ổn định thì chuyển các tài liệu không
+phải mục tiêu cập nhật vào tiền tố ổn định cho tới khi đạt tỷ lệ token mong muốn, giữ nguyên tập tài liệu. Manifest gồm
+thứ tự, số token, hash và lý do phân vùng: `data/processed/partition_manifest.json`.
 
-## 4. Methodology
+## 4. Phương pháp
 
-**Prompt layout.** `[chat-template system prefix][instruction][=== CƠ SỞ TRI THỨC === / PHẦN A: stable docs][PHẦN B: dynamic docs]`
-is the cached knowledge; the system turn is left open so B2 can append inside it. Each question is
-`<|im_end|>\n<|im_start|>user\n{q}<|im_end|>\n<|im_start|>assistant\n`, prefilled on top of the cache; after
-greedy decoding (≤ 32 new tokens) the cache is cropped back to the knowledge length and this is asserted
-after every answer, so question KV never leaks between questions. Tokenising knowledge and question
-separately was verified to equal tokenising the full prompt.
+**Bố cục prompt.** `[tiền tố system của chat template][chỉ dẫn][=== CƠ SỞ TRI THỨC === / PHẦN A: tài liệu ổn định][PHẦN B: tài liệu động]`
+là phần tri thức được cache; lượt system được để mở để B2 có thể nối thêm vào bên trong. Mỗi câu hỏi có dạng
+`<|im_end|>\n<|im_start|>user\n{q}<|im_end|>\n<|im_start|>assistant\n`, được prefill lên trên cache; sau khi giải mã
+greedy (tối đa 32 token mới), cache được cắt về đúng độ dài phần tri thức và điều này được kiểm tra sau mỗi câu trả lời,
+nên KV của câu hỏi không bao giờ lọt sang câu hỏi khác. Đã xác minh rằng tokenize phần tri thức và câu hỏi riêng rẽ cho
+kết quả giống tokenize toàn bộ prompt.
 
-**Synthetic updates** (`src/data/updates.py`): deterministic (seeded), flagged `is_synthetic`, applied to deep
-copies of versioned snapshots: numeric (area ×0.55–0.85 or ×1.2–1.8; investment; company project count +3…15),
-text (location / investor from pools that occur nowhere in the source), date (±90–500 days), multi-field,
-multi-document, repeated (v0→v1→v2→v3 on one field), sequential k-update chains, document append, document
-delete, and a *stable* document edit (company working hours).
+**Cập nhật giả lập** (`src/data/updates.py`): tất định (có seed), gắn cờ `is_synthetic`, áp dụng trên bản sao sâu của
+các snapshot có phiên bản: số (diện tích ×0,55–0,85 hoặc ×1,2–1,8; mức đầu tư; tổng số dự án của công ty +3…15), văn bản
+(địa điểm / chủ đầu tư lấy từ danh sách không xuất hiện ở đâu trong dữ liệu gốc), ngày (±90–500 ngày), nhiều trường,
+nhiều tài liệu, lặp lại (v0→v1→v2→v3 trên một trường), chuỗi k cập nhật liên tiếp, thêm tài liệu, xoá tài liệu, và sửa
+một tài liệu *ổn định* (giờ làm việc của công ty).
 
-**Questions** (`src/data/qa_generator.py`), generated from the final snapshot of each condition, ground
-truth read from structured fields: A updated facts (with the obsolete values recorded), B unchanged facts
-(including other fields of updated documents), C yes/no probes of the obsolete and of the current value,
-D cross-document area comparisons (pairs whose answer flips because of the update are preferred), E
-unanswerable (null source fields, non-existent project ids, absent attributes, deleted documents).
-Projects are referenced by canonical id (`#77`) because several titles are duplicated.
+**Câu hỏi** (`src/data/qa_generator.py`), sinh từ snapshot cuối của mỗi điều kiện, đáp án đúng đọc từ các trường có cấu
+trúc: A dữ kiện đã cập nhật (có lưu các giá trị cũ), B dữ kiện không đổi (gồm cả các trường khác của tài liệu đã cập
+nhật), C câu hỏi có/không kiểm tra giá trị cũ và giá trị hiện tại, D so sánh diện tích giữa hai dự án (ưu tiên các cặp mà
+đáp án bị đảo do cập nhật), E câu không trả lời được (trường null trong nguồn, mã dự án không tồn tại, thuộc tính không
+có, tài liệu đã bị xoá). Dự án được gọi bằng mã chuẩn (`#77`) vì có nhiều tiêu đề trùng nhau.
 
-**Evaluation** (`src/evaluation/answer_metrics.py`) is deterministic: Vietnamese number parsing
-(`2.306`, `171,6`, `2,5 tỷ`), date parsing (`13/01/2026`, `ngày 13 tháng 1 năm 2026`), diacritic-tolerant
-text matching with location/investor aliases, yes/no and abstention patterns, and first-mentioned-option
-for comparisons. Outcomes are *correct*, *stale* (obsolete value only), *mixed* (both), *abstained*,
-*wrong*. Agreement with B1 (identical generated token ids) is reported separately from correctness.
+**Chấm điểm** (`src/evaluation/answer_metrics.py`) là tất định: đọc số kiểu Việt Nam (`2.306`, `171,6`, `2,5 tỷ`), đọc
+ngày (`13/01/2026`, `ngày 13 tháng 1 năm 2026`), so khớp văn bản không phân biệt dấu kèm bí danh cho địa điểm/chủ đầu tư,
+mẫu có/không và mẫu từ chối trả lời, và lấy phương án được nhắc đến đầu tiên cho câu so sánh. Kết quả gồm *correct*
+(đúng), *stale* (chỉ có giá trị cũ), *mixed* (có cả cũ lẫn mới), *abstained* (từ chối), *wrong* (sai). Mức trùng với B1
+(chuỗi token sinh ra giống hệt) được báo cáo riêng, tách khỏi tính đúng.
 
-**Metrics.** Update latency = serialisation + tokenisation + cache management + prefill, CUDA-synchronised,
-excluding answer generation and model loading. Query latency = time to first token and total generation.
-Cache reuse ratio = verified reused knowledge tokens / tokens of the updated knowledge (reused-but-invalid
-tensors of B0 and approximate chunks of B3a count as 0). GPU memory: peak allocated and peak reserved,
-reset before each phase.
+**Chỉ số.** Độ trễ cập nhật = serialize + tokenize + quản lý cache + prefill, có đồng bộ CUDA, không tính thời gian sinh
+câu trả lời và nạp mô hình. Độ trễ truy vấn = thời gian tới token đầu tiên (TTFT) và tổng thời gian sinh. Tỷ lệ tái sử
+dụng cache = số token tri thức được tái sử dụng hợp lệ (đã kiểm chứng) / số token của tri thức sau cập nhật (tensor cũ
+nhưng không còn hợp lệ của B0 và các đoạn xấp xỉ của B3a được tính là 0). Bộ nhớ GPU: đỉnh allocated và đỉnh reserved,
+được đặt lại trước mỗi pha.
 
-## 5. Baseline implementations
+## 5. Cài đặt các phương pháp
 
-All methods implement `initialize / update / answer / get_cache_statistics / reset`
-(`src/baselines/`). B1, B3, B4, B5 share one exact mechanism — keep a prefix of the old cache, crop, prefill
-the rest — and differ only in how many tokens they propose to keep. Every proposal is clamped by
-`verify_reuse` to the token-level common prefix of the old and new sequences, so no KV entry whose causal
-history changed can be reused even if a document boundary falls inside a merged BPE token (observed: for an
-appended document the boundary sits after a `\n\n` token and the proposal is shortened by 2 tokens).
+Mọi phương pháp đều cài đặt `initialize / update / answer / get_cache_statistics / reset` (`src/baselines/`). B1, B3,
+B4, B5 dùng chung một cơ chế chính xác — giữ một tiền tố của cache cũ, cắt bỏ phần sau, prefill phần còn lại — và chỉ
+khác nhau ở số token đề xuất giữ lại. Mọi đề xuất đều bị `verify_reuse` giới hạn về tiền tố chung ở mức token của chuỗi
+cũ và chuỗi mới, nên không phần tử KV nào có lịch sử nhân quả đã thay đổi được tái sử dụng, kể cả khi ranh giới tài liệu
+rơi vào giữa một token BPE đã gộp (quan sát thực tế: với tài liệu được thêm vào cuối, ranh giới nằm sau một token `\n\n`
+và đề xuất bị rút ngắn 2 token).
 
-| ID | Proposed reuse length |
+| Mã | Độ dài tái sử dụng được đề xuất |
 |---|---|
-| B0 | — (no update; original cache kept) |
+| B0 | — (không cập nhật; giữ nguyên cache ban đầu) |
 | B1 | 0 |
-| B2 | entire old sequence; a versioned Vietnamese "update notice" with explicit supersession is appended and prefilled |
-| B3 | start token of the first changed document |
-| B3a | approximate: header KV + independently prefilled per-document KV, keys re-rotated by Δposition with R(p+Δ)=R(Δ)R(p) |
-| B4 | stable/dynamic boundary if only dynamic documents changed; otherwise start of the first changed stable document |
-| B5 | full new sequence (→ clamped to the token LCP) |
+| B2 | toàn bộ chuỗi cũ; nối thêm và prefill một "thông báo cập nhật" tiếng Việt có phiên bản, nêu rõ giá trị mới thay thế giá trị cũ |
+| B3 | token đầu của tài liệu đầu tiên bị thay đổi |
+| B3a | xấp xỉ: KV phần đầu + KV từng tài liệu được prefill độc lập, key được xoay lại theo Δvị trí với R(p+Δ)=R(Δ)R(p) |
+| B4 | ranh giới ổn định/động nếu chỉ tài liệu động thay đổi; ngược lại là đầu tài liệu ổn định đầu tiên bị thay đổi |
+| B5 | toàn bộ chuỗi mới (→ bị giới hạn về LCP mức token) |
 
-B3a is labelled APPROXIMATE everywhere: its token sequence equals the canonical one, but no document can
-attend to an earlier document, so it is not equivalent to a jointly prefilled causal sequence. The RoPE
-re-rotation itself is unit-tested (layer-0 keys re-rotated from position p to p+37 equal keys computed at p+37).
+B3a được gắn nhãn XẤP XỈ ở mọi nơi: chuỗi token của nó trùng với chuỗi chuẩn, nhưng không tài liệu nào được attend tới
+tài liệu đứng trước, nên nó không tương đương với một chuỗi nhân quả được prefill chung. Bản thân phép xoay lại RoPE có
+unit test (key của lớp 0 xoay từ vị trí p sang p+37 bằng đúng key tính trực tiếp tại p+37).
 
-## 6. Experimental setup
+## 6. Thiết lập thực nghiệm
 
-**Hardware actually used: NVIDIA GeForce GTX 1650, 4 GB (driver 610.62), Windows 11, Python 3.11.9,
-torch 2.9.1+cu128, transformers 5.19.0** (`requirements.lock.txt`). The target T4 was not available; the
-Colab notebook (`notebooks/colab_benchmark.ipynb`) runs the SMOKE profile on a T4 but was **NOT RUN** by us.
+**Phần cứng thực tế: NVIDIA GeForce GTX 1650, 4 GB (driver 610.62), Windows 11, Python 3.11.9, torch 2.9.1+cu128,
+transformers 5.19.0** (`requirements.lock.txt`). Không có T4 như mục tiêu ban đầu; notebook Colab
+(`notebooks/colab_benchmark.ipynb`) chạy profile SMOKE trên T4 nhưng **CHƯA CHẠY**.
 
-Measured hardware constraints and the adjustments they forced (all recorded in the configs):
+Các ràng buộc phần cứng đã đo được và những điều chỉnh bắt buộc (đều ghi trong file cấu hình):
 
-1. fp16 GEMM on this GPU runs at 0.34 TFLOPS versus 1.84 TFLOPS for fp32. Qwen2.5-1.5B-Instruct only fits in
-   fp16 (2.9 GB of weights in a 3.30 GB usable budget) and prefills 2K tokens in ≈16.7 s.
-2. Windows' driver does not raise out-of-memory: it silently pages device allocations to system RAM. Without a
-   guard, a 4K-token 1.5B prefill "succeeded" in 126 s at 5 GB peak. We added a **VRAM-spill guard**: the
-   usable budget is measured before loading weights and every run whose peak reserved memory exceeds it is
-   marked `vram_spill` and excluded from all summaries (rows are kept for transparency).
-3. SDPA on sm75 materialises the full attention matrix for long prompts. We use **position-aligned chunked
-   prefill** (chunks of 1024 tokens for 0.5B, 512 for 1.5B; boundaries at absolute multiples of the chunk
-   size) for every method, which bounds activation memory and computes the same causal function.
+1. Nhân ma trận fp16 trên GPU này chỉ đạt 0,34 TFLOPS, so với 1,84 TFLOPS ở fp32. Qwen2.5-1.5B-Instruct chỉ vừa bộ nhớ
+   ở fp16 (2,9 GB trọng số trong ngân sách khả dụng 3,30 GB) và mất ≈16,7 s để prefill 2K token.
+2. Driver Windows không báo hết bộ nhớ mà âm thầm đẩy vùng nhớ thiết bị sang RAM hệ thống. Khi chưa có cơ chế bảo vệ,
+   một lần prefill 4K token với mô hình 1.5B vẫn "thành công" sau 126 s với đỉnh 5 GB. Chúng tôi thêm **cơ chế phát hiện
+   tràn VRAM**: ngân sách khả dụng được đo trước khi nạp trọng số, và mọi lượt chạy có đỉnh bộ nhớ reserved vượt ngân
+   sách đều bị gắn nhãn `vram_spill` và loại khỏi mọi bảng tổng hợp (dữ liệu thô vẫn được giữ để minh bạch).
+3. SDPA trên sm75 tạo nguyên ma trận attention với prompt dài. Chúng tôi dùng **chunked prefill căn theo vị trí** (mỗi đoạn
+   1024 token với 0.5B, 512 với 1.5B; ranh giới tại các bội số tuyệt đối của kích thước đoạn) cho mọi phương pháp, giúp
+   giới hạn bộ nhớ activation mà vẫn tính đúng cùng một hàm nhân quả.
 
-Consequently two model configurations were run:
+Do đó đã chạy hai cấu hình mô hình:
 
-| Profile | Model (pinned revision) | dtype | Grid | Status |
+| Profile | Mô hình (revision cố định) | dtype | Lưới thí nghiệm | Trạng thái |
 |---|---|---|---|---|
-| `pilot_q05_fp32` | Qwen2.5-0.5B-Instruct (`7ae5576`) — **substitute** | fp32 | full PILOT: 50 conditions, budgets 1K–8K, 7 methods × 3 reps | 1050/1050 runs, 0 failures |
-| `reduced_q15_fp16` | Qwen2.5-1.5B-Instruct (`989aa79`) — **primary** | fp16 | 19 conditions at ≤ 2K tokens, 6 methods × 2 reps | 228/228 valid runs (+7 B3a runs flagged `vram_spill`), 0 errors |
-| FULL profile (5 seeds, 4K/8K with 1.5B) | — | — | — | **NOT RUN** (does not fit this GPU) |
+| `pilot_q05_fp32` | Qwen2.5-0.5B-Instruct (`7ae5576`) — **mô hình thay thế** | fp32 | PILOT đầy đủ: 50 điều kiện, ngữ cảnh 1K–8K, 7 phương pháp × 3 lần lặp | 1050/1050 lượt, 0 lỗi |
+| `reduced_q15_fp16` | Qwen2.5-1.5B-Instruct (`989aa79`) — **mô hình chính** | fp16 | 19 điều kiện với ngữ cảnh ≤ 2K token, 6 phương pháp × 2 lần lặp | 228/228 lượt hợp lệ (+7 lượt B3a bị gắn `vram_spill`), 0 lỗi |
+| Profile FULL (5 seed, 4K/8K với 1.5B) | — | — | — | **CHƯA CHẠY** (không vừa GPU này) |
 
-The two models share a byte-identical tokenizer, so conditions, token boundaries and questions are identical.
-Generation: greedy, ≤ 32 new tokens, chat template, `torch.inference_mode`, seeds fixed, method order shuffled
-per repetition, 3 warm-up passes, accuracy from repetition 0, latency from all repetitions.
+Hai mô hình dùng tokenizer giống hệt nhau đến từng byte, nên các điều kiện, ranh giới token và câu hỏi là như nhau. Sinh
+câu trả lời: greedy, tối đa 32 token mới, dùng chat template, `torch.inference_mode`, seed cố định, thứ tự phương pháp
+được xáo trộn ở mỗi lần lặp, 3 lượt khởi động, độ chính xác lấy từ lần lặp 0, độ trễ lấy từ mọi lần lặp.
 
-PILOT grid (`configs/local_pilot_q05_fp32.yaml`): update types (11 types × 3 seeds, 2K, middle position);
-edit position (begin/middle/end × 2 seeds); stable ratio (targets 0/25/50/75/90 %); context length (1K/2K/4K/8K);
-sequential chains (k = 1/3/5/10); repeated update of one field (3 versions). Coverage: 50 conditions,
-67 update events, 854 questions (A 74, B 380, C 106, D 144, E 150), 28+ distinct source documents.
+Lưới PILOT (`configs/local_pilot_q05_fp32.yaml`): các loại cập nhật (11 loại × 3 seed, 2K, vị trí giữa); vị trí sửa
+(đầu/giữa/cuối × 2 seed); tỷ lệ ổn định (mục tiêu 0/25/50/75/90 %); độ dài ngữ cảnh (1K/2K/4K/8K); chuỗi cập nhật liên
+tiếp (k = 1/3/5/10); cập nhật lặp lại một trường (3 phiên bản). Độ phủ: 50 điều kiện, 67 sự kiện cập nhật, 854 câu hỏi
+(A 74, B 380, C 106, D 144, E 150), hơn 28 tài liệu nguồn khác nhau.
 
-## 7. Cache correctness validation
+## 7. Kiểm chứng tính đúng của cache
 
-`scripts/validate_cache.py`, ten mandated scenarios at a 2K budget, each method initialised on v0 and updated
-to v1, compared with a one-shot B1 prefill of v1. Tolerances were fixed before the runs (fp32: relative KV
-≤ 1e-4, logits ≤ 1e-3; fp16: relative KV ≤ 1e-2, logits ≤ 0.5). Results:
+`scripts/validate_cache.py`, mười kịch bản bắt buộc ở ngữ cảnh 2K: mỗi phương pháp được khởi tạo trên v0 rồi cập nhật
+lên v1, sau đó so với một lần prefill trọn vẹn v1 của B1. Ngưỡng sai số được chốt trước khi chạy (fp32: KV tương đối
+≤ 1e-4, logit ≤ 1e-3; fp16: KV tương đối ≤ 1e-2, logit ≤ 0,5). Kết quả:
 `results/pilot_q05_fp32/cache_validation.json`, `results/reduced_q15_fp16/cache_validation.json`.
 
-| Model | Method | PASS | max rel. KV dev. | max first-token logit dev. | generated-token agreement |
+| Mô hình | Phương pháp | PASS | sai lệch KV tương đối lớn nhất | sai lệch logit token đầu lớn nhất | token sinh ra trùng B1 |
 |---|---|---|---|---|---|
-| 0.5B fp32 | B3 / B4 / B5 | 10/10 each | 3.4e-7 / 2.8e-7 / 3.7e-7 | ≤ 3.4e-5 | 100 % |
-| 0.5B fp32 | B3a (approx.) | 0/10 | 5.8e-2 | 7.7 | 0 % |
-| 1.5B fp16 | B3 / B4 / B5 | 10/10 each | 7.8e-4 / 1.2e-3 / 7.8e-4 | ≤ 0.061 | 100 % |
-| 1.5B fp16 | B3a (approx.) | 0/10 | 6.1e-2 | 13.9 | 0 % |
+| 0.5B fp32 | B3 / B4 / B5 | mỗi cái 10/10 | 3,4e-7 / 2,8e-7 / 3,7e-7 | ≤ 3,4e-5 | 100 % |
+| 0.5B fp32 | B3a (xấp xỉ) | 0/10 | 5,8e-2 | 7,7 | 0 % |
+| 1.5B fp16 | B3 / B4 / B5 | mỗi cái 10/10 | 7,8e-4 / 1,2e-3 / 7,8e-4 | ≤ 0,061 | 100 % |
+| 1.5B fp16 | B3a (xấp xỉ) | 0/10 | 6,1e-2 | 13,9 | 0 % |
 
-Scenarios: no change; first / middle / last dynamic document; single numeric field; token-count-changing edit;
-append; delete; multiple documents; **stable document edit** — where B4 correctly falls back to the edited
-stable document (156 reused tokens instead of the 1,229-token stable prefix). The 30 unit tests
-(`tests/`) repeat the same ten scenarios on a tiny random fp32 Qwen2 model and additionally check cache
-non-contamination by questions, reuse ordering (B5 ≥ B3 ≥ B4 for dynamic edits) and RoPE re-rotation.
+Các kịch bản: không thay đổi; sửa tài liệu động đầu / giữa / cuối; sửa một trường số; sửa làm thay đổi số token; thêm tài
+liệu; xoá tài liệu; nhiều tài liệu; **sửa tài liệu ổn định** — khi đó B4 lùi đúng về tài liệu ổn định bị sửa (tái sử dụng
+156 token thay vì toàn bộ 1229 token tiền tố ổn định). 30 unit test (`tests/`) lặp lại mười kịch bản này trên một mô hình
+Qwen2 ngẫu nhiên rất nhỏ ở fp32, đồng thời kiểm tra câu hỏi không làm bẩn cache, thứ tự mức tái sử dụng (B5 ≥ B3 ≥ B4 với
+chỉnh sửa phần động) và phép xoay lại RoPE.
 
-**Exact reuse ≠ bit-identical outputs in fp16.** In the 1.5B benchmark 11 of 589 exact-method answers
-(1.9 %) differ from B1's. In every inspected case the cached token sequence was identical to B1's and the
-first generated token was a near tie (top-1/top-2 logit margin 0.000–0.078, max logit difference 0.053):
-chunk boundaries differ between a full prefill and a suffix prefill, and fp16 reassociation flips the tie.
-Two of the divergent pairs ran in different processes, where even B1 alone is not bit-reproducible. The
-effect is symmetric (correct→wrong and wrong→correct) and leaves mean accuracy unchanged. In fp32 (0.5B) the
-agreement was 100 % on all 2,562 exact-method answers.
+**Tái sử dụng chính xác ≠ đầu ra giống hệt từng bit ở fp16.** Trong benchmark 1.5B, 11 trên 589 câu trả lời của các phương
+pháp chính xác (1,9 %) khác với B1. Ở mọi trường hợp đã kiểm tra, chuỗi token trong cache giống hệt của B1 và token sinh
+ra đầu tiên là trường hợp gần hoà (chênh lệch logit giữa top-1 và top-2 từ 0,000 đến 0,078, chênh lệch logit lớn nhất
+0,053): ranh giới đoạn khác nhau giữa prefill toàn bộ và prefill phần hậu tố, và thứ tự cộng khác nhau ở fp16 đủ để đảo
+kết quả hoà. Hai cặp bị lệch chạy ở hai tiến trình khác nhau, nơi ngay cả B1 cũng không tái lập được từng bit. Ảnh hưởng là
+đối xứng (đúng→sai và sai→đúng) và không làm thay đổi độ chính xác trung bình. Ở fp32 (0.5B), mức trùng là 100 % trên toàn
+bộ 2562 câu trả lời của các phương pháp chính xác.
 
-## 8. Performance results
+## 8. Kết quả hiệu năng
 
-### 8.1 Main comparison — Qwen2.5-0.5B fp32, 33 conditions (11 update types × 3 seeds, ≈2,040 tokens)
+### 8.1 So sánh chính — Qwen2.5-0.5B fp32, 33 điều kiện (11 loại cập nhật × 3 seed, ≈2040 token)
 
-| Method | update latency (ms) | speed-up vs B1 | prefill share (ms) | valid reuse | final context | peak alloc. (MB) |
+| Phương pháp | độ trễ cập nhật (ms) | nhanh hơn B1 | phần prefill (ms) | tái sử dụng hợp lệ | ngữ cảnh cuối | đỉnh allocated (MB) |
 |---|---|---|---|---|---|---|
-| B0 Stale | 0 | — | 0 | — (invalid) | 2,037 | 2,074 |
-| B1 Full Recompute | 1,125 | 1.0× | 1,119 | 0 % | 2,041 | 2,074 |
-| B2 Append Correction | 150 | 7.5× | 149 | 93.4 % | 2,183 | 1,980 |
-| B3 Doc Cache (exact) | 327 | 3.4× | 321 | 72.8 % | 2,041 | 1,980 |
-| B3a Doc Cache (APPROX) | 163 | 6.9× | 84 | 0 % (approx.) | 2,041 | 2,059 |
-| **B4 Layered CAG** | **470** | **2.4×** | 464 | 55.5 % | 2,041 | 2,002 |
-| B5 Prefix Invalidation | 293 | 3.8× | 287 | 75.9 % | 2,041 | 1,976 |
+| B0 Stale | 0 | — | 0 | — (không hợp lệ) | 2037 | 2074 |
+| B1 Full Recompute | 1125 | 1,0× | 1119 | 0 % | 2041 | 2074 |
+| B2 Append Correction | 150 | 7,5× | 149 | 93,4 % | 2183 | 1980 |
+| B3 Doc Cache (chính xác) | 327 | 3,4× | 321 | 72,8 % | 2041 | 1980 |
+| B3a Doc Cache (XẤP XỈ) | 163 | 6,9× | 84 | 0 % (xấp xỉ) | 2041 | 2059 |
+| **B4 Layered CAG** | **470** | **2,4×** | 464 | 55,5 % | 2041 | 2002 |
+| B5 Prefix Invalidation | 293 | 3,8× | 287 | 75,9 % | 2041 | 1976 |
 
-Serialisation + tokenisation + cache cropping cost ≈ 6 ms per update for every exact method; latency is
-almost entirely prefill. Peak memory is dominated by the 1.98 GB of weights; the fp32 KV cache at 2K tokens is ≈ 48 MB.
+Serialize + tokenize + cắt cache tốn ≈ 6 ms mỗi lần cập nhật với mọi phương pháp chính xác; độ trễ gần như toàn bộ là
+prefill. Đỉnh bộ nhớ chủ yếu do 1,98 GB trọng số; KV cache fp32 ở 2K token chiếm ≈ 48 MB.
 
-By update type (mean of 3 seeds, ms): for edits of existing dynamic documents B4 costs 415–432 ms regardless
-of the type, B5 158–390 ms and B3 232–416 ms (company-count edits hit the first dynamic document, where all
-three coincide); for the **stable-document edit** all exact methods lose their advantage (B3 888, B4 890,
-B5 922 vs B1 1,123 ms) because the edit sits 156 tokens into the sequence; for appends B3/B5 reuse the whole
-old sequence (162 ms) while B4 still recomputes the suffix (517 ms).
+Theo loại cập nhật (trung bình 3 seed, ms): khi sửa tài liệu động đã có, B4 tốn 415–432 ms bất kể loại cập nhật, B5
+158–390 ms và B3 232–416 ms (cập nhật tổng số dự án rơi vào tài liệu động đầu tiên, nơi cả ba trùng nhau); khi **sửa tài
+liệu ổn định**, mọi phương pháp chính xác mất lợi thế (B3 888, B4 890, B5 922 so với B1 1123 ms) vì chỗ sửa chỉ cách đầu
+chuỗi 156 token; khi thêm tài liệu, B3/B5 tái sử dụng toàn bộ chuỗi cũ (162 ms) còn B4 vẫn tính lại cả hậu tố (517 ms).
 
-### 8.2 Query latency
+### 8.2 Độ trễ truy vấn
 
-Mean time-to-first-token ≈ 96 ms and answer latency ≈ 840 ms (≈ 20–30 tok/s) for all methods on the
-fixed-length context. **Known artefact:** the question prefill is also chunked at absolute 1,024-token
-boundaries; for contexts of ≈2,040 tokens the question straddles position 2,048 and needs two forward passes,
-whereas B2's longer context (≈2,180) does not. B2's lower TTFT (57 ms) is therefore an artefact, not a
-property of append correction. Update latencies are unaffected.
+TTFT trung bình ≈ 96 ms và thời gian trả lời ≈ 840 ms (≈ 20–30 token/s) với mọi phương pháp trên ngữ cảnh có độ dài cố
+định. **Sai lệch đo lường đã biết:** prefill câu hỏi cũng được chia đoạn tại các mốc tuyệt đối 1024 token; với ngữ cảnh
+≈2040 token, câu hỏi vắt qua vị trí 2048 nên cần hai lượt forward, còn ngữ cảnh dài hơn của B2 (≈2180) thì không. TTFT
+thấp hơn của B2 (57 ms) vì thế là sai lệch đo lường, không phải đặc tính của Append Correction. Độ trễ cập nhật không bị
+ảnh hưởng.
 
-### 8.3 End-to-end cost and break-even
+### 8.3 Chi phí đầu-cuối và điểm hoà vốn
 
-For a cycle of one update followed by *q* questions, cost = update + q × query (measured means; we use the
-same query latency for all methods because of §8.2). B4's saving over B1 per cycle is 655 ms; it falls below
-10 % of the cycle cost once *q* > 6 questions per update on the 0.5B model.
-On the 1.5B fp16 model the saving is 8.5 s per update against a 2.3 s answer, so B4 stays more than
-10 % cheaper per cycle than B1 up to *q* ≈ 29 questions per update. Slower prefill (the 1.5B model on this GPU) makes cache reuse matter for much longer.
+Với một chu kỳ gồm một lần cập nhật và *q* câu hỏi, chi phí = cập nhật + q × truy vấn (dùng giá trị trung bình đo được; do
+§8.2, dùng cùng một độ trễ truy vấn cho mọi phương pháp). Mỗi chu kỳ B4 tiết kiệm 655 ms so với B1; mức tiết kiệm này
+xuống dưới 10 % chi phí chu kỳ khi *q* > 6 câu hỏi cho mỗi lần cập nhật trên mô hình 0.5B. Trên mô hình 1.5B fp16, mức
+tiết kiệm là 8,5 s mỗi lần cập nhật so với 2,3 s cho mỗi câu trả lời, nên B4 vẫn rẻ hơn B1 trên 10 % mỗi chu kỳ cho tới
+*q* ≈ 29 câu hỏi mỗi lần cập nhật. Prefill càng chậm (như mô hình 1.5B trên GPU này) thì tái sử dụng cache càng đáng giá
+trong phạm vi rộng hơn.
 
-## 9. Accuracy results
+## 9. Kết quả độ chính xác
 
-### 9.1 Main comparison (33 conditions, per-condition means, %)
+### 9.1 So sánh chính (33 điều kiện, trung bình theo điều kiện, %)
 
-| Method | A updated | A stale | A mixed | B unchanged | C probes | D cross-doc | E unanswerable | agrees with B1 |
+| Phương pháp | A đúng giá trị mới | A trả giá trị cũ | A trộn | B không đổi | C kiểm tra có/không | D so sánh chéo | E không trả lời được | trùng B1 |
 |---|---|---|---|---|---|---|---|---|
-| B0 Stale | 1.7 | 73.3 | 0.0 | 64.7 | 24.1 | 67.7 | 0.0 | 84.6 |
-| B1 Full Recompute | 82.2 | 1.7 | 0.0 | 63.9 | 65.7 | 69.7 | 0.0 | 100 |
-| B2 Append Correction | 65.6 | 15.6 | 6.7 | 61.9 | 49.1 | 69.7 | 0.0 | 67.9 |
-| B3 Doc Cache (exact) | 82.2 | 1.7 | 0.0 | 63.9 | 65.7 | 69.7 | 0.0 | 100 |
-| B3a Doc Cache (APPROX) | 23.9 | 5.0 | 0.0 | 48.9 | 65.7 | 56.6 | 0.0 | 12.6 |
-| **B4 Layered CAG** | **82.2** | **1.7** | 0.0 | **63.9** | 65.7 | 69.7 | 0.0 | **100** |
-| B5 Prefix Invalidation | 82.2 | 1.7 | 0.0 | 63.9 | 65.7 | 69.7 | 0.0 | 100 |
+| B0 Stale | 1,7 | 73,3 | 0,0 | 64,7 | 24,1 | 67,7 | 0,0 | 84,6 |
+| B1 Full Recompute | 82,2 | 1,7 | 0,0 | 63,9 | 65,7 | 69,7 | 0,0 | 100 |
+| B2 Append Correction | 65,6 | 15,6 | 6,7 | 61,9 | 49,1 | 69,7 | 0,0 | 67,9 |
+| B3 Doc Cache (chính xác) | 82,2 | 1,7 | 0,0 | 63,9 | 65,7 | 69,7 | 0,0 | 100 |
+| B3a Doc Cache (XẤP XỈ) | 23,9 | 5,0 | 0,0 | 48,9 | 65,7 | 56,6 | 0,0 | 12,6 |
+| **B4 Layered CAG** | **82,2** | **1,7** | 0,0 | **63,9** | 65,7 | 69,7 | 0,0 | **100** |
+| B5 Prefix Invalidation | 82,2 | 1,7 | 0,0 | 63,9 | 65,7 | 69,7 | 0,0 | 100 |
 
-Pooled over all 50 pilot conditions (question level, A n = 74): updated-fact accuracy B1 = B3 = B4 = B5 =
-81.1 %, B2 58.1 % (21.6 % stale, 8.1 % mixed), B0 1.4 % (78.4 % stale), B3a 18.9 %.
+Gộp trên toàn bộ 50 điều kiện pilot (tính theo từng câu hỏi, nhóm A n = 74): độ chính xác trên dữ kiện đã cập nhật của
+B1 = B3 = B4 = B5 = 81,1 %, B2 58,1 % (21,6 % giá trị cũ, 8,1 % trộn), B0 1,4 % (78,4 % giá trị cũ), B3a 18,9 %.
 
-Observations. (i) **RQ1/RQ5:** the exact methods are indistinguishable from B1 on every group — not because
-they are "as good as" B1 but because they compute the same function. (ii) Full recompute is not an oracle:
-B1 itself is wrong on 15 % of updated facts and 1.4 % of its answers still give an obsolete value (the
-model confuses fields). (iii) Group E is 0 % for every method: the 0.5B model never abstains and invents
-values (e.g. "dự án #101 có diện tích 1600 m²"); this is a model limitation, verified on the raw answers,
-not an evaluator artefact. (iv) B3a's accuracy collapse shows that per-document caches without cross-document
-attention are unusable here without further correction.
+Nhận xét. (i) **RQ1/RQ5:** các phương pháp chính xác không thể phân biệt với B1 ở mọi nhóm — không phải vì chúng "tốt
+ngang" B1 mà vì chúng tính đúng cùng một hàm. (ii) Full Recompute không phải là đáp án chuẩn tuyệt đối: chính B1 trả lời
+sai 15 % dữ kiện đã cập nhật và 1,4 % câu trả lời của nó vẫn dùng giá trị cũ (mô hình nhầm lẫn giữa các trường). (iii)
+Nhóm E đạt 0 % ở mọi phương pháp: mô hình 0.5B không bao giờ từ chối mà bịa ra giá trị (ví dụ "dự án #101 có diện tích
+1600 m²"); đây là giới hạn của mô hình, đã được kiểm tra trên câu trả lời thô, không phải lỗi của bộ chấm điểm. (iv) Độ
+chính xác của B3a sụp đổ cho thấy cache từng tài liệu không có attention chéo giữa các tài liệu là không dùng được ở đây
+nếu không có bước hiệu chỉnh thêm.
 
-### 9.2 Primary model — Qwen2.5-1.5B fp16, 11 update-type conditions (seed 0, ≈2K tokens)
+### 9.2 Mô hình chính — Qwen2.5-1.5B fp16, 11 điều kiện loại cập nhật (seed 0, ≈2K token)
 
-| Method | update latency (s) | speed-up | A updated | A stale | B unchanged | C probes | D cross-doc | E unanswerable | agrees with B1 |
+| Phương pháp | độ trễ cập nhật (s) | nhanh hơn B1 | A đúng giá trị mới | A trả giá trị cũ | B không đổi | C kiểm tra có/không | D so sánh chéo | E không trả lời được | trùng B1 |
 |---|---|---|---|---|---|---|---|---|---|
-| B0 Stale | 0 | — | 0.0 | 80.0 | 85.4 | 16.7 | 100 | 0.0 | 72.2 |
-| B1 Full Recompute | 16.7 | 1.0× | 86.7 | 3.3 | 83.4 | 97.2 | 100 | 0.0 | 100 |
-| B2 Append Correction | 1.6 | 10.5× | 81.7 | 3.3 | 76.4 | 91.7 | 100 | 9.1 | 57.6 |
-| B3 Doc Cache (exact) | 5.0 | 3.3× | 86.7 | 3.3 | 83.5 | 97.2 | 100 | 0.0 | 99.0 |
-| **B4 Layered CAG** | **8.2** | **2.0×** | **86.7** | **3.3** | **83.5** | **97.2** | 100 | 0.0 | **98.0** |
-| B5 Prefix Invalidation | 4.4 | 3.8× | 86.7 | 3.3 | 83.5 | 97.2 | 100 | 0.0 | 98.0 |
+| B0 Stale | 0 | — | 0,0 | 80,0 | 85,4 | 16,7 | 100 | 0,0 | 72,2 |
+| B1 Full Recompute | 16,7 | 1,0× | 86,7 | 3,3 | 83,4 | 97,2 | 100 | 0,0 | 100 |
+| B2 Append Correction | 1,6 | 10,5× | 81,7 | 3,3 | 76,4 | 91,7 | 100 | 9,1 | 57,6 |
+| B3 Doc Cache (chính xác) | 5,0 | 3,3× | 86,7 | 3,3 | 83,5 | 97,2 | 100 | 0,0 | 99,0 |
+| **B4 Layered CAG** | **8,2** | **2,0×** | **86,7** | **3,3** | **83,5** | **97,2** | 100 | 0,0 | **98,0** |
+| B5 Prefix Invalidation | 4,4 | 3,8× | 86,7 | 3,3 | 83,5 | 97,2 | 100 | 0,0 | 98,0 |
 
-Pooled over all 19 conditions (question level): updated facts (n = 22) B1 = B3 = B4 = B5 = 90.9 %, B2 86.4 %,
-B0 0 % (86.4 % stale); unchanged facts (n = 144) 80.6 % for B1/B3/B4/B5 vs 75.7 % for B2; obsolete/current
-value probes (n = 38) 94.7 % for every updating method vs 7.9 % for B0; cross-document comparisons (n = 54)
-96.3 % for all methods (the compared areas rarely straddled the update); unanswerable (n = 57) 0 % for all
-methods except B2 (12.3 %: it abstained on 4 non-existent-project and 3 absent-attribute questions — the
-explicit update-notice section appears to make the model more cautious).
+Gộp trên toàn bộ 19 điều kiện (tính theo từng câu hỏi): dữ kiện đã cập nhật (n = 22) B1 = B3 = B4 = B5 = 90,9 %, B2
+86,4 %, B0 0 % (86,4 % giá trị cũ); dữ kiện không đổi (n = 144) 80,6 % với B1/B3/B4/B5 so với 75,7 % của B2; câu kiểm tra
+giá trị cũ/hiện tại (n = 38) 94,7 % với mọi phương pháp có cập nhật so với 7,9 % của B0; so sánh chéo (n = 54) 96,3 % với
+mọi phương pháp (cặp diện tích được so sánh hiếm khi bị đảo bởi cập nhật); không trả lời được (n = 57) 0 % với mọi phương
+pháp trừ B2 (12,3 %: nó từ chối ở 4 câu về dự án không tồn tại và 3 câu về thuộc tính không có — phần "thông báo cập nhật"
+tường minh dường như khiến mô hình thận trọng hơn).
 
-Compared with the 0.5B model, the larger model is more accurate overall and is **less confused by append
-corrections** (3.3 % stale on updated facts vs 15.6 %), but appending still costs accuracy on *unchanged*
-facts (−7 points) and on generation agreement with B1 (58 %). Peak memory during updates was ≈ 3.04 GB
-allocated / 3.26 GB reserved for every method (weights 2.94 GB, KV cache 56 MB at 2K tokens), 30–40 MB below
-the physical budget.
+So với mô hình 0.5B, mô hình lớn hơn chính xác hơn nói chung và **ít bị nhiễu bởi thông báo sửa đổi được nối thêm hơn**
+(3,3 % trả giá trị cũ trên dữ kiện đã cập nhật so với 15,6 %), nhưng việc nối thêm vẫn làm giảm độ chính xác trên dữ kiện
+*không đổi* (−7 điểm) và giảm mức trùng với B1 (58 %). Đỉnh bộ nhớ khi cập nhật là ≈ 3,04 GB allocated / 3,26 GB reserved
+với mọi phương pháp (trọng số 2,94 GB, KV cache 56 MB ở 2K token), thấp hơn ngân sách vật lý 30–40 MB.
 
-## 10. Ablation studies (0.5B fp32 unless stated)
+## 10. Nghiên cứu ablation (0.5B fp32 trừ khi ghi khác)
 
-### 10.1 Edit position (RQ4) — 2 seeds, update latency (ms)
+### 10.1 Vị trí chỉnh sửa (RQ4) — 2 seed, độ trễ cập nhật (ms)
 
-| Position in dynamic suffix (normalised) | B1 | B2 | B3 | **B4** | B5 |
+| Vị trí trong hậu tố động (chuẩn hoá) | B1 | B2 | B3 | **B4** | B5 |
 |---|---|---|---|---|---|
-| begin (0.12) | 1,120 | 133 | 413 | **421** | 397 |
-| middle (0.59) | 1,126 | 133 | 236 | **417** | 133 |
-| end (0.87) | 1,120 | 135 | 81 | **416** | 63 |
+| đầu (0,12) | 1120 | 133 | 413 | **421** | 397 |
+| giữa (0,59) | 1126 | 133 | 236 | **417** | 133 |
+| cuối (0,87) | 1120 | 135 | 81 | **416** | 63 |
 
-B4 is flat in the edit position (it always recomputes all 807 dynamic tokens); B5 recomputes 634 → 249 → 35
-tokens. For end-of-suffix edits B5 is 6.6× faster than B4; for edits at the start of the suffix the three
-exact methods are equivalent. Figure `04_position_vs_latency`.
+Độ trễ của B4 không đổi theo vị trí sửa (nó luôn tính lại toàn bộ 807 token động); B5 tính lại 634 → 249 → 35 token. Với
+chỗ sửa ở cuối hậu tố, B5 nhanh hơn B4 6,6 lần; với chỗ sửa ở đầu hậu tố, ba phương pháp chính xác tương đương nhau. Biểu
+đồ `04_position_vs_latency`.
 
-### 10.2 Stable-prefix ratio (RQ3) — target vs actual ratio, update latency (ms) and B4 speed-up
+### 10.2 Tỷ lệ tiền tố ổn định (RQ3) — tỷ lệ mục tiêu và thực tế, độ trễ cập nhật (ms) và mức nhanh hơn của B4
 
-| Target | Actual | B1 | B4 | B4 speed-up | B5 | B3 |
+| Mục tiêu | Thực tế | B1 | B4 | B4 nhanh hơn | B5 | B3 |
 |---|---|---|---|---|---|---|
-| 0 % | 8.9 % | 1,161 | 993 | 1.2× | 138 | 243 |
-| 25 % | 31.6 % | 1,121 | 752 | 1.5× | 132 | 242 |
-| 50 % | 56.2 % | 1,117 | 399 | 2.8× | 132 | 236 |
-| 75 % | 78.1 % | 1,126 | 278 | 4.1× | 124 | 153 |
-| 90 % | 89.1 % | 1,142 | 162 | 7.1× | 63 | 82 |
+| 0 % | 8,9 % | 1161 | 993 | 1,2× | 138 | 243 |
+| 25 % | 31,6 % | 1121 | 752 | 1,5× | 132 | 242 |
+| 50 % | 56,2 % | 1117 | 399 | 2,8× | 132 | 236 |
+| 75 % | 78,1 % | 1126 | 278 | 4,1× | 124 | 153 |
+| 90 % | 89,1 % | 1142 | 162 | 7,1× | 63 | 82 |
 
-The 0 % target cannot be reached: the 171-token instruction header is always a stable prefix. B4's speed-up
-follows its reuse ratio almost exactly (reuse = actual stable ratio). Confound: at 78 % and 89 % more
-documents precede the edited one, which moves the edit later in the sequence and is why B3/B5 also speed up
-there. Figure `05_stable_ratio_vs_speedup`.
+Không thể đạt mục tiêu 0 %: phần chỉ dẫn 171 token luôn là tiền tố ổn định. Mức nhanh hơn của B4 bám gần như chính xác theo
+tỷ lệ tái sử dụng của nó (tỷ lệ tái sử dụng = tỷ lệ ổn định thực tế). Yếu tố gây nhiễu: ở 78 % và 89 %, có nhiều tài liệu
+đứng trước tài liệu bị sửa hơn, khiến chỗ sửa lùi về sau trong chuỗi — đó là lý do B3/B5 cũng nhanh lên ở đây. Biểu đồ
+`05_stable_ratio_vs_speedup`.
 
-### 10.3 Context length — 1 seed, update latency (ms)
+### 10.3 Độ dài ngữ cảnh — 1 seed, độ trễ cập nhật (ms)
 
-| Context | B1 | B2 | B3 | B4 | B5 |
+| Ngữ cảnh | B1 | B2 | B3 | B4 | B5 |
 |---|---|---|---|---|---|
-| 1,020 | 560 | 95 | 67 | 176 | 99 |
-| 2,035 | 1,122 | 133 | 237 | 418 | 134 |
-| 4,049 | 2,410 | 169 | 618 | 1,132 | 529 |
-| 8,117 | 5,713 | 237 | 1,471 | 3,219 | 1,289 |
+| 1020 | 560 | 95 | 67 | 176 | 99 |
+| 2035 | 1122 | 133 | 237 | 418 | 134 |
+| 4049 | 2410 | 169 | 618 | 1132 | 529 |
+| 8117 | 5713 | 237 | 1471 | 3219 | 1289 |
 
-B1 grows slightly super-linearly (attention); B4 stays 1.8–3.2× faster than B1 at every length. The 1.5B
-model could not be run above 2K tokens on this GPU (spill guard).
+B1 tăng hơi nhanh hơn tuyến tính (do attention); B4 luôn nhanh hơn B1 1,8–3,2 lần ở mọi độ dài. Mô hình 1.5B không chạy
+được trên 2K token trên GPU này (bị cơ chế phát hiện tràn VRAM chặn).
 
-### 10.4 Correction history and update frequency — sequential chains
+### 10.4 Lịch sử sửa đổi và tần suất cập nhật — chuỗi cập nhật liên tiếp
 
-| k updates | B1 total (ms) | B2 total | B3 | B4 | B5 | B2 context | B2 updated-fact acc. | exact methods acc. |
+| k cập nhật | B1 tổng (ms) | B2 tổng | B3 | B4 | B5 | ngữ cảnh B2 | B2 đúng giá trị mới | các phương pháp chính xác đúng |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 1,115 | 131 | 152 | 418 | 121 | 2,153 | 0/1 | 1/1 |
-| 3 | 3,367 | 292 | 507 | 1,252 | 414 | 2,298 | 2/3 | 2/3 |
-| 5 | 5,584 | 457 | 1,470 | 2,076 | 1,322 | 2,468 | 1/5 | 3/5 |
-| 10 | 11,189 | 889 | 2,298 | 4,183 | 1,985 | 2,862 | 3/10 | 8/10 |
+| 1 | 1115 | 131 | 152 | 418 | 121 | 2153 | 0/1 | 1/1 |
+| 3 | 3367 | 292 | 507 | 1252 | 414 | 2298 | 2/3 | 2/3 |
+| 5 | 5584 | 457 | 1470 | 2076 | 1322 | 2468 | 1/5 | 3/5 |
+| 10 | 11189 | 889 | 2298 | 4183 | 1985 | 2862 | 3/10 | 8/10 |
 
-Append correction stays the cheapest per update but its context grows by ≈ 83 tokens per correction (+41 %
-after ten) and its stale-answer rate on updated facts reaches 50 % at k = 10. Repeated updates of one field
-(v0→v3): all exact methods and B2 answered the latest value; B2's context grew by 284 tokens. Counts are small
-(1–10 updated-fact questions per row) and should be read as trends.
+Append Correction luôn rẻ nhất cho mỗi lần cập nhật, nhưng ngữ cảnh của nó dài thêm ≈ 83 token sau mỗi lần sửa (+41 % sau
+mười lần) và tỷ lệ trả giá trị cũ trên dữ kiện đã cập nhật lên tới 50 % ở k = 10. Cập nhật lặp lại một trường (v0→v3):
+mọi phương pháp chính xác và B2 đều trả lời giá trị mới nhất; ngữ cảnh của B2 dài thêm 284 token. Số lượng mẫu nhỏ (1–10
+câu hỏi về dữ kiện đã cập nhật mỗi dòng) nên chỉ nên đọc như xu hướng.
 
-### 10.5 Primary model (1.5B fp16) ablations, seed 0, update latency (s)
+### 10.5 Ablation trên mô hình chính (1.5B fp16), seed 0, độ trễ cập nhật (s)
 
-| Edit position | B1 | B2 | B3 | **B4** | B5 |
+| Vị trí sửa | B1 | B2 | B3 | **B4** | B5 |
 |---|---|---|---|---|---|
-| begin (0.07) | 16.70 | 1.33 | 6.44 | **7.45** | 6.21 |
-| middle (0.60) | 16.74 | 1.33 | 3.30 | **7.49** | 2.19 |
-| end (0.86) | 16.67 | 1.32 | 1.13 | **7.43** | 0.57 |
+| đầu (0,07) | 16,70 | 1,33 | 6,44 | **7,45** | 6,21 |
+| giữa (0,60) | 16,74 | 1,33 | 3,30 | **7,49** | 2,19 |
+| cuối (0,86) | 16,67 | 1,32 | 1,13 | **7,43** | 0,57 |
 
-| Stable ratio (actual) | B1 | B4 | B4 speed-up | B5 | B3 |
+| Tỷ lệ ổn định (thực tế) | B1 | B4 | B4 nhanh hơn | B5 | B3 |
 |---|---|---|---|---|---|
-| 8.9 % | 16.67 | 15.76 | 1.06× | 2.20 | 3.29 |
-| 31.6 % | 16.68 | 11.70 | 1.43× | 2.19 | 3.29 |
-| 56.2 % | 16.74 | 8.52 | 1.96× | 2.19 | 3.30 |
-| 78.1 % | 16.74 | 4.25 | 3.94× | 1.64 | 2.17 |
-| 89.1 % | 16.74 | 2.17 | 7.71× | 0.57 | 1.13 |
+| 8,9 % | 16,67 | 15,76 | 1,06× | 2,20 | 3,29 |
+| 31,6 % | 16,68 | 11,70 | 1,43× | 2,19 | 3,29 |
+| 56,2 % | 16,74 | 8,52 | 1,96× | 2,19 | 3,30 |
+| 78,1 % | 16,74 | 4,25 | 3,94× | 1,64 | 2,17 |
+| 89,1 % | 16,74 | 2,17 | 7,71× | 0,57 | 1,13 |
 
-Context: at 1,020 tokens B1 8.19 s, B4 3.10 s, B5 0.54 s, B3 1.08 s, B2 1.26 s; 4K/8K not runnable (VRAM).
-The orderings reproduce the 0.5B results exactly; only the absolute scale changes (×15 slower fp16 prefill).
-Sequential/repeated chains were not run on 1.5B (**NOT RUN**, time budget).
+Độ dài ngữ cảnh: ở 1020 token, B1 8,19 s, B4 3,10 s, B5 0,54 s, B3 1,08 s, B2 1,26 s; 4K/8K không chạy được (VRAM). Thứ tự
+giữa các phương pháp lặp lại đúng kết quả của 0.5B; chỉ có quy mô tuyệt đối thay đổi (prefill fp16 chậm hơn ≈15 lần). Chuỗi
+cập nhật liên tiếp và lặp lại không chạy trên 1.5B (**CHƯA CHẠY**, do giới hạn thời gian).
 
-## 11. Limitations
+## 11. Hạn chế
 
-* **Hardware.** GTX 1650 4 GB instead of a T4. The full grid used a substitute model (0.5B fp32); the primary
-  1.5B model was run on a reduced grid ≤ 2K tokens. Absolute latencies are specific to this GPU (fp16 is slow
-  here) and to Windows; relative orderings are the transferable result.
-* **B3a on 1.5B** exceeded the VRAM budget in every run (≈ 60–90 MB over) and was excluded from the 1.5B grid
-  after session 8; its deviation on 1.5B is taken from the validation run.
-* **Query latency** comparisons involving B2 are confounded by question-prefill chunk splitting (§8.2).
-* **fp16 non-determinism**: exact methods agree with B1 on 98–99 % of 1.5B generations (§7).
-* **Timing variance**: decoding speed varied between ≈ 7 and 34 tok/s across runs without any GPU throttling
-  event (Python/launch overhead on Windows, Balanced power plan); method order was randomised per repetition.
-* **Data**: synthetic updates are synthetic; questions are template-generated from structured fields and only
-  cover facts that are not contradicted inside their own documents; one company, 72 documents.
-* **Evaluation**: rule-based evaluators (numbers, dates, aliases, yes/no, first mentioned option) can mis-score
-  paraphrases; answers are capped at 32 tokens per the specification, which truncated a few verbose answers.
-* **Sample sizes**: ablation rows have 1–2 seeds and few updated-fact questions per cell.
-* A first SMOKE attempt with an earlier instruction wording (answers frequently cut at 32 tokens) is archived in
-  `results/_archive/` and not used.
+* **Phần cứng.** Dùng GTX 1650 4 GB thay vì T4. Lưới đầy đủ chạy trên mô hình thay thế (0.5B fp32); mô hình chính 1.5B chỉ
+  chạy trên lưới thu gọn với ngữ cảnh ≤ 2K token. Độ trễ tuyệt đối phụ thuộc vào GPU này (fp16 chậm) và Windows; điều có thể
+  khái quát hoá là thứ tự tương đối giữa các phương pháp.
+* **B3a trên 1.5B** vượt ngân sách VRAM ở mọi lượt chạy (vượt ≈ 60–90 MB) và bị loại khỏi lưới 1.5B từ sau phiên 8; độ lệch
+  của nó trên 1.5B lấy từ lần chạy kiểm chứng.
+* **Độ trễ truy vấn**: so sánh có liên quan tới B2 bị nhiễu bởi việc chia đoạn khi prefill câu hỏi (§8.2).
+* **Tính không tất định của fp16**: các phương pháp chính xác trùng B1 ở 98–99 % câu trả lời trên 1.5B (§7).
+* **Dao động thời gian**: tốc độ giải mã dao động từ ≈ 7 đến 34 token/s giữa các lượt chạy dù GPU không hề bị giảm xung
+  (overhead của Python/khởi chạy kernel trên Windows, chế độ nguồn Balanced); thứ tự phương pháp được xáo trộn ở mỗi lần lặp.
+* **Dữ liệu**: cập nhật là giả lập; câu hỏi được sinh theo mẫu từ các trường có cấu trúc và chỉ bao phủ các dữ kiện không bị
+  mâu thuẫn trong chính tài liệu của nó; chỉ có một công ty, 72 tài liệu.
+* **Chấm điểm**: bộ chấm dựa trên quy tắc (số, ngày, bí danh, có/không, phương án nhắc đến đầu tiên) có thể chấm sai các
+  cách diễn đạt khác; câu trả lời bị giới hạn 32 token theo đặc tả, làm một số câu trả lời dài bị cắt.
+* **Cỡ mẫu**: các dòng ablation chỉ có 1–2 seed và ít câu hỏi về dữ kiện đã cập nhật trong mỗi ô.
+* Lần chạy SMOKE đầu tiên với cách viết chỉ dẫn cũ (câu trả lời thường bị cắt ở 32 token) được lưu trong `results/_archive/`
+  và không được sử dụng.
 
-## 12. Conclusion
+## 12. Kết luận
 
-1. **Correctness (RQ1, RQ5).** Keeping a token-verified causal prefix and recomputing the rest reproduces full
-   recompute: B3, B4 and B5 passed all ten edit scenarios on both models and gave the same answers as B1
-   (100 % of generations in fp32; 98.5 % in fp16, where the rest are numerical near ties). Layered CAG's
-   design rule — reuse only an unchanged, positionally identical prefix — is sound, including its fallback
-   when a "stable" document changes. Concatenating independently computed document caches (B3a) is not.
-2. **Efficiency (RQ2, RQ6).** Layered CAG cut update latency 2.0–2.4× against full recompute at ≈2K tokens
-   with the default partition (≈ 60 % stable tokens) and 1.8–3.2× from 1K to 8K tokens, with no memory
-   overhead. Its cost is bounded by the size of the dynamic suffix, independent of where the edit is.
-3. **The hypothesis does not make Layered CAG the best strategy.** Token-level prefix invalidation (B5),
-   which needs nothing but the previous token sequence, was faster than B4 in every condition except edits
-   at the very start of the suffix (where they tie) and stable-document edits (where all exact methods
-   degrade to near-full recompute). Exact document-boundary reuse (B3) sits in between. B4's advantage is
-   operational — a fixed, predictable recompute window and a single cached prefix — not speed.
-4. **Stable ratio (RQ3) and position (RQ4)** are the levers: B4's speed-up rose from 1.1–1.2× at 9 % stable
-   tokens to 7.1–7.7× at 89 %, and its latency did not change with edit position, while B5's fell by an
-   order of magnitude from the start to the end of the suffix.
-5. **Append correction** is the cheapest update and keeps most updated facts right on the larger model, but it
-   grows the context with every correction, lowers accuracy on unchanged facts, and on the small model leaves
-   21.6 % of updated-fact answers stale; after ten corrections half of them were stale.
-6. **Practical guidance.** Use exact prefix reuse; prefer token-level LCP (B5) when the old token sequence is
-   available, and structure the knowledge as Layered CAG when edits are concentrated in a small, volatile
-   tail. Amortised over questions, update savings matter less as queries per update grow (below 10 % of the
-   cycle cost beyond ≈ 6 questions per update on 0.5B and ≈ 29 on the slower 1.5B setting).
+1. **Tính đúng (RQ1, RQ5).** Giữ một tiền tố nhân quả đã được kiểm chứng ở mức token và tính lại phần còn lại cho kết quả
+   giống Full Recompute: B3, B4 và B5 vượt qua cả mười kịch bản chỉnh sửa trên cả hai mô hình và cho cùng câu trả lời với
+   B1 (100 % câu trả lời ở fp32; 98,5 % ở fp16, phần còn lại là các trường hợp gần hoà về số học). Nguyên tắc thiết kế của
+   Layered CAG — chỉ tái sử dụng tiền tố không đổi và giữ nguyên vị trí — là đúng, kể cả cơ chế lùi lại khi một tài liệu
+   "ổn định" bị sửa. Việc ghép các cache tài liệu được tính độc lập (B3a) thì không đúng.
+2. **Hiệu năng (RQ2, RQ6).** Layered CAG giảm độ trễ cập nhật 2,0–2,4 lần so với Full Recompute ở ≈2K token với phân vùng
+   mặc định (≈ 60 % token ổn định), và 1,8–3,2 lần từ 1K đến 8K token, không tốn thêm bộ nhớ. Chi phí của nó bị chặn bởi
+   kích thước hậu tố động, không phụ thuộc vào vị trí chỉnh sửa.
+3. **Giả thuyết không khiến Layered CAG trở thành chiến lược tốt nhất.** Prefix Invalidation mức token (B5), vốn chỉ cần
+   chuỗi token cũ, nhanh hơn B4 ở mọi điều kiện trừ chỗ sửa nằm ngay đầu hậu tố (khi đó chúng ngang nhau) và sửa tài liệu
+   ổn định (khi đó mọi phương pháp chính xác đều gần như phải tính lại toàn bộ). Tái sử dụng chính xác theo ranh giới tài
+   liệu (B3) nằm ở giữa. Lợi thế của B4 nằm ở mặt vận hành — một cửa sổ tính lại cố định, dễ dự đoán, và chỉ cần cache một
+   tiền tố — chứ không nằm ở tốc độ.
+4. **Tỷ lệ ổn định (RQ3) và vị trí (RQ4)** là hai yếu tố then chốt: mức nhanh hơn của B4 tăng từ 1,1–1,2 lần khi token ổn
+   định chiếm 9 % lên 7,1–7,7 lần khi chiếm 89 %, và độ trễ của nó không đổi theo vị trí sửa, trong khi độ trễ của B5 giảm
+   một bậc độ lớn từ đầu tới cuối hậu tố.
+5. **Append Correction** có chi phí cập nhật rẻ nhất và vẫn giữ đúng phần lớn dữ kiện đã cập nhật trên mô hình lớn hơn,
+   nhưng ngữ cảnh dài thêm sau mỗi lần sửa, độ chính xác trên dữ kiện không đổi giảm, và trên mô hình nhỏ 21,6 % câu trả lời
+   về dữ kiện đã cập nhật vẫn dùng giá trị cũ; sau mười lần sửa thì một nửa là giá trị cũ.
+6. **Khuyến nghị thực tế.** Dùng tái sử dụng tiền tố chính xác; ưu tiên LCP mức token (B5) khi còn giữ chuỗi token cũ, và tổ
+   chức tri thức theo kiểu Layered CAG khi các chỉnh sửa tập trung ở một phần đuôi nhỏ, hay thay đổi. Khi tính gộp cả các
+   câu hỏi, lợi ích của việc cập nhật rẻ giảm dần khi số câu hỏi sau mỗi lần cập nhật tăng (dưới 10 % chi phí chu kỳ khi
+   vượt ≈ 6 câu hỏi mỗi lần cập nhật trên 0.5B và ≈ 29 câu trên cấu hình 1.5B chậm hơn).
 
-## 13. Reproduction
+## 13. Tái lập kết quả
 
 ```bash
 cd cag-benchmark
 python -m venv .venv && .venv/Scripts/python -m pip install torch==2.9.1 --index-url https://download.pytorch.org/whl/cu128
 .venv/Scripts/python -m pip install -r requirements.txt
 .venv/Scripts/python scripts/prepare_dataset.py
-.venv/Scripts/python -m pytest -q tests                                   # 30 tests
+.venv/Scripts/python -m pytest -q tests                                   # 30 test
 .venv/Scripts/python scripts/validate_cache.py --config configs/local_pilot_q05_fp32.yaml --budget 2048 --out results/pilot_q05_fp32/cache_validation.json
 .venv/Scripts/python scripts/validate_cache.py --config configs/local_reduced_q15_fp16.yaml --budget 2048 --out results/reduced_q15_fp16/cache_validation.json
-.venv/Scripts/python scripts/run_benchmark.py --config configs/local_pilot_q05_fp32.yaml --out results/pilot_q05_fp32 --max-minutes 35   # repeat until done
+.venv/Scripts/python scripts/run_benchmark.py --config configs/local_pilot_q05_fp32.yaml --out results/pilot_q05_fp32 --max-minutes 35   # chạy lại cho tới khi xong
 .venv/Scripts/python scripts/run_benchmark.py --config configs/local_reduced_q15_fp16.yaml --out results/reduced_q15_fp16 --max-minutes 35
 .venv/Scripts/python scripts/generate_report.py --results results/pilot_q05_fp32 --publish-summary
 .venv/Scripts/python scripts/generate_report.py --results results/reduced_q15_fp16
 .venv/Scripts/python scripts/progress.py
 ```
 
-Raw measurements: `results/<profile>/{runs,updates,answers,conditions,questions_def}.jsonl`; summaries:
-`benchmark_summary.csv`, `cycle_cost.csv`, `failed_runs.csv`; figures: `results/<profile>/figures/*.png|pdf`;
-auto-generated tables: `reports/<profile>_tables.md`. Git history records every session.
+Số đo thô: `results/<profile>/{runs,updates,answers,conditions,questions_def}.jsonl`; bảng tổng hợp:
+`benchmark_summary.csv`, `cycle_cost.csv`, `failed_runs.csv`; biểu đồ: `results/<profile>/figures/*.png|pdf`; bảng sinh tự
+động: `reports/<profile>_tables.md`. Lịch sử git ghi lại từng phiên chạy.

@@ -1,13 +1,13 @@
-# Auto-generated tables — profile `smoke_q05_fp32`
+# Bảng sinh tự động — profile `smoke_q05_fp32`
 
-Engine: `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.7040408000000014, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
+Engine (mô hình, phần cứng, phiên bản): `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.7040408000000014, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
 
-Conditions: 5; completed method runs: 35; failed runs: 0; answered questions (rep 0): 336
+Số điều kiện: 5; số cặp điều kiện × phương pháp hoàn tất: 35; số lượt lỗi/bị loại: 0; số câu đã trả lời (lần lặp 0): 336
 
 
-## Main comparison (5 conditions, mean over conditions)
+## So sánh chính (5 điều kiện, trung bình theo điều kiện)
 
-| Method | upd lat (ms) | upd prefill (ms) | init prefill (ms) | TTFT (ms) | answer (ms) | reuse % | ctx final | peak alloc MB |
+| Phương pháp | trễ cập nhật (ms) | prefill cập nhật (ms) | prefill ban đầu (ms) | TTFT (ms) | trả lời (ms) | tái sử dụng % | ngữ cảnh cuối | đỉnh allocated MB |
 |---|---|---|---|---|---|---|---|---|
 | B0 Stale | 0.0 | 0.0 | 560.8 | 73.1 | 757.9 | — | 1020.0 | 2074.1 |
 | B1 Full Recompute | 560.3 | 557.8 | 558.6 | 72.4 | 722.3 | 0.0 | 1020.2 | 2074.1 |
@@ -18,9 +18,9 @@ Conditions: 5; completed method runs: 35; failed runs: 0; answered questions (re
 | B5 Prefix Invalidation | 113.7 | 111.1 | 561.9 | 73.4 | 729.8 | 82.2 | 1020.2 | 1935.5 |
 
 
-### Accuracy (%)
+### Độ chính xác (%)
 
-| Method | A updated | A stale | A mixed | B unchanged | C probes | D cross-doc | E unanswerable | overall | agree w/ B1 tokens |
+| Phương pháp | A đúng giá trị mới | A giá trị cũ | A trộn | B không đổi | C có/không | D so sánh chéo | E không trả lời được | tổng | trùng token B1 |
 |---|---|---|---|---|---|---|---|---|---|
 | B0 Stale | 0.0 | 60.0 | 0.0 | 50.0 | 30.0 | 0.0 | 0.0 | 27.4 | 64.5 |
 | B1 Full Recompute | 60.0 | 0.0 | 0.0 | 50.0 | 60.0 | 0.0 | 0.0 | 41.7 | 100.0 |
@@ -31,9 +31,9 @@ Conditions: 5; completed method runs: 35; failed runs: 0; answered questions (re
 | B5 Prefix Invalidation | 60.0 | 0.0 | 0.0 | 50.0 | 60.0 | 0.0 | 0.0 | 41.7 | 100.0 |
 
 
-## Pooled question-level accuracy over all conditions (%)
+## Độ chính xác gộp theo từng câu hỏi trên mọi điều kiện (%)
 
-| Method | A (n=6) | B (n=20) | C (n=10) | D (n=2) | E (n=10) |
+| Phương pháp | A (n=6) | B (n=20) | C (n=10) | D (n=2) | E (n=10) |
 |---|---|---|---|---|---|
 | B0 Stale | 0.0 | 50.0 | 30.0 | 0.0 | 0.0 |
 | B1 Full Recompute | 66.7 | 50.0 | 60.0 | 0.0 | 0.0 |
@@ -44,9 +44,9 @@ Conditions: 5; completed method runs: 35; failed runs: 0; answered questions (re
 | B5 Prefix Invalidation | 66.7 | 50.0 | 60.0 | 0.0 | 0.0 |
 
 
-### Group A outcome breakdown (%)
+### Phân loại kết quả nhóm A (%)
 
-| Method | correct | stale | wrong |
+| Phương pháp | đúng | giá trị cũ | sai |
 |---|---|---|---|
 | B0 Stale | 0.0 | 66.7 | 33.3 |
 | B1 Full Recompute | 66.7 | 0.0 | 33.3 |
@@ -57,7 +57,7 @@ Conditions: 5; completed method runs: 35; failed runs: 0; answered questions (re
 | B5 Prefix Invalidation | 66.7 | 0.0 | 33.3 |
 
 
-## Figures
+## Biểu đồ
 - latency_vs_accuracy: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\smoke_q05_fp32\figures\01_latency_vs_accuracy.png`
 - update_latency: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\smoke_q05_fp32\figures\02_update_latency.png`
 - reuse: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\smoke_q05_fp32\figures\03_cache_reuse.png`

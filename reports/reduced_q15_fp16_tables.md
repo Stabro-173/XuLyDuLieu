@@ -1,13 +1,13 @@
-# Auto-generated tables — profile `reduced_q15_fp16`
+# Bảng sinh tự động — profile `reduced_q15_fp16`
 
-Engine: `{'model_name': 'Qwen/Qwen2.5-1.5B-Instruct', 'revision': '989aa7980e4cf806f80c7fef2b1adb7bc71aa306', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float16', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 5.126511999998911, 'weights_bytes': 3087428608, 'prefill_chunk': 512, 'vram_budget_mb': 3296.75, 'notes': []}`
+Engine (mô hình, phần cứng, phiên bản): `{'model_name': 'Qwen/Qwen2.5-1.5B-Instruct', 'revision': '989aa7980e4cf806f80c7fef2b1adb7bc71aa306', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float16', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 5.126511999998911, 'weights_bytes': 3087428608, 'prefill_chunk': 512, 'vram_budget_mb': 3296.75, 'notes': []}`
 
-Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (rep 0): 1958
+Số điều kiện: 19; số cặp điều kiện × phương pháp hoàn tất: 114; số lượt lỗi/bị loại: 7; số câu đã trả lời (lần lặp 0): 1958
 
 
-## Main comparison (11 conditions, mean over conditions)
+## So sánh chính (11 điều kiện, trung bình theo điều kiện)
 
-| Method | upd lat (ms) | upd prefill (ms) | init prefill (ms) | TTFT (ms) | answer (ms) | reuse % | ctx final | peak alloc MB |
+| Phương pháp | trễ cập nhật (ms) | prefill cập nhật (ms) | prefill ban đầu (ms) | TTFT (ms) | trả lời (ms) | tái sử dụng % | ngữ cảnh cuối | đỉnh allocated MB |
 |---|---|---|---|---|---|---|---|---|
 | B0 Stale | 0.0 | 0.0 | 16720.6 | 563.2 | 2152.3 | — | 2035.0 | 3044.5 |
 | B1 Full Recompute | 16715.2 | 16709.5 | 16717.2 | 562.8 | 2317.9 | 0.0 | 2032.9 | 3045.7 |
@@ -17,9 +17,9 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | B5 Prefix Invalidation | 4400.6 | 4395.3 | 16720.2 | 563.2 | 2307.5 | 76.5 | 2032.9 | 3038.2 |
 
 
-### Accuracy (%)
+### Độ chính xác (%)
 
-| Method | A updated | A stale | A mixed | B unchanged | C probes | D cross-doc | E unanswerable | overall | agree w/ B1 tokens |
+| Phương pháp | A đúng giá trị mới | A giá trị cũ | A trộn | B không đổi | C có/không | D so sánh chéo | E không trả lời được | tổng | trùng token B1 |
 |---|---|---|---|---|---|---|---|---|---|
 | B0 Stale | 0.0 | 80.0 | 0.0 | 85.4 | 16.7 | 100.0 | 0.0 | 58.5 | 72.2 |
 | B1 Full Recompute | 86.7 | 3.3 | 0.0 | 83.4 | 97.2 | 100.0 | 0.0 | 72.8 | 100.0 |
@@ -29,9 +29,9 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | B5 Prefix Invalidation | 86.7 | 3.3 | 0.0 | 83.5 | 97.2 | 100.0 | 0.0 | 73.0 | 98.0 |
 
 
-## Pooled question-level accuracy over all conditions (%)
+## Độ chính xác gộp theo từng câu hỏi trên mọi điều kiện (%)
 
-| Method | A (n=22) | B (n=144) | C (n=38) | D (n=54) | E (n=57) |
+| Phương pháp | A (n=22) | B (n=144) | C (n=38) | D (n=54) | E (n=57) |
 |---|---|---|---|---|---|
 | B0 Stale | 0.0 | 81.2 | 7.9 | 96.3 | 0.0 |
 | B1 Full Recompute | 90.9 | 80.6 | 94.7 | 96.3 | 0.0 |
@@ -42,9 +42,9 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | B5 Prefix Invalidation | 90.9 | 80.6 | 94.7 | 96.3 | 0.0 |
 
 
-### Group A outcome breakdown (%)
+### Phân loại kết quả nhóm A (%)
 
-| Method | correct | stale | wrong |
+| Phương pháp | đúng | giá trị cũ | sai |
 |---|---|---|---|
 | B0 Stale | 0.0 | 86.4 | 13.6 |
 | B1 Full Recompute | 90.9 | 4.5 | 4.5 |
@@ -55,9 +55,9 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | B5 Prefix Invalidation | 90.9 | 4.5 | 4.5 |
 
 
-## Ablation: position (3 conditions)
+## Ablation: vị trí chỉnh sửa (3 điều kiện)
 
-| update_position | baseline | edit_pos_norm_dynamic | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| vị trí sửa | phương pháp | vị trí sửa chuẩn hoá | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | begin | B0 Stale | 0.069 | 0.000 | — | 2035.000 | 0.000 | 1.000 | 0.750 | 0.000 | 0.000 | 2043.173 |
 | begin | B1 Full Recompute | 0.069 | 2035.000 | 0.000 | 2035.000 | 1.000 | 0.000 | 0.875 | 16702.859 | 57.436 | 2143.578 |
@@ -79,9 +79,9 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | middle | B5 Prefix Invalidation | 0.596 | 243.000 | 0.881 | 2035.000 | 1.000 | 0.000 | 0.750 | 2193.169 | 0.508 | 2218.867 |
 
 
-## Ablation: stable_ratio (5 conditions)
+## Ablation: tỷ lệ tiền tố ổn định (5 điều kiện)
 
-| stable_ratio_target | baseline | stable_ratio_actual | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| tỷ lệ ổn định mục tiêu | phương pháp | tỷ lệ ổn định thực tế | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 0.000 | B0 Stale | 0.089 | 0.000 | — | 2035.000 | 0.000 | 1.000 | 0.750 | 0.000 | 0.000 | 2509.111 |
 | 0.000 | B1 Full Recompute | 0.089 | 2035.000 | 0.000 | 2035.000 | 1.000 | 0.000 | 0.750 | 16674.243 | 1.545 | 2509.330 |
@@ -115,9 +115,9 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | 0.900 | B5 Prefix Invalidation | 0.891 | 35.000 | 0.983 | 2035.000 | 1.000 | 0.000 | 0.875 | 573.748 | 0.213 | 2131.590 |
 
 
-## Ablation: context_length (2 conditions)
+## Ablation: độ dài ngữ cảnh (2 điều kiện)
 
-| budget | baseline | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+| ngân sách token | phương pháp | token tính lại | tỷ lệ tái sử dụng | ngữ cảnh cuối | A đúng giá trị mới | A giá trị cũ | B không đổi | trễ cập nhật (ms) | độ lệch chuẩn trễ (ms) | trễ truy vấn (ms) |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1024 | B0 Stale | 0.000 | — | 1020.000 | 0.000 | 1.000 | 0.800 | 0.000 | 0.000 | 1603.900 |
 | 1024 | B1 Full Recompute | 1020.000 | 0.000 | 1020.000 | 1.000 | 0.000 | 0.800 | 8193.087 | 0.748 | 1594.500 |
@@ -133,20 +133,20 @@ Conditions: 19; completed method runs: 114; failed runs: 7; answered questions (
 | 2048 | B5 Prefix Invalidation | 243.000 | 0.881 | 2035.000 | 1.000 | 0.000 | 0.750 | 2193.169 | 0.508 | 2218.867 |
 
 
-## Failed runs
+## Các lượt chạy lỗi hoặc bị loại
 
-| condition_id | baseline | rep | status | error |
+| mã điều kiện | phương pháp | lần lặp | trạng thái | lỗi |
 |---|---|---|---|---|
-| b2048_s0_numeric_area_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
-| b2048_s0_numeric_area_middle_rdef_k1 | B3a_document_cache_approx | 1 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
-| b2048_s0_numeric_investment_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
-| b2048_s0_numeric_investment_middle_rdef_k1 | B3a_document_cache_approx | 1 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
-| b2048_s0_company_count_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
-| b2048_s0_company_count_middle_rdef_k1 | B3a_document_cache_approx | 1 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
-| b2048_s0_text_location_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | peak reserved GPU memory exceeded the physical VRAM budget |
+| b2048_s0_numeric_area_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
+| b2048_s0_numeric_area_middle_rdef_k1 | B3a_document_cache_approx | 1 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
+| b2048_s0_numeric_investment_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
+| b2048_s0_numeric_investment_middle_rdef_k1 | B3a_document_cache_approx | 1 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
+| b2048_s0_company_count_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
+| b2048_s0_company_count_middle_rdef_k1 | B3a_document_cache_approx | 1 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
+| b2048_s0_text_location_middle_rdef_k1 | B3a_document_cache_approx | 0 | vram_spill | đỉnh bộ nhớ GPU reserved vượt ngân sách VRAM vật lý (tràn sang RAM) |
 
 
-## Figures
+## Biểu đồ
 - latency_vs_accuracy: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\reduced_q15_fp16\figures\01_latency_vs_accuracy.png`
 - update_latency: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\reduced_q15_fp16\figures\02_update_latency.png`
 - reuse: `D:\THANHTUNG\HOC_KI_7\XLDL\cag-benchmark\results\reduced_q15_fp16\figures\03_cache_reuse.png`
