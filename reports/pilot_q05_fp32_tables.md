@@ -1,60 +1,60 @@
 # Auto-generated tables — profile `pilot_q05_fp32`
 
-Engine: `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.3321452999998655, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
+Engine: `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.331615299999612, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
 
-Conditions: 13; completed method runs: 88; failed runs: 0; answered questions (rep 0): 1482
+Conditions: 25; completed method runs: 175; failed runs: 0; answered questions (rep 0): 2947
 
 
-## Main comparison (13 conditions, mean over conditions)
+## Main comparison (25 conditions, mean over conditions)
 
 | Method | upd lat (ms) | upd prefill (ms) | init prefill (ms) | TTFT (ms) | answer (ms) | reuse % | ctx final | peak alloc MB |
 |---|---|---|---|---|---|---|---|---|
-| B0 Stale | 0.0 | 0.0 | 1120.0 | 108.6 | 859.2 | — | 2035.2 | 2074.3 |
-| B1 Full Recompute | 1114.2 | 1108.1 | 1122.5 | 99.5 | 833.5 | 0.0 | 2033.7 | 2074.3 |
-| B2 Append Correction | 149.4 | 148.7 | 1120.5 | 56.2 | 721.6 | 93.6 | 2175.8 | 1980.1 |
-| B3 Doc Cache (exact) | 314.0 | 308.1 | 1120.5 | 98.9 | 834.7 | 74.1 | 2033.2 | 1978.1 |
-| B3a Doc Cache (APPROX) | 155.9 | 78.3 | 1141.5 | 99.3 | 819.8 | 0.0 | 2033.7 | 2058.0 |
-| B4 Layered CAG | 459.9 | 454.0 | 1119.1 | 100.3 | 843.0 | 56.4 | 2033.7 | 2001.4 |
-| B5 Prefix Invalidation | 267.4 | 261.1 | 1123.2 | 99.4 | 833.5 | 77.8 | 2033.7 | 1974.3 |
+| B0 Stale | 0.0 | 0.0 | 1124.4 | 106.6 | 855.7 | — | 2036.5 | 2074.3 |
+| B1 Full Recompute | 1122.4 | 1116.2 | 1124.6 | 97.0 | 837.7 | 0.0 | 2038.7 | 2074.3 |
+| B2 Append Correction | 147.4 | 146.7 | 1123.1 | 56.4 | 728.1 | 93.5 | 2179.1 | 1980.3 |
+| B3 Doc Cache (exact) | 326.8 | 320.8 | 1122.9 | 96.8 | 830.1 | 72.8 | 2038.7 | 1979.9 |
+| B3a Doc Cache (APPROX) | 157.8 | 79.3 | 1143.4 | 96.6 | 804.8 | 0.0 | 2038.7 | 2058.3 |
+| B4 Layered CAG | 463.2 | 457.0 | 1122.2 | 96.9 | 837.8 | 56.1 | 2038.7 | 2001.5 |
+| B5 Prefix Invalidation | 290.1 | 283.9 | 1124.1 | 96.9 | 845.1 | 76.0 | 2038.7 | 1976.3 |
 
 
 ### Accuracy (%)
 
 | Method | A updated | A stale | A mixed | B unchanged | C probes | D cross-doc | E unanswerable | overall | agree w/ B1 tokens |
 |---|---|---|---|---|---|---|---|---|---|
-| B0 Stale | 4.5 | 72.7 | 0.0 | 68.7 | 17.5 | 77.8 | 0.0 | 47.9 | 85.3 |
-| B1 Full Recompute | 87.5 | 0.0 | 0.0 | 66.9 | 75.0 | 79.5 | 0.0 | 59.5 | 100.0 |
-| B2 Append Correction | 53.0 | 24.2 | 13.6 | 63.1 | 47.5 | 77.8 | 0.0 | 52.1 | 70.0 |
-| B3 Doc Cache (exact) | 86.4 | 0.0 | 0.0 | 66.2 | 77.5 | 77.8 | 0.0 | 59.0 | 100.0 |
-| B3a Doc Cache (APPROX) | 20.8 | 0.0 | 0.0 | 46.3 | 68.2 | 61.5 | 0.0 | 41.1 | 10.0 |
-| B4 Layered CAG | 87.5 | 0.0 | 0.0 | 66.9 | 75.0 | 79.5 | 0.0 | 59.5 | 100.0 |
-| B5 Prefix Invalidation | 87.5 | 0.0 | 0.0 | 66.9 | 75.0 | 79.5 | 0.0 | 59.5 | 100.0 |
+| B0 Stale | 2.2 | 69.6 | 0.0 | 68.8 | 25.0 | 77.3 | 0.0 | 48.3 | 85.7 |
+| B1 Full Recompute | 82.6 | 0.0 | 0.0 | 67.6 | 70.2 | 77.3 | 0.0 | 58.6 | 100.0 |
+| B2 Append Correction | 59.4 | 18.1 | 8.7 | 63.1 | 48.8 | 78.7 | 0.0 | 52.5 | 70.5 |
+| B3 Doc Cache (exact) | 82.6 | 0.0 | 0.0 | 67.6 | 70.2 | 77.3 | 0.0 | 58.6 | 100.0 |
+| B3a Doc Cache (APPROX) | 21.0 | 0.0 | 0.0 | 51.1 | 67.9 | 57.3 | 0.0 | 42.5 | 11.7 |
+| B4 Layered CAG | 82.6 | 0.0 | 0.0 | 67.6 | 70.2 | 77.3 | 0.0 | 58.6 | 100.0 |
+| B5 Prefix Invalidation | 82.6 | 0.0 | 0.0 | 67.6 | 70.2 | 77.3 | 0.0 | 58.6 | 100.0 |
 
 
 ## Pooled question-level accuracy over all conditions (%)
 
-| Method | A (n=15) | B (n=91) | C (n=24) | D (n=36) | E (n=36) |
+| Method | A (n=31) | B (n=190) | C (n=50) | D (n=75) | E (n=75) |
 |---|---|---|---|---|---|
-| B0 Stale | 6.7 | 68.1 | 16.7 | 77.8 | 0.0 |
-| B1 Full Recompute | 87.5 | 66.7 | 73.1 | 79.5 | 0.0 |
-| B2 Append Correction | 53.3 | 62.6 | 45.8 | 77.8 | 0.0 |
-| B3 Doc Cache (exact) | 86.7 | 65.9 | 75.0 | 77.8 | 0.0 |
-| B3a Doc Cache (APPROX) | 18.8 | 46.5 | 69.2 | 61.5 | 0.0 |
-| B4 Layered CAG | 87.5 | 66.7 | 73.1 | 79.5 | 0.0 |
-| B5 Prefix Invalidation | 87.5 | 66.7 | 73.1 | 79.5 | 0.0 |
+| B0 Stale | 3.2 | 68.4 | 24.0 | 77.3 | 0.0 |
+| B1 Full Recompute | 83.9 | 67.4 | 70.0 | 77.3 | 0.0 |
+| B2 Append Correction | 54.8 | 62.6 | 48.0 | 78.7 | 0.0 |
+| B3 Doc Cache (exact) | 83.9 | 67.4 | 70.0 | 77.3 | 0.0 |
+| B3a Doc Cache (APPROX) | 19.4 | 51.1 | 68.0 | 57.3 | 0.0 |
+| B4 Layered CAG | 83.9 | 67.4 | 70.0 | 77.3 | 0.0 |
+| B5 Prefix Invalidation | 83.9 | 67.4 | 70.0 | 77.3 | 0.0 |
 
 
 ### Group A outcome breakdown (%)
 
 | Method | correct | mixed | stale | wrong |
 |---|---|---|---|---|
-| B0 Stale | 6.7 | 0.0 | 73.3 | 20.0 |
-| B1 Full Recompute | 87.5 | 0.0 | 0.0 | 12.5 |
-| B2 Append Correction | 53.3 | 13.3 | 26.7 | 6.7 |
-| B3 Doc Cache (exact) | 86.7 | 0.0 | 0.0 | 13.3 |
-| B3a Doc Cache (APPROX) | 18.8 | 0.0 | 0.0 | 81.2 |
-| B4 Layered CAG | 87.5 | 0.0 | 0.0 | 12.5 |
-| B5 Prefix Invalidation | 87.5 | 0.0 | 0.0 | 12.5 |
+| B0 Stale | 3.2 | 0.0 | 71.0 | 25.8 |
+| B1 Full Recompute | 83.9 | 0.0 | 0.0 | 16.1 |
+| B2 Append Correction | 54.8 | 9.7 | 19.4 | 16.1 |
+| B3 Doc Cache (exact) | 83.9 | 0.0 | 0.0 | 16.1 |
+| B3a Doc Cache (APPROX) | 19.4 | 0.0 | 0.0 | 80.6 |
+| B4 Layered CAG | 83.9 | 0.0 | 0.0 | 16.1 |
+| B5 Prefix Invalidation | 83.9 | 0.0 | 0.0 | 16.1 |
 
 
 ## Ablation: position (2 conditions)
