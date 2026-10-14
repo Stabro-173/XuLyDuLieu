@@ -1,8 +1,8 @@
 # Auto-generated tables — profile `pilot_q05_fp32`
 
-Engine: `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.829093099999227, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
+Engine: `{'model_name': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'device_name': 'NVIDIA GeForce GTX 1650', 'dtype': 'float32', 'attn_implementation': 'sdpa', 'torch_version': '2.9.1+cu128', 'transformers_version': '5.19.0', 'cuda_version': '12.8', 'load_seconds': 2.7359990000004473, 'weights_bytes': 1976131072, 'prefill_chunk': 1024, 'vram_budget_mb': 3296.75, 'notes': []}`
 
-Conditions: 48; completed method runs: 331; failed runs: 0; answered questions (rep 0): 5583
+Conditions: 50; completed method runs: 350; failed runs: 0; answered questions (rep 0): 5978
 
 
 ## Main comparison (33 conditions, mean over conditions)
@@ -33,28 +33,28 @@ Conditions: 48; completed method runs: 331; failed runs: 0; answered questions (
 
 ## Pooled question-level accuracy over all conditions (%)
 
-| Method | A (n=58) | B (n=358) | C (n=96) | D (n=138) | E (n=141) |
+| Method | A (n=74) | B (n=380) | C (n=106) | D (n=144) | E (n=150) |
 |---|---|---|---|---|---|
-| B0 Stale | 1.7 | 62.8 | 27.1 | 67.4 | 0.0 |
-| B1 Full Recompute | 81.0 | 62.0 | 65.0 | 69.5 | 0.0 |
-| B2 Append Correction | 65.5 | 61.7 | 49.0 | 68.1 | 0.0 |
-| B3 Doc Cache (exact) | 81.0 | 62.0 | 65.0 | 69.5 | 0.0 |
-| B3a Doc Cache (APPROX) | 20.7 | 45.5 | 68.8 | 52.2 | 0.0 |
-| B4 Layered CAG | 82.8 | 62.3 | 65.6 | 68.8 | 0.0 |
-| B5 Prefix Invalidation | 82.8 | 62.3 | 65.6 | 68.8 | 0.0 |
+| B0 Stale | 1.4 | 62.4 | 28.3 | 68.8 | 0.0 |
+| B1 Full Recompute | 81.1 | 61.8 | 65.1 | 70.1 | 0.0 |
+| B2 Append Correction | 58.1 | 60.8 | 49.1 | 69.4 | 0.0 |
+| B3 Doc Cache (exact) | 81.1 | 61.8 | 65.1 | 70.1 | 0.0 |
+| B3a Doc Cache (APPROX) | 18.9 | 45.5 | 68.9 | 50.7 | 0.0 |
+| B4 Layered CAG | 81.1 | 61.8 | 65.1 | 70.1 | 0.0 |
+| B5 Prefix Invalidation | 81.1 | 61.8 | 65.1 | 70.1 | 0.0 |
 
 
 ### Group A outcome breakdown (%)
 
 | Method | correct | mixed | stale | wrong |
 |---|---|---|---|---|
-| B0 Stale | 1.7 | 0.0 | 77.6 | 20.7 |
-| B1 Full Recompute | 81.0 | 1.6 | 1.6 | 15.9 |
-| B2 Append Correction | 65.5 | 6.9 | 17.2 | 10.3 |
-| B3 Doc Cache (exact) | 81.0 | 1.6 | 1.6 | 15.9 |
-| B3a Doc Cache (APPROX) | 20.7 | 0.0 | 5.2 | 74.1 |
-| B4 Layered CAG | 82.8 | 1.7 | 1.7 | 13.8 |
-| B5 Prefix Invalidation | 82.8 | 1.7 | 1.7 | 13.8 |
+| B0 Stale | 1.4 | 0.0 | 78.4 | 20.3 |
+| B1 Full Recompute | 81.1 | 2.7 | 1.4 | 14.9 |
+| B2 Append Correction | 58.1 | 8.1 | 21.6 | 12.2 |
+| B3 Doc Cache (exact) | 81.1 | 2.7 | 1.4 | 14.9 |
+| B3a Doc Cache (APPROX) | 18.9 | 0.0 | 5.4 | 75.7 |
+| B4 Layered CAG | 81.1 | 2.7 | 1.4 | 14.9 |
+| B5 Prefix Invalidation | 81.1 | 2.7 | 1.4 | 14.9 |
 
 
 ## Ablation: position (6 conditions)
@@ -159,7 +159,7 @@ Conditions: 48; completed method runs: 331; failed runs: 0; answered questions (
 | 8192 | B5 Prefix Invalidation | 1455.000 | 0.821 | 8117.000 | 1.000 | 0.000 | 0.250 | 1288.634 | 7.373 | 1591.565 |
 
 
-## Ablation: sequential (3 conditions)
+## Ablation: sequential (4 conditions)
 
 | n_sequential | baseline | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -177,8 +177,33 @@ Conditions: 48; completed method runs: 331; failed runs: 0; answered questions (
 | 3 | B3a Doc Cache (APPROX) | 330.000 | 0.000 | 2038.000 | 0.333 | 0.000 | 0.875 | 472.291 | 93.198 | 612.207 |
 | 3 | B4 Layered CAG | 2427.000 | 0.603 | 2038.000 | 0.667 | 0.000 | 0.625 | 1252.435 | 7.059 | 718.440 |
 | 3 | B5 Prefix Invalidation | 602.000 | 0.902 | 2038.000 | 0.667 | 0.000 | 0.625 | 413.669 | 15.922 | 710.367 |
-| 5 | B1 Full Recompute | 10181.000 | 0.000 | 2036.000 | 0.600 | 0.000 | 0.500 | 5594.335 | 0.000 | 887.247 |
-| 5 | B3 Doc Cache (exact) | 2474.000 | 0.757 | 2036.000 | 0.600 | 0.000 | 0.500 | 1481.106 | 0.000 | 835.716 |
+| 5 | B0 Stale | 0.000 | — | 2035.000 | 0.000 | 0.800 | 0.500 | 0.000 | 0.000 | 719.480 |
+| 5 | B1 Full Recompute | 10181.000 | 0.000 | 2036.000 | 0.600 | 0.000 | 0.500 | 5584.314 | 9.434 | 887.247 |
+| 5 | B2 Append Correction | 433.000 | 0.962 | 2468.000 | 0.200 | 0.200 | 0.500 | 457.441 | 2.234 | 651.109 |
+| 5 | B3 Doc Cache (exact) | 2474.000 | 0.757 | 2036.000 | 0.600 | 0.000 | 0.500 | 1470.304 | 9.718 | 835.716 |
+| 5 | B3a Doc Cache (APPROX) | 522.000 | 0.000 | 2036.000 | 0.000 | 0.000 | 0.625 | 652.992 | 11.525 | 826.568 |
+| 5 | B4 Layered CAG | 4036.000 | 0.604 | 2036.000 | 0.600 | 0.000 | 0.500 | 2075.742 | 11.796 | 711.716 |
+| 5 | B5 Prefix Invalidation | 2099.000 | 0.794 | 2036.000 | 0.600 | 0.000 | 0.500 | 1322.439 | 10.507 | 717.468 |
+| 10 | B0 Stale | 0.000 | — | 2035.000 | 0.000 | 0.800 | 0.333 | 0.000 | 0.000 | 789.987 |
+| 10 | B1 Full Recompute | 20339.000 | 0.000 | 2035.000 | 0.800 | 0.000 | 0.333 | 11188.897 | 56.516 | 824.584 |
+| 10 | B2 Append Correction | 827.000 | 0.967 | 2862.000 | 0.300 | 0.500 | 0.167 | 888.553 | 1.533 | 798.860 |
+| 10 | B3 Doc Cache (exact) | 3806.000 | 0.813 | 2035.000 | 0.800 | 0.000 | 0.333 | 2298.263 | 14.280 | 773.579 |
+| 10 | B3a Doc Cache (APPROX) | 1080.000 | 0.000 | 2035.000 | 0.200 | 0.100 | 0.333 | 1358.903 | 44.260 | 651.043 |
+| 10 | B4 Layered CAG | 8049.000 | 0.604 | 2035.000 | 0.800 | 0.000 | 0.333 | 4182.600 | 35.496 | 812.593 |
+| 10 | B5 Prefix Invalidation | 3044.000 | 0.850 | 2035.000 | 0.800 | 0.000 | 0.333 | 1985.192 | 10.623 | 799.016 |
+
+
+## Ablation: repeated (1 conditions)
+
+| n_sequential | baseline | recomputed_tokens | cache_reuse_ratio | context_tokens_final | updated_fact_accuracy | stale_answer_rate | unchanged_fact_accuracy | update_latency_ms | update_latency_std_ms | query_latency_ms |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 3 | B0 Stale | 0.000 | — | 2035.000 | 0.000 | 1.000 | 0.750 | 0.000 | 0.000 | 781.464 |
+| 3 | B1 Full Recompute | 6105.000 | 0.000 | 2035.000 | 1.000 | 0.000 | 0.750 | 3350.532 | 0.904 | 779.974 |
+| 3 | B2 Append Correction | 284.000 | 0.958 | 2319.000 | 1.000 | 0.000 | 0.625 | 296.419 | 2.167 | 739.534 |
+| 3 | B3 Doc Cache (exact) | 978.000 | 0.840 | 2035.000 | 1.000 | 0.000 | 0.750 | 705.414 | 0.657 | 778.227 |
+| 3 | B3a Doc Cache (APPROX) | 354.000 | 0.000 | 2035.000 | 0.000 | 0.000 | 0.375 | 395.863 | 17.242 | 772.234 |
+| 3 | B4 Layered CAG | 2418.000 | 0.604 | 2035.000 | 1.000 | 0.000 | 0.750 | 1246.673 | 5.618 | 795.674 |
+| 3 | B5 Prefix Invalidation | 731.000 | 0.880 | 2035.000 | 1.000 | 0.000 | 0.750 | 386.593 | 1.498 | 778.696 |
 
 
 ## Figures

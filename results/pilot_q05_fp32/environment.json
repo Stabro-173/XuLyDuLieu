@@ -104,7 +104,7 @@
     "torch_version": "2.9.1+cu128",
     "transformers_version": "5.19.0",
     "cuda_version": "12.8",
-    "load_seconds": 2.829093099999227,
+    "load_seconds": 2.7359990000004473,
     "weights_bytes": 1976131072,
     "prefill_chunk": 1024,
     "vram_budget_mb": 3296.75,
